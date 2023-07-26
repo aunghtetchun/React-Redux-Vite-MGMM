@@ -20,24 +20,24 @@ export default function Home() {
 
   return (
     <>
-      <h5>Welcome From MGMM</h5>
-      <div className="col-12 d-flex flex-wrap justify-content-center align-items-center">
+      <div className="col-12 px-0 px-md-2 d-flex flex-wrap justify-content-center align-items-center">
+        <h3 className="col-12 ps-2">Most Popular Games</h3>
         {popular_games &&
           popular_games.map((game) => (
-            <div className="col-12 col-md-4" onClick={()=>seeGame(game.slug)} key={game.id}>
-              <Card className="m-2">
-                <Card.Body className="d-flex p-2 flex-wrap justify-content-center align-items-center">
-                  <div className="col-3">
-                    <img src={game.logo} alt={game.title} className="w-100" />
+            <div className="col-12 col-md-6 col-lg-4" onClick={()=>seeGame(game.slug)} key={game.id}>
+              <Card className="m-2 shadow">
+                <Card.Body className="d-flex px-1 py-1 flex-wrap justify-content-center align-items-center">
+                  <div className="col-3 p-1">
+                    <img src={game.logo} alt={game.title} className="w-100 gcard_logo" />
                   </div>
                   <div className="col-9 ps-3">
-                    <h6>{game.name}</h6>
-                    <p> Version : {game.version}</p>
-                    <p>
-                      {game.size} ,{" "}
+                    <h6 className="gcard_title mb-0">{game.name}</h6>
+                    <p className="mb-0 p-0"> Version : {game.version}</p>
+                    <p className="mb-0">
+                      {game.size} ,
                       <span className="fw-bold">
-                        {game.type.toLowerCase().includes("online")
-                          ? "Online"
+                        { game.type.toLowerCase().includes("online") && game.type.toLowerCase().includes("offline") ? "Online & Offline": game.type.toLowerCase().includes("online")
+                          ? "Online" 
                           : "Offline"}
                       </span>
                     </p>

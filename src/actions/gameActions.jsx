@@ -1,4 +1,4 @@
-import { getPopularGames, getGameDetails } from "../services/api";
+import { getPopularGames, getGameDetails, getRelatedGames } from "../services/api";
 
 export const setPopularGames = (popular_games) => ({
   type: "SET_POPULAR_GAMES",
@@ -10,7 +10,6 @@ export const fetchPopularGames = () => {
     try {
       const response = await getPopularGames();
       // console.log(response.games);
-
       dispatch(setPopularGames(response.games));
     } catch (error) {
       console.error("Error fetching popular_games:", error);
@@ -31,6 +30,22 @@ export const fetchGameDetails = (slug) => {
       dispatch(setGameDetails(response.game));
     } catch (error) {
       console.error('Error fetching game details:', error);
+    }
+  };
+};
+export const setRelatedGames = (related_games) => ({
+  type: 'SET_RELATED_GAMES',
+  payload: related_games,
+});
+
+export const fetchRelatedGames = (id) => {
+  return async (dispatch) => {
+    try {
+      const response=await getRelatedGames(id);
+      console.log(response.related_games);
+      dispatch(setRelatedGames(response.related_games));
+    } catch (error) {
+      console.error('Error fetching related games:', error);
     }
   };
 };

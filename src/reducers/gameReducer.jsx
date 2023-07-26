@@ -1,5 +1,6 @@
 const initialState = {
   popular_games: [],
+  related_games: [],
   game: null,
 };
 
@@ -14,6 +15,11 @@ const gameReducer = (state = initialState, action) => {
       return {
         ...state,
         game: action.payload,
+      };
+    case "SET_RELATED_GAMES":
+      return {
+        ...state,
+        related_games: action.payload,
       };
     default:
       return state;

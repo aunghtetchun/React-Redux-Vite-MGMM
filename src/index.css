@@ -1,4 +1,43 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap'); */
+  @import url('https://fonts.googleapis.com/css2?family=Edu+SA+Beginner:wght@500&display=swap');
+ *{
+    /* font-family: 'Oswald', sans-serif; */
+    font-family: 'Edu SA Beginner', cursive;
+  }
 a{
-    text-decoration: none;
-    color: black;
+    text-decoration: none; color: black;
+}
+.gcard_title{
+    white-space: nowrap;
+    overflow: hidden;
+}
+.gcard_logo{
+    border-radius: 11%;
+}
+.sticky_nav{
+    position: sticky; top: 0; left: 0;
+}
+.details_img{
+    border: 2px solid; color: rgb(6 28 116); 
+}
+.details_title{
+    color: #080c0d; line-height: 2;
+}
+.related_logo{
+    width: 100%; border-radius:13px; min-height: 76px;  max-height: 85px; padding: 2px;
+}
+.related_game_card{
+    cursor: pointer; min-height: 125px;
+}
+.p-13{
+    padding: 13px;
+}
+.related_card_title{
+    font-size: 14px; color:black; overflow:hidden; white-space: nowrap;
+}
+.fb_btn{
+    background: rgb(60, 60, 187)
+}
+.tg_btn{
+    background-color: #0088cc; color: #fff; border-color: #0088cc;
 }

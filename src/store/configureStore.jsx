@@ -1,4 +1,3 @@
-// store/configureStore.js
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import categoryReducer from '../reducers/categoryReducer';

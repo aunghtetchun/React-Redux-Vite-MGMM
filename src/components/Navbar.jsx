@@ -5,6 +5,7 @@ import { fetchCategories } from "../actions/categoryActions";
 import { useDispatch, useSelector } from "react-redux";
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Dropdown } from "react-bootstrap";
+import { FaUserCircle } from "react-icons/fa";
 
 export default function Navbar() {
   const { user, isLoggedIn, handleLogout } = useContext(AuthContext);
@@ -17,7 +18,7 @@ export default function Navbar() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="col-12 col-md-11 ">
       <nav className="navbar navbar-expand-lg navbar-dark bg-transparent">
         <div className="container-fluid">
           <a className="navbar-brand h1 my-0" href="#">
@@ -85,6 +86,7 @@ export default function Navbar() {
               <>
                 <Dropdown>
                   <Dropdown.Toggle variant="info" id="dropdown-basic">
+                    <FaUserCircle className="h2 fw-normal"/> &nbsp;
                     {user.name}
                   </Dropdown.Toggle>
 
@@ -104,6 +106,6 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 }
