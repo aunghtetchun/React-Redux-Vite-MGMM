@@ -3,13 +3,15 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
 import "./style.css";
+import BottomNav from "../../components/BottomNav";
 export default function Layout() {
   const location = useLocation();
 
   return (
     <div className="container-fluid">
       <div className="row justify-content-center">
-        <div className="col-12 bg-primary sticky_nav d-none d-md-block">
+      <BottomNav/>
+        <div className="col-12 bg-primary sticky_nav">
           <div className="container">
             <div className="row justify-content-center ">
               <Navbar />

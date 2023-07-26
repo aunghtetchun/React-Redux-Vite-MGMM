@@ -1,16 +1,21 @@
+import { React,useState } from "react";
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { fetchCategories } from "../actions/categoryActions";
 import { useDispatch, useSelector } from "react-redux";
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Dropdown } from "react-bootstrap";
+import { Button, Dropdown } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
+import { ListModal } from "./ListModal";
 
 export default function Navbar() {
   const { user, isLoggedIn, handleLogout } = useContext(AuthContext);
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categoryReducer.categories);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     // Fetch the categories when the component mounts
@@ -18,7 +23,7 @@ export default function Navbar() {
   }, [dispatch]);
 
   return (
-    <div className="col-12 col-md-11 ">
+    <div className="col-12 col-md-11  d-none d-md-block">
       <nav className="navbar navbar-expand-lg navbar-dark bg-transparent">
         <div className="container-fluid">
           <a className="navbar-brand h1 my-0" href="#">
@@ -43,18 +48,11 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <NavDropdown
-                  id="nav-dropdown-dark-example"
-                  title="Games"
-                  menuVariant="light"
-                >
-                  {categories &&
-                    categories.map((category) => (
-                      <NavDropdown.Item key={category.id} href="#action/3.3">
-                        {category.title}
-                      </NavDropdown.Item>
-                    ))}
-                </NavDropdown>
+                <Button variant="primary" onClick={handleShow}>
+                  Games
+                </Button>
+
+                <ListModal handleClose={handleClose} show={show} categories={categories}/>
               </li>
               <li className="nav-item">
                 <Link className="nav-link " aria-current="page" to="/">
@@ -86,7 +84,7 @@ export default function Navbar() {
               <>
                 <Dropdown>
                   <Dropdown.Toggle variant="info" id="dropdown-basic">
-                    <FaUserCircle className="h2 fw-normal"/> &nbsp;
+                    <FaUserCircle className="h2 fw-normal" /> &nbsp;
                     {user.name}
                   </Dropdown.Toggle>
 

@@ -23,10 +23,9 @@ const LoginUser = () => {
 
   return (
     <div className="col-12 card col-md-6 p-0">
-      <div className="card-header">
-        <h5 className="my-3">LOGIN ACCOUNT</h5>
-      </div>
       <div className="card-body">
+      <h6 className="my-3">LOGIN USER ACCOUNT</h6>
+        <hr />
         <form onSubmit={handleSubmit}>
           <div>
             <label className="form-label" htmlFor="email">
@@ -54,9 +53,16 @@ const LoginUser = () => {
               className="form-control"
             />
           </div>
-          <button className="btn mt-3 btn-primary px-4 py-2" type="submit">
-            Login
-          </button>
+          <div className="text-end">
+            <button className="btn col-4 me-2 mt-3 btn-outline-success px-4 py-2">
+              Register
+            </button>
+            <button className="btn col-4 mt-3 btn-primary px-4 py-2" type="submit">
+              Login
+            </button>
+            
+          </div>
+
         </form>
       </div>
 

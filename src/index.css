@@ -41,3 +41,8 @@ a{
 .tg_btn{
     background-color: #0088cc; color: #fff; border-color: #0088cc;
 }
+
+/* mobile nav  */
+.mobile_nav{
+    position: fixed; width: 100%; z-index:2900; bottom: 0; right: 0; background: #ffffff !important; color: black !important;
+}
