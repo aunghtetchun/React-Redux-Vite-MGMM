@@ -84,3 +84,12 @@ export const getRelatedGames=  async (id) => {
     throw new Error("Failed to fetch related games data");
   }
 };
+
+export const requestGame=  async (formData) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/request-game`, formData)
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to post request game data");
+  }
+};

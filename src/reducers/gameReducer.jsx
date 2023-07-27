@@ -3,6 +3,7 @@ const initialState = {
   all_games: [],
   related_games: [],
   game: null,
+  message:null,
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -26,6 +27,16 @@ const gameReducer = (state = initialState, action) => {
       return {
         ...state,
         related_games: action.payload,
+      };
+      case "SET_MESSAGE":
+      return {
+        ...state,
+        message: action.payload,
+      };
+      case "CLEAR_MESSAGE":
+      return {
+        ...state,
+        message: null,
       };
     default:
       return state;

@@ -1,4 +1,4 @@
-import { getPopularGames, getGameDetails, getRelatedGames, getAllGames } from "../services/api";
+import { getPopularGames, getGameDetails, getRelatedGames, getAllGames, requestGame } from "../services/api";
 
 export const setPopularGames = (popular_games) => ({
   type: "SET_POPULAR_GAMES",
@@ -61,6 +61,25 @@ export const fetchAllGames = (category_id) => {
       dispatch(setAllGames(response.games.data));
     } catch (error) {
       console.error("Error fetching all_games:", error);
+    }
+  };
+};
+
+export const setMessage = (message) => ({
+  type: "SET_MESSAGE",
+  payload: message,
+});
+export const clearMessage = () => ({
+  type: "CLEAR_MESSAGE",
+});
+export const submitGameRequest = (formData) => {
+  return async (dispatch) => {
+    try {
+      const response = await requestGame(formData);
+      dispatch(setMessage(response.finish));
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error submitting game request:', error);
     }
   };
 };

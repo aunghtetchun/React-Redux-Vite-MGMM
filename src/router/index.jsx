@@ -5,6 +5,7 @@ import LoginUser from "../pages/auth/LoginUser.jsx";
 import RegisterUser from "../pages/auth/RegisterUser.jsx";
 import GameDetails from "../pages/GameDetails.jsx";
 import Download from "../pages/Download.jsx";
+import GameRequest from "../pages/GameRequest.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/download/:slug",
         element: <Download />,
+      },
+      {
+        path: "/request",
+        element: <GameRequest />,
       },
     ],
   },
