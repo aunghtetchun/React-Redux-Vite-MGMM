@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
-import { FiCpu,FiBox, FiUserCheck} from "react-icons/fi";
-import { GrGamepad } from "react-icons/gr";
+import { FiCpu,FiBox, FiUserCheck, FiPackage} from "react-icons/fi";
 export default function BottomNav() {
 
   return (
     <>
       <div className="col-12 d-md-none d-block pb-2 pt-3 shadow shadow-lg border d-flex justify-content-center align-items-center mobile_nav">
         <Link to="/" className="col text-dark  px-0 text-center ">
-          <GrGamepad/>
+          <FiPackage/>
           <h6 className="my-1 text-primary">Game</h6>
         </Link>
        

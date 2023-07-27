@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { Button, Dropdown } from "react-bootstrap";
-import { FaUserCircle } from "react-icons/fa";
+import { FiUserCheck } from "react-icons/fi";
 
 export default function Navbar() {
   const { user, isLoggedIn, handleLogout } = useContext(AuthContext);
@@ -69,7 +69,7 @@ export default function Navbar() {
               <>
                 <Dropdown>
                   <Dropdown.Toggle variant="info" id="dropdown-basic">
-                    <FaUserCircle className="h2 fw-normal" /> &nbsp;
+                    <FiUserCheck className="h2 fw-normal" /> &nbsp;
                     {user.name}
                   </Dropdown.Toggle>
 

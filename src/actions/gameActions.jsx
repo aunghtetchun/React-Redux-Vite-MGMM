@@ -26,7 +26,6 @@ export const fetchGameDetails = (slug) => {
   return async (dispatch) => {
     try {
       const response=await getGameDetails(slug);
-      console.log(response.game);
       dispatch(setGameDetails(response.game));
     } catch (error) {
       console.error('Error fetching game details:', error);

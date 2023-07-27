@@ -1,10 +1,10 @@
 import React from 'react'
 import { Badge, Card } from "react-bootstrap";
 import {
+    FiArrowUp,
   FiEye,
   FiGift,
 } from "react-icons/fi";
-import { FaArrowUp } from "react-icons/fa";
 
 export default function CardItem({game}) {
   return (
@@ -45,7 +45,7 @@ export default function CardItem({game}) {
                           bg="success"
                           className="font-weight-bold card_badge"
                         >
-                          <FaArrowUp />
+                          <FiArrowUp />
                           Update
                         </Badge>
                       ) : (

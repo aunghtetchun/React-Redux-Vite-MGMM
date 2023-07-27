@@ -10,6 +10,10 @@ export default function AllGames({ category_id }) {
   let navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     // Fetch the all_games when the component mounts
     dispatch(fetchAllGames(category_id));
   }, [dispatch, category_id]);

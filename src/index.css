@@ -14,7 +14,7 @@ a{
     white-space: nowrap;
 }
 .min_height{
-    min-height: 100vh !important;
+    min-height: 80vh !important;
 }
 .gcard_title{
     white-space: nowrap;
@@ -22,12 +22,13 @@ a{
 }
 .gcard_logo{
     border-radius: 13%;
+    max-height: 77px !important;
 }
 .sticky_nav{
     position: sticky; top: 0; left: 0;
 }
 .details_img{
-    border: 2px solid; color: rgb(6 28 116); 
+   max-height: 100px !important;
 }
 .details_title{
     color: #080c0d; line-height: 2;
@@ -74,3 +75,4 @@ a{
     border-bottom-right-radius: 0;
     min-width: 50px;
 }
+

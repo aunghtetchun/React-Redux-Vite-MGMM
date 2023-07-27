@@ -10,6 +10,10 @@ export function Category({handleCategoryClick}) {
   // let navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     // Fetch the popular_games when the component mounts
     dispatch(fetchCategories());
   }, [dispatch]);

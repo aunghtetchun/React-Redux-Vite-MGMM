@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {  Link, useParams } from "react-router-dom";
 import { fetchGameDetails } from "../actions/gameActions";
 import {FiLayers, FiSettings, FiPackage, FiSave, FiCalendar, FiCpu, FiFacebook} from "react-icons/fi";
-import { FaTelegram } from "react-icons/fa";
 import RelatedGames from "../components/RelatedGames";
 
 export default function GameDetails() {
@@ -14,10 +13,15 @@ export default function GameDetails() {
 
   const game = useSelector((state) => state.gameReducer.game);  /// state ယူတဲ့အဆင့်
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     // Fetch the game details when the component mounts  state ထည့်တဲ့အဆင့်
     dispatch(fetchGameDetails(slug));
   }, [dispatch]);
 
+  
   if (!game) {
     return <div>Game not found.</div>;
   }
@@ -28,7 +32,7 @@ export default function GameDetails() {
         <div className="d-flex flex-wrap justify-content-center align-items-center">
           <div className="d-flex col-12 flex-wrap align-items-start justify-content-center">
             <div
-              className="col-3 details_img col-md-2 col-lg-1 px-1 my-3 border pt-1 border-danger"
+              className="col-3 details_img col-md-2 col-lg-1 px-1  pt-1 "
             >
               <img
                 src={game.logo}
@@ -36,30 +40,21 @@ export default function GameDetails() {
                 className="w-100 mb-2"
               />
             </div>
-            <div className="col-9 col-md-12 px-0">
-              <h5 className="col-12 mt-3 ps-2 ps-md-0 mb-2 text-start text-md-center  font-weight-bold ">
+            <div className="col-12 text-center px-0">
+              <h5 className=" mt-1 ps-2 ps-md-0 mb-2  font-weight-bold ">
                 {game.name}
               </h5>
             </div>
-            <h5 className="col-12 my-1 text-center">
-              <div className="col-12 px-0 text-center ">
-                <Badge
-                  pill bg="warning" className="font-weight-bold my-1 mx-1"
-                >
-                  ဇာတ်လမ်းသွား
-                </Badge>
-                <Badge
-                  pill bg="warning" className="font-weight-bold my-1 mx-1"
-                >
-                  Open World
-                </Badge>
-                <Badge
-                  pill bg="warning" className="font-weight-bold my-1 mx-1"
-                >
-                  အပစ်အခတ်
-                </Badge>
-              </div>
-            </h5>
+          </div>
+          <div className="col-12 px-0 text-center ">
+              {game.categories &&
+                game.categories.map((category) => (
+                      <Badge
+                        pill bg="warning" className="font-weight-bold my-1 mx-1" key={category.id}
+                      >
+                        {category.title}
+                      </Badge>
+                ))}
           </div>
           <div className="col-12 col-md-7 mx-auto px-0 mt-2">
                 <table className="table table-bordered mx-0 mb-0 px-0 w-100 table-striped">
@@ -111,7 +106,7 @@ export default function GameDetails() {
                             </div>
                             <div className="col-6 ps-2 pr-0">
                                 <a href="https://t.me/+skU4FVRG3_ZkYzE1" className="btn py-2 px-0 col-12  tg_btn">
-                                    <FaTelegram/> Join Telegram
+                                     Join Telegram
                                 </a>
                             </div>
 

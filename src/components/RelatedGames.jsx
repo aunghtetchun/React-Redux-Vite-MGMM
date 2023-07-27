@@ -11,8 +11,7 @@ export default function RelatedGames({ id }) {
   useEffect(() => {
     // Fetch the related games when the component mounts or when the 'id' prop changes
     dispatch(fetchRelatedGames(id));
-    window.scrollTo(0, 0);
-  }, [dispatch, id]);
+  }, [dispatch]);
 
   const seeGame = (slug) => {
     navigate(`/games/${slug}`);

@@ -10,13 +10,18 @@ export default function PopularGames() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch the popular_games when the component mounts
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     dispatch(fetchPopularGames());
   }, [dispatch]);
+  
 
-  const seeGame = (slug) =>{
+  const seeGame = (slug, e) => {
+    e.stopPropagation(); // Prevent click event from propagating to CardItem
     navigate(`/games/${slug}`);
-  }
+  };
 
   return (
     <>
@@ -24,8 +29,12 @@ export default function PopularGames() {
         {/* <h3 className="col-12 ps-2">Most Popular Games</h3> */}
         {popular_games &&
           popular_games.map((game) => (
-            <div className="col-12 col-md-6 col-lg-4" onClick={()=>seeGame(game.slug)} key={game.id}>
-               <CardItem game={game}/>
+            <div
+              className="col-12 col-md-6 col-lg-4"
+              onClick={(e) => seeGame(game.slug, e)}
+              key={game.id}
+            >
+              <CardItem game={game} />
             </div>
           ))}
       </div>
