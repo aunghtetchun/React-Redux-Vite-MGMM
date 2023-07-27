@@ -8,7 +8,7 @@ export default function Layout() {
   const location = useLocation();
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid mb-5 pb-5">
       <div className="row justify-content-center">
       <BottomNav/>
         <div className="col-12 bg-primary sticky_nav">

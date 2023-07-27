@@ -7,12 +7,21 @@
 a{
     text-decoration: none; color: black;
 }
+.fs-13{
+    font-size: 13px !important;
+}
+.nowrap{
+    white-space: nowrap;
+}
+.min_height{
+    min-height: 100vh !important;
+}
 .gcard_title{
     white-space: nowrap;
     overflow: hidden;
 }
 .gcard_logo{
-    border-radius: 11%;
+    border-radius: 13%;
 }
 .sticky_nav{
     position: sticky; top: 0; left: 0;
@@ -45,4 +54,23 @@ a{
 /* mobile nav  */
 .mobile_nav{
     position: fixed; width: 100%; z-index:2900; bottom: 0; right: 0; background: #ffffff !important; color: black !important;
+}
+.top_nav{
+    position: fixed; width: 100%; z-index:2900; top: 0; right: 0; background: #ffffff !important; color: black !important;
+}
+
+/* Card List part  */
+
+.g_card_badge{
+    position: absolute;
+    right: 0;
+    bottom: 39%;
+    
+}
+.card_badge{
+    position: absolute;
+    right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    min-width: 50px;
 }

@@ -1,4 +1,4 @@
-import { getPopularGames, getGameDetails, getRelatedGames } from "../services/api";
+import { getPopularGames, getGameDetails, getRelatedGames, getAllGames } from "../services/api";
 
 export const setPopularGames = (popular_games) => ({
   type: "SET_POPULAR_GAMES",
@@ -46,6 +46,22 @@ export const fetchRelatedGames = (id) => {
       dispatch(setRelatedGames(response.related_games));
     } catch (error) {
       console.error('Error fetching related games:', error);
+    }
+  };
+};
+export const setAllGames = (all_games) => ({
+  type: "SET_ALL_GAMES",
+  payload: all_games,
+});
+
+export const fetchAllGames = (category_id) => {
+  return async (dispatch) => {
+    try {
+      const response = await getAllGames(category_id);
+      // console.log(response.games);
+      dispatch(setAllGames(response.games.data));
+    } catch (error) {
+      console.error("Error fetching all_games:", error);
     }
   };
 };

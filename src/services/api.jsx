@@ -50,15 +50,26 @@ export const getCategories = async () => {
 };
 export const getPopularGames = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/game/popular`);
+    const response = await axios.get(`${BASE_URL}/games/popular`);
     return response.data;
   } catch (error) {
     throw new Error("Failed to fetch popular games data");
   }
 };
+export const getAllGames = async (category_id) => {
+  try {
+    const params = {
+      cat_id: category_id,
+    };
+    const response = await axios.get(`${BASE_URL}/games/`,{params});
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch all games data");
+  }
+};
 export const getGameDetails = async (slug) => {
   try {
-    const response = await axios.get(`${BASE_URL}/games/${slug}`);
+    const response = await axios.get(`${BASE_URL}/games/details/${slug}`);
     return response.data;
   } catch (error) {
     throw new Error("Failed to fetch game details data");
@@ -67,7 +78,7 @@ export const getGameDetails = async (slug) => {
 
 export const getRelatedGames=  async (id) => {
   try {
-    const response = await axios.get(`${BASE_URL}/game/${id}`);
+    const response = await axios.get(`${BASE_URL}/games/related/${id}`);
     return response.data;
   } catch (error) {
     throw new Error("Failed to fetch related games data");

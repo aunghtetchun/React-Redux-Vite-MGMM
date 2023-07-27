@@ -1,26 +1,12 @@
-import { React,useState } from "react";
-import { useContext, useEffect } from "react";
+import { React } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
-import { fetchCategories } from "../actions/categoryActions";
-import { useDispatch, useSelector } from "react-redux";
 import { Button, Dropdown } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
-import { ListModal } from "./ListModal";
 
 export default function Navbar() {
   const { user, isLoggedIn, handleLogout } = useContext(AuthContext);
-  const dispatch = useDispatch();
-  const categories = useSelector((state) => state.categoryReducer.categories);
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  useEffect(() => {
-    // Fetch the categories when the component mounts
-    dispatch(fetchCategories());
-  }, [dispatch]);
 
   return (
     <div className="col-12 col-md-11  d-none d-md-block">
@@ -48,11 +34,10 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Button variant="primary" onClick={handleShow}>
+                <Button variant="primary" >
                   Games
                 </Button>
 
-                <ListModal handleClose={handleClose} show={show} categories={categories}/>
               </li>
               <li className="nav-item">
                 <Link className="nav-link " aria-current="page" to="/">
