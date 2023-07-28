@@ -76,3 +76,6 @@ a{
     min-width: 50px;
 }
 
+.img_holder{
+    height: 66px !important;
+}

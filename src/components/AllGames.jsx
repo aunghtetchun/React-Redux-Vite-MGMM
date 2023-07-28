@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CardItem from "./CardItem";
+import LoadingCard from "./LoadingCard";
 
 export default function AllGames({ category_id }) {
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.gameReducer.loading);
   const all_games = useSelector((state) => state.gameReducer.all_games);
   let navigate = useNavigate();
 
@@ -24,6 +26,9 @@ export default function AllGames({ category_id }) {
 
   return (
     <>
+     {loading ? <LoadingCard/>
+    : 
+    
       <div className="col-12 px-0 px-md-2 d-flex flex-wrap justify-content-center align-items-center">
         {/* <h3 className="col-12 ps-2">New Games</h3> */}
         {all_games &&
@@ -37,6 +42,7 @@ export default function AllGames({ category_id }) {
             </div>
           ))}
       </div>
+}
     </>
   );
 }

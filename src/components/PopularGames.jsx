@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CardItem from "./CardItem";
+import LoadingCard from "./LoadingCard";
 
 export default function PopularGames() {
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.gameReducer.loading);
   const popular_games = useSelector((state) => state.gameReducer.popular_games);
   let navigate = useNavigate();
 
@@ -17,14 +19,18 @@ export default function PopularGames() {
     dispatch(fetchPopularGames());
   }, [dispatch]);
   
-
   const seeGame = (slug, e) => {
     e.stopPropagation(); // Prevent click event from propagating to CardItem
     navigate(`/games/${slug}`);
   };
+  if (!popular_games){
+    return <LoadingCard/>
+  }
 
   return (
     <>
+     {loading ? <LoadingCard/>
+    : 
       <div className="col-12 px-0 px-md-2 d-flex flex-wrap justify-content-center align-items-center">
         {/* <h3 className="col-12 ps-2">Most Popular Games</h3> */}
         {popular_games &&
@@ -38,6 +44,7 @@ export default function PopularGames() {
             </div>
           ))}
       </div>
+}
     </>
   );
 }

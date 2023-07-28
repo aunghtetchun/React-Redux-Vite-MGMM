@@ -8,9 +8,11 @@ export const setPopularGames = (popular_games) => ({
 export const fetchPopularGames = () => {
   return async (dispatch) => {
     try {
+      dispatch(setLoading(true));
       const response = await getPopularGames();
       // console.log(response.games);
       dispatch(setPopularGames(response.games));
+      dispatch(setLoading(false));
     } catch (error) {
       console.error("Error fetching popular_games:", error);
     }
@@ -56,9 +58,11 @@ export const setAllGames = (all_games) => ({
 export const fetchAllGames = (category_id) => {
   return async (dispatch) => {
     try {
+      dispatch(setLoading(true));
       const response = await getAllGames(category_id);
       // console.log(response.games);
       dispatch(setAllGames(response.games.data));
+      dispatch(setLoading(false));
     } catch (error) {
       console.error("Error fetching all_games:", error);
     }
@@ -82,4 +86,8 @@ export const submitGameRequest = (formData) => {
       console.error('Error submitting game request:', error);
     }
   };
+};
+
+export const setLoading = (isLoading) => {
+  return { type: "SET_LOADING", payload: isLoading };
 };

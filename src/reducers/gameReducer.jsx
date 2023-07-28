@@ -4,6 +4,7 @@ const initialState = {
   related_games: [],
   game: null,
   message:null,
+  loading: false,
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -37,6 +38,11 @@ const gameReducer = (state = initialState, action) => {
       return {
         ...state,
         message: null,
+      };
+      case "SET_LOADING":
+      return {
+        ...state,
+        loading: action.payload,
       };
     default:
       return state;
