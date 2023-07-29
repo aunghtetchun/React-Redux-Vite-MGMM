@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Nav } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import AllGames from "./AllGames";
 import { Category } from "./Category";
 import PopularGames from "./PopularGames";
+import Search from "./Search";
 
 export default function TopNav() {
   const [activeTab, setActiveTab] = useState("/");
   const [category, setCategory] = useState(100);
+  const title = useSelector((state) => state.gameReducer.title);
 
   const handleNavItemClick = (eventKey) => {
     if (eventKey != '/games'){
@@ -42,6 +45,9 @@ export default function TopNav() {
   return (
     <>
     <div className="col-12 py-2 d-flex flex-wrap justify-content-center align-items-center top_nav">
+      <div className="col-12 px-0 mb-3 mt-2">
+        <Search/>
+      </div>
       <Nav
         className="col-12 px-0"
         justify
@@ -50,18 +56,18 @@ export default function TopNav() {
         onSelect={handleNavItemClick}
       >
         <Nav.Item>
-          <Nav.Link eventKey="/">Popular</Nav.Link>
+          <Nav.Link className="px-0 fw-bolder" eventKey="/">Popular</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link id="new" eventKey="/games">New</Nav.Link>
+          <Nav.Link id="new" className="px-0 fw-bolder" eventKey="/games">{title ? title :'New'}</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="/category" >Category</Nav.Link>
+          <Nav.Link className="px-0 fw-bolder" eventKey="/category" >Category</Nav.Link>
         </Nav.Item>
       </Nav>
       
     </div>
-    <div className="col-12 mt-4 pt-3 px-0 min_height">
+    <div className="col-12 mt-5 pt-5 px-0 min_height">
     {renderComponent()}
   </div>
   </>

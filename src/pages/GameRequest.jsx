@@ -49,18 +49,18 @@ export default function GameRequest() {
         <hr />
         <Form className="text-light pb-3" onSubmit={handleSubmit}>
           <Form.Group>
-            <Form.Label className="text-primary mt-2">Game Name</Form.Label>
+            <Form.Label className="fw-bold text-dark mt-3">Game Name</Form.Label>
             <Form.Control
               required
               type="text"
               name="app_name"
               value={formData.app_name}
               onChange={handleChange}
-              placeholder="Game Name"
+              placeholder=""
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label className="text-primary mt-2">Game Type</Form.Label>
+            <Form.Label className="fw-bold text-dark mt-3">Game Type</Form.Label>
             <Form.Control
               required
               type="text"
@@ -71,19 +71,21 @@ export default function GameRequest() {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label className="text-primary mt-2">Phone Type</Form.Label>
+            <Form.Label className="fw-bold text-dark mt-3">Phone Type</Form.Label>
             <Form.Control
               required
               type="text"
               name="playstore_link"
               value={formData.playstore_link}
               onChange={handleChange}
-              placeholder="ဖုန်းအမျိုးအစား"
+              placeholder=""
             />
           </Form.Group>
-          <Button className="col-6 mt-3" type="submit" variant="primary" block>
-            <FiUpload /> &nbsp; Request Game
-          </Button>
+          <div className='d-flex justify-content-end'>
+            <Button className="px-3 py-2 mt-3" type="submit" variant="primary" block>
+              <FiUpload /> &nbsp; Request Game
+            </Button>
+          </div>
         </Form>
       </Col>
     </>

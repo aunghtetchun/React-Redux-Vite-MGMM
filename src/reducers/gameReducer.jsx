@@ -5,6 +5,7 @@ const initialState = {
   game: null,
   message:null,
   loading: false,
+  title: null,
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -18,6 +19,11 @@ const gameReducer = (state = initialState, action) => {
       return {
         ...state,
         all_games: action.payload,
+      };
+      case "SET_MORE_GAMES":
+      return {
+        ...state,
+        all_games: [...state.all_games, ...action.payload], // Add the new data to the existing array
       };
     case "SET_GAME_DETAILS":
       return {
@@ -43,6 +49,11 @@ const gameReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: action.payload,
+      };
+      case "SET_TITLE":
+      return {
+        ...state,
+        title: action.payload,
       };
     default:
       return state;

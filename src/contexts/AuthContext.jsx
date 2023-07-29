@@ -26,7 +26,6 @@ const AuthProvider = ({ children }) => {
 
   const handleLogin = async (email, password) => {
     try {
-      console.log("Login", email, password);
       const userData = await login(email, password);
       let name = userData.name;
       let token = userData.token;

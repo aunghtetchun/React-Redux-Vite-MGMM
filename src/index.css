@@ -16,6 +16,10 @@ a{
 .min_height{
     min-height: 80vh !important;
 }
+.max_height{
+    max-height: 80vh !important;
+    overflow: scroll;
+}
 .gcard_title{
     white-space: nowrap;
     overflow: hidden;
@@ -65,7 +69,7 @@ a{
 .g_card_badge{
     position: absolute;
     right: 0;
-    bottom: 39%;
+    bottom: 33%;
     
 }
 .card_badge{
@@ -78,4 +82,15 @@ a{
 
 .img_holder{
     height: 66px !important;
+}
+
+
+/* search jsx  */
+.search_input{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.search_btn{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }

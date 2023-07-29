@@ -24,12 +24,11 @@ export default function PopularGames() {
     navigate(`/games/${slug}`);
   };
   if (!popular_games){
-    return <LoadingCard/>
+    return <LoadingCard count={12}/>
   }
-
   return (
     <>
-     {loading ? <LoadingCard/>
+     {loading ? <LoadingCard count={12}/>
     : 
       <div className="col-12 px-0 px-md-2 d-flex flex-wrap justify-content-center align-items-center">
         {/* <h3 className="col-12 ps-2">Most Popular Games</h3> */}

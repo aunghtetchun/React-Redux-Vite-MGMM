@@ -16,6 +16,7 @@ export default function RelatedGames({ id }) {
   const seeGame = (slug) => {
     navigate(`/games/${slug}`);
   };
+  console.log('related games');
 
   return (
     <>

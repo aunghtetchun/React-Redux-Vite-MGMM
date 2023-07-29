@@ -12,7 +12,6 @@ export const setCategories = (categories) => ({
       try {
         // Replace this with your actual API call to fetch categories
         const response = await getCategories();
-        console.log(response.category);
         // Dispatch the action to set the categories in the store
         dispatch(setCategories(response.category));
 

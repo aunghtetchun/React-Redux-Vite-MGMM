@@ -43,7 +43,6 @@ export const fetchRelatedGames = (id) => {
   return async (dispatch) => {
     try {
       const response=await getRelatedGames(id);
-      console.log(response.related_games);
       dispatch(setRelatedGames(response.related_games));
     } catch (error) {
       console.error('Error fetching related games:', error);
@@ -54,6 +53,10 @@ export const setAllGames = (all_games) => ({
   type: "SET_ALL_GAMES",
   payload: all_games,
 });
+export const setMoreGames = (all_games) => ({
+  type: "SET_MORE_GAMES",
+  payload: all_games,
+});
 
 export const fetchAllGames = (category_id) => {
   return async (dispatch) => {
@@ -62,6 +65,7 @@ export const fetchAllGames = (category_id) => {
       const response = await getAllGames(category_id);
       // console.log(response.games);
       dispatch(setAllGames(response.games.data));
+      dispatch(setTitle(response.title));
       dispatch(setLoading(false));
     } catch (error) {
       console.error("Error fetching all_games:", error);
@@ -76,6 +80,11 @@ export const setMessage = (message) => ({
 export const clearMessage = () => ({
   type: "CLEAR_MESSAGE",
 });
+export const setTitle = (title) => ({
+  type: "SET_TITLE",
+  payload: title,
+});
+
 export const submitGameRequest = (formData) => {
   return async (dispatch) => {
     try {

@@ -49,11 +49,13 @@ export default function GameDetails() {
           <div className="col-12 px-0 text-center ">
               {game.categories &&
                 game.categories.map((category) => (
+                  <span key={category.id}>
                       <Badge
-                        pill bg="warning" className="font-weight-bold my-1 mx-1" key={category.id}
+                        pill bg="warning" className="font-weight-bold my-1 mx-1" 
                       >
                         {category.title}
                       </Badge>
+                    </span>
                 ))}
           </div>
           <div className="col-12 col-md-7 mx-auto px-0 mt-2">
