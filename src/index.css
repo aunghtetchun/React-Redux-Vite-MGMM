@@ -7,15 +7,24 @@
 a{
     text-decoration: none; color: black;
 }
+
+.bg_main{
+    color: white !important;
+    background: #a81d1d !important;
+}
+.text_main{
+    color:  #a81d1d !important;
+}
+
 .fs-13{
     font-size: 13px !important;
 }
 .nowrap{
     white-space: nowrap;
 }
-.min_height{
+/* .min_height{
     min-height: 80vh !important;
-}
+} */
 .max_height{
     max-height: 80vh !important;
     overflow: scroll;
@@ -28,9 +37,9 @@ a{
     border-radius: 13%;
     max-height: 77px !important;
 }
-.sticky_nav{
+/* .sticky_nav{
     position: sticky; top: 0; left: 0;
-}
+} */
 .details_img{
    max-height: 100px !important;
 }
@@ -58,10 +67,10 @@ a{
 
 /* mobile nav  */
 .mobile_nav{
-    position: fixed; width: 100%; z-index:2900; bottom: 0; right: 0; background: #ffffff !important; color: black !important;
+    position: fixed; width: 100%; z-index:2900; bottom: 0; right: 0; ;
 }
 .top_nav{
-    position: fixed; width: 100%; z-index:2900; top: 0; right: 0; background: #ffffff !important; color: black !important;
+    position: sticky; width: 100%; z-index:3000; top: 0; ;
 }
 
 /* Card List part  */

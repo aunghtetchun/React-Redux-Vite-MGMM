@@ -3,32 +3,35 @@ import { FiCpu,FiBox, FiUserCheck, FiPackage} from "react-icons/fi";
 export default function BottomNav() {
   const location = useLocation();
   const isRequestPage = location.pathname.includes('/request');
-  const changeColor = isRequestPage ? 'text-danger' : '';
+  const changeColor = isRequestPage ? 'text_main bg-light' : 'text-light';
+
+  const isSoftwarePage = location.pathname.includes('/software');
+  const changeColorSoftware = isSoftwarePage ? 'text_main bg-light' : 'text-light';
 
   const isLoginPage = location.pathname.includes('/user/login');
-  const changeColorLogin = isLoginPage ? 'text-danger' : '';
+  const changeColorLogin = isLoginPage ? 'text_main bg-light' : 'text-light';
 
   const selectedHome = window.location.pathname === '/';
-  const changeColorHome = selectedHome ? 'text-danger' : '';
+  const changeColorHome = selectedHome ? 'text_main bg-light' : 'text-light';
 
   return (
     <>
-      <div className="col-12 d-md-none d-block pb-2 pt-3 shadow shadow-lg border d-flex justify-content-center align-items-center mobile_nav">
-        <Link to="/" className="col  px-0 text-center ">
+      <div className="col-12 px-0 mx-0 shadow shadow-lg bg_main border border-red d-flex justify-content-center align-items-center mobile_nav">
+        <Link to="/" className={`${changeColorHome} col py-2 px-0 text-center `}>
           <FiPackage className={`${changeColorHome}`}/>
           <h6 className={`my-1 ${changeColorHome}`}>Game</h6>
         </Link>
        
-        <div className="col  px-0 text-center">
-          <FiCpu/>
+        <Link to={'/softwares'} className={`${changeColorSoftware} col py-2  px-0 text-center `}>
+          <FiCpu className={`${changeColorSoftware}`}/>
           <h6 className="my-1">Software</h6>
-        </div>
-        <Link to="/request" className={`col   px-0 text-center ${changeColor}`}>
-          <FiBox/> 
+        </Link>
+        <Link to="/request" className={`col py-2   px-0 text-center ${changeColor}`}>
+          <FiBox className={`${changeColor}`}/> 
           <h6 className={`my-1  ${changeColor}`}>Request</h6>
         </Link>
-        <Link to="/user/login" className={`col   px-0 text-center ${changeColorLogin}`}>
-          <FiUserCheck/>
+        <Link to="/user/login" className={`col py-2   px-0 text-center ${changeColorLogin}`}>
+          <FiUserCheck className={`${changeColorLogin}`}/>
           <h6 className={`my-1 ${changeColorLogin}`}>Account</h6>
         </Link>
       </div>

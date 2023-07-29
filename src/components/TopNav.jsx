@@ -44,30 +44,29 @@ export default function TopNav() {
 
   return (
     <>
-    <div className="col-12 py-2 d-flex flex-wrap justify-content-center align-items-center top_nav">
-      <div className="col-12 px-0 mb-3 mt-2">
-        <Search/>
-      </div>
-      <Nav
-        className="col-12 px-0"
-        justify
-        variant="tabs"
-        defaultActiveKey="/"
-        onSelect={handleNavItemClick}
-      >
-        <Nav.Item>
-          <Nav.Link className="px-0 fw-bolder" eventKey="/">Popular</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link id="new" className="px-0 fw-bolder" eventKey="/games">{title ? title :'New'}</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link className="px-0 fw-bolder" eventKey="/category" >Category</Nav.Link>
-        </Nav.Item>
-      </Nav>
-      
+    <div className="col-12 py-2 px-0 d-flex flex-wrap pt-3 justify-content-center align-items-center top_nav">
+        <div className="col-12 px-0 mb-3 mt-2">
+          <Search/>
+        </div>
+        <Nav
+          className="col-12 px-0"
+          justify
+          variant="tabs"
+          defaultActiveKey="/"
+          onSelect={handleNavItemClick}
+        >
+          <Nav.Item>
+            <Nav.Link className="px-0 fw-bolder" eventKey="/">Popular</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link id="new" className="px-0 fw-bolder" eventKey="/games">{title ? title :'All'}</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link className="px-0 fw-bolder" eventKey="/category" >Category</Nav.Link>
+          </Nav.Item>
+        </Nav>
     </div>
-    <div className="col-12 mt-5 pt-5 px-0 min_height">
+    <div className="col-12 px-0 min_height">
     {renderComponent()}
   </div>
   </>

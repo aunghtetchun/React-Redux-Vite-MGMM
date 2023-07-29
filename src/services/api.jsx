@@ -56,19 +56,7 @@ export const getPopularGames = async () => {
     throw new Error("Failed to fetch popular games data");
   }
 };
-export const getAllGames = async (category_id) => {
-  try {
-    if(category_id<100){
-      const response = await axios.get(`${BASE_URL}/games/category/${category_id}`);
-      return response.data;
-    } else {
-      const response = await axios.get(`${BASE_URL}/games`);
-      return response.data;
-    }
-  } catch (error) {
-    throw new Error("Failed to fetch all games data");
-  }
-};
+
 export const getAllGamesByCategory = async (page_number,category_id) => {
   try {
     if(category_id<100){
@@ -106,5 +94,43 @@ export const requestGame=  async (formData) => {
     return response.data;
   } catch (error) {
     throw new Error("Failed to post request game data");
+  }
+};
+
+export const getAllGames = async (category_id) => {
+  try {
+    if(category_id<100){
+      const response = await axios.get(`${BASE_URL}/games/category/${category_id}`);
+      return response.data;
+    } else {
+      const response = await axios.get(`${BASE_URL}/games`);
+      return response.data;
+    }
+  } catch (error) {
+    throw new Error("Failed to fetch all games data");
+  }
+};
+export const getAllSoftwares = async () => {
+  try {
+      const response = await axios.get(`${BASE_URL}/softwares`);
+      return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch all softwares data");
+  }
+};
+export const getMoreSoftwares = async (page_number) => {
+  try {
+      const response = await axios.get(`${BASE_URL}/softwares?page=${page_number}`);
+      return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch all softwares data");
+  }
+};
+export const getSoftwareDetails = async (slug) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/softwares/details/${slug}`);
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch software details data");
   }
 };
