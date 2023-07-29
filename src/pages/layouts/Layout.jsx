@@ -9,12 +9,12 @@ export default function Layout() {
   return (
     <div className="container-fluid mb-5 pb-5">
       <div className="row justify-content-center">
-        <SwitchTransition>
+        {/* <SwitchTransition>
           <CSSTransition
             timeout={200}
             classNames="fade"
             key={location.pathname}
-          >
+          > */}
             <div className="col-12 col-lg-10 mt-0 px-0">
               <div className="container">
                 <div className="row justify-content-center align-items-center mx-0 mx-md-0">
@@ -23,8 +23,8 @@ export default function Layout() {
                 </div>
               </div>
             </div>
-          </CSSTransition>
-        </SwitchTransition>
+          {/* </CSSTransition>
+        </SwitchTransition> */}
       </div>
     </div>
   );

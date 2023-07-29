@@ -4,6 +4,8 @@ const initialState = {
     software: null,
     message:null,
     loading: false,
+    page:2,
+    scroll_position: 0,
   };
   
   const softwareReducer = (state = initialState, action) => {
@@ -13,11 +15,16 @@ const initialState = {
           ...state,
           softwares: action.payload,
         };
+        case "SET_SEARCH_DATA":
+        return {
+            ...state,
+            softwares: action.payload,
+        };
         case "SET_MORE_SOFTWARES":
-      return {
-        ...state,
-        softwares: [...state.softwares, ...action.payload], // Add the new data to the existing array
-      };
+        return {
+            ...state,
+            softwares: [...state.softwares, ...action.payload], // Add the new data to the existing array
+        };
       case "SET_SOFTWARE_DETAILS":
         return {
           ...state,
@@ -32,6 +39,16 @@ const initialState = {
         return {
           ...state,
           loading: action.payload,
+        };
+        case "SET_PAGE":
+            return {
+              ...state,
+              page: action.payload,
+            };
+        case "SET_SCROLL_POSITION":
+            return {
+            ...state,
+            scroll_position: action.payload,
         };
       default:
         return state;

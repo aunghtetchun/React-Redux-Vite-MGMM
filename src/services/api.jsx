@@ -134,3 +134,12 @@ export const getSoftwareDetails = async (slug) => {
     throw new Error("Failed to fetch software details data");
   }
 };
+
+export const searchSoftwares = async (search_value) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/softwares/search/${search_value}`);
+    return response.data;
+  } catch (error) {
+    throw new Error("search failed");
+  }
+};

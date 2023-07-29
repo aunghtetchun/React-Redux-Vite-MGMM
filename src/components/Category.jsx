@@ -14,9 +14,11 @@ export function Category({ handleCategoryClick }) {
       top: 0,
       behavior: "smooth",
     });
-    // Fetch the popular_games when the component mounts
-    dispatch(fetchCategories());
-  }, [dispatch]);
+
+    if (!categories || categories.length === 0) {
+      dispatch(fetchCategories());
+    }
+  }, [dispatch, categories]);
 
   return (
     <>

@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Col, Row, Form } from 'react-bootstrap';
 import { FiSearch } from 'react-icons/fi';
+import { useDispatch } from 'react-redux';
+import { fetchSoftwaresSearch } from '../actions/softwareAction';
 
 export default function Search() {
+  const [searchValue, setSearchValue] = useState('');
+  const dispatch = useDispatch();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // console.log('Submitting search with:', searchValue);
+    dispatch(fetchSoftwaresSearch(searchValue));
+  };
+
+  const handleChange = (event) => {
+    setSearchValue(event.target.value);
+  };
+
   return (
-    <Form inline="true"> {/* Convert the inline prop to a string */}
+    <Form onSubmit={handleSubmit}>
       <Row>
         <Col xs="10" className="pe-0">
           <Form.Control
             type="text"
             placeholder="Search data..."
             className="pe-0 search_input"
+            value={searchValue}
+            onChange={handleChange}
           />
         </Col>
         <Col xs="2" className="ps-0">
