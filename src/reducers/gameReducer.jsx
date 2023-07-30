@@ -8,7 +8,10 @@ const initialState = {
   title: null,
   current_url: '/',
   categories: [],
-  category: null,
+  current_status:'games',
+  scroll_position: 0,
+  search_status: null, 
+  search_keyword: null, 
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -33,11 +36,6 @@ const gameReducer = (state = initialState, action) => {
           ...state,
           categories: action.payload,
         };
-        case "SET_CATEGORY":
-        return {
-          ...state,
-          category: action.payload,
-        };
     case "SET_GAME_DETAILS":
       return {
         ...state,
@@ -48,6 +46,11 @@ const gameReducer = (state = initialState, action) => {
         ...state,
         related_games: action.payload,
       };
+      case "SET_CURRENT_STATUS":
+        return {
+          ...state,
+          current_status: action.payload,
+        };
       case "SET_MESSAGE":
       return {
         ...state,
@@ -73,6 +76,26 @@ const gameReducer = (state = initialState, action) => {
         ...state,
         title: action.payload,
       };
+      case "SET_KEYWORD":
+      return {
+        ...state,
+        search_keyword: null,
+      };
+      case "SET_STATUS":
+        return {
+        ...state,
+        search_status: action.payload,
+      };
+      case "SET_SCROLL_POSITION":
+        return {
+        ...state,
+        scroll_position: action.payload,
+      };
+      case "SET_SEARCH_DATA":
+        return {
+            ...state,
+            all_games: action.payload,
+        };
     default:
       return state;
   }

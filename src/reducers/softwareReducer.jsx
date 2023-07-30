@@ -6,7 +6,7 @@ const initialState = {
     loading: false,
     page:2,
     scroll_position: 0,
-    search_status: null,
+    search_status: null, 
   };
   
   const softwareReducer = (state = initialState, action) => {

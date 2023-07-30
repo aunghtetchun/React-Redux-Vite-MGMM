@@ -17,7 +17,7 @@ export default function RelatedGames({ id }) {
     e.stopPropagation(); // Prevent click event from propagating to CardItem
     navigate(`/games/${slug}`);
   };
-  console.log('related games');
+  // console.log('related games');
 
   return (
     <>

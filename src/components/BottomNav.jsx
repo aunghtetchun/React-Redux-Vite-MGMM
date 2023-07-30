@@ -18,7 +18,7 @@ export default function BottomNav() {
   const changeColorHome = selectedHome || isCategory || isGames ? 'text_main bg-light' : 'text-light';
 
   const current_url = useSelector((state) => state.gameReducer.current_url);
-  console.log(current_url);
+  // console.log(current_url);
   return (
     <>
       <div className="col-12 px-0 mx-0 shadow shadow-lg bg_main border border-red d-flex justify-content-center align-items-center mobile_nav">

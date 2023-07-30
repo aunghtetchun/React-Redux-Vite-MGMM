@@ -57,10 +57,14 @@ export const getPopularGames = async () => {
   }
 };
 
-export const getMoreGames = async (page_number,category_id) => {
+export const getMoreGames = async (page_number,category_id,search_keyword) => {
   try {
-    console.log(category_id);
-    if(category_id != null){
+    // console.log(category_id);
+    if(search_keyword != null){
+      const response = await axios.get(`${BASE_URL}/games/search/${search_keyword}?page=${page_number}`);
+      return response.data;
+    } 
+    else if(category_id != null){
       const response = await axios.get(`${BASE_URL}/games/category/${category_id}?page=${page_number}`);
       return response.data;
     } else {
@@ -112,6 +116,14 @@ export const getAllGamesByCategory = async (category_id) => {
       return response.data;
   } catch (error) {
     throw new Error("Failed to fetch all games data");
+  }
+};
+export const searchGames = async (search_value) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/games/search/${search_value}`);
+    return response.data;
+  } catch (error) {
+    throw new Error("search failed");
   }
 };
 export const getAllSoftwares = async () => {

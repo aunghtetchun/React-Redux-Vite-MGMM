@@ -56,7 +56,7 @@ export default function Softwares() {
         containerRef.current.scrollTop = prevScrollPosition;
     }
   }, [prevScrollPosition]);
-  console.log(search_status);
+  // console.log(search_status);
   useEffect(() => {
     if (!softwares || softwares.length === 0 ) {
       dispatch(fetchAllSoftwares());
@@ -70,7 +70,6 @@ export default function Softwares() {
   const getAll = () =>{
     dispatch(fetchAllSoftwares());
   }
-console.log(search_status);
 
   return (
     <>

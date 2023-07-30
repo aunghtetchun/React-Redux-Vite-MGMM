@@ -25,6 +25,10 @@ const router = createBrowserRouter([
         element: <Games />,
       },
       {
+        path: "/games/category/:category_id",
+        element: <Games />,
+      },
+      {
         path: "/category",
         element: <Category />,
       },

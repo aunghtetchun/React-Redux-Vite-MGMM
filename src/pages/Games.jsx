@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { fetchAllGames, fetchAllGamesByCategory, setCurrentUrl, setMoreGames } from "../actions/gameActions";
 import CardItem from "../components/CardItem";
 import LoadingCard from "../components/LoadingCard";
@@ -12,19 +12,25 @@ import TopNav from "../components/TopNav";
 import { getMoreGames } from "../services/api";
 
 export default function Games() {
+  const location = useLocation();
+  const url = location.pathname; 
+  const isCategory = location.pathname.includes('/category');
   const [see_more, setSeeMore] = useState(false);
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.gameReducer.loading);
   const all_games = useSelector((state) => state.gameReducer.all_games);
-  const category = useSelector((state) => state.gameReducer.category);
+  const current_status = useSelector((state) => state.gameReducer.current_status);
+  const search_status = useSelector((state) => state.gameReducer.search_status);
+  const search_keyword = useSelector((state) => state.gameReducer.search_keyword);
   const [page_number, setPageNumber] = useState(2);
   let navigate = useNavigate();
   const containerRef = useRef(null);
+  const { category_id } = useParams();
 
   const loadMore = useCallback(async () => {
     setPageNumber((prevPageNumber) => prevPageNumber + 1);
     try {
-      const response = await getMoreGames(page_number,category);
+      const response = await getMoreGames(page_number,category_id,search_keyword);
       if (response.games.data.length < 1) {
         setSeeMore(false);
       } else {
@@ -35,8 +41,8 @@ export default function Games() {
     } catch (error) {
       console.error("Error fetching games:", error);
     }
-  }, [dispatch, page_number,category]);
-
+  }, [dispatch, page_number,category_id,search_keyword]);
+  console.log(search_keyword);
   const handleScroll = () => {
     const container = containerRef.current;
     const distanceToBottom =
@@ -46,27 +52,31 @@ export default function Games() {
       loadMore();
     }
   };
-
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-    if (!all_games || all_games.length === 0) {
-      dispatch(fetchAllGames());
-    }
-  }, [dispatch,all_games]);
+      if(category_id){
+        if(current_status != 'category' ) {
+          dispatch(fetchAllGamesByCategory(category_id));
+        }
+      }
+      else{
+        if(current_status != 'category' ) {
+          dispatch(fetchAllGames());
+        }
+      }
+  }, [dispatch,category_id,current_status]);
+
   const seeGame = (slug) => {
     navigate(`/games/${slug}`);
   };
 
   useEffect(() => {
-    dispatch(setCurrentUrl('/games'));
-  }, [dispatch]);
+    dispatch(setCurrentUrl(url));
+  }, [dispatch,url]);
 
-  useEffect(() => {
-    dispatch(fetchAllGamesByCategory(category));
-  }, [dispatch,category]);
 
   return (
     <>
@@ -79,7 +89,8 @@ export default function Games() {
           onScroll={handleScroll}
           className="col-12 px-0 px-md-2 d-flex flex-wrap justify-content-center max_height align-items-center"
         >
-          {all_games &&
+        {search_status == 'not_found' ? <h4 className='mt-5'>No Game Found</h4> :''}
+          {all_games && search_status != 'not_found' ?
             all_games.map((game) => (
               <div
                 className="col-12 col-md-6 col-lg-4"
@@ -88,7 +99,7 @@ export default function Games() {
               >
                 <CardItem game={game} />
               </div>
-            ))}
+            )): ''}
           {see_more && (
             <div className="mb-5 mt-3 pb-3">
               <Spinner animation="border" variant="success" />
