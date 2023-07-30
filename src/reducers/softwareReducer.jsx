@@ -6,6 +6,7 @@ const initialState = {
     loading: false,
     page:2,
     scroll_position: 0,
+    search_status: null,
   };
   
   const softwareReducer = (state = initialState, action) => {
@@ -40,6 +41,11 @@ const initialState = {
           ...state,
           loading: action.payload,
         };
+        case "SET_STATUS":
+            return {
+              ...state,
+              search_status: action.payload,
+            };
         case "SET_PAGE":
             return {
               ...state,

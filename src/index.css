@@ -26,7 +26,7 @@ a{
     min-height: 80vh !important;
 } */
 .max_height{
-    max-height: 80vh !important;
+    max-height: 85vh !important;
     overflow: scroll;
 }
 .gcard_title{
@@ -70,7 +70,7 @@ a{
     position: fixed; width: 100%; z-index:2900; bottom: 0; right: 0; ;
 }
 .top_nav{
-    position: sticky; width: 100%; z-index:3000; top: 0; ;
+    position: sticky; width: 100%; z-index:3000; top: 0; background: white;
 }
 
 /* Card List part  */
@@ -102,4 +102,11 @@ a{
 .search_btn{
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+}
+.back_all{
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3000;
 }

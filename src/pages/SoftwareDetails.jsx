@@ -78,7 +78,7 @@ export default function SoftwareDetails() {
                 </table>
             </div>
             <div className="col-12 text-center details_title">
-                <h4 className="col-12 font-weight-bolder mt-3 pb-0 fw-bolder text-center ">ဂိမ်းအကြောင်း</h4>                
+                <h4 className="col-12 font-weight-bolder mt-3 pb-0 fw-bolder text-center ">About Software</h4>                
                 <p className="" dangerouslySetInnerHTML={{ __html: software.description}}></p>
                 <div className="text-center">
                     <Badge
@@ -90,7 +90,7 @@ export default function SoftwareDetails() {
                 <h4 className="col-12 font-weight-bolder mt-3 pb-0 mb-0 text-center ">Mod Features</h4>                
                 <p >{software.features}</p>
                 <h4 className="col-12 font-weight-bolder my-3 pb-0 fw-bolder text-center ">ဒီမှာဒေါင်းပါ</h4>                
-                 <Link to={`/download/${software.slug}`} className="btn btn-primary px-4 py-2">Download Software</Link>
+                 <Link to={`/download-software/${software.slug}`} className="btn btn-primary px-4 py-2">Download Software</Link>
                  <ShareInfo/>
                 {/* <RelatedSoftwares id={software.category_id} />       */}
             </div>

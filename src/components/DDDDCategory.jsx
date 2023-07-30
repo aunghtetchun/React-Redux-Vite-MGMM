@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../actions/categoryActions";
-import LoadingCategory from "./LoadingCategory";
+import LoadingCard from "./LoadingCard";
 
 export function Category({ handleCategoryClick }) {
   const dispatch = useDispatch();
@@ -14,16 +14,14 @@ export function Category({ handleCategoryClick }) {
       top: 0,
       behavior: "smooth",
     });
-
-    if (!categories || categories.length === 0) {
-      dispatch(fetchCategories());
-    }
-  }, [dispatch, categories]);
+    // Fetch the popular_games when the component mounts
+    dispatch(fetchCategories());
+  }, [dispatch]);
 
   return (
     <>
       {loading ? (
-        <LoadingCategory />
+        <LoadingCard />
       ) : (
         <div className="d-flex col-12 flex-wrap px-0 justify-content-center">
           <div className="col-6 p-1">

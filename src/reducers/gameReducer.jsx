@@ -6,6 +6,9 @@ const initialState = {
   message:null,
   loading: false,
   title: null,
+  current_url: '/',
+  categories: [],
+  category: null,
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -25,6 +28,16 @@ const gameReducer = (state = initialState, action) => {
         ...state,
         all_games: [...state.all_games, ...action.payload], // Add the new data to the existing array
       };
+      case "SET_CATEGORIES":
+        return {
+          ...state,
+          categories: action.payload,
+        };
+        case "SET_CATEGORY":
+        return {
+          ...state,
+          category: action.payload,
+        };
     case "SET_GAME_DETAILS":
       return {
         ...state,
@@ -40,6 +53,11 @@ const gameReducer = (state = initialState, action) => {
         ...state,
         message: action.payload,
       };
+      case "SET_CURRENT_URL":
+        return {
+          ...state,
+          current_url: action.payload,
+        };
       case "CLEAR_MESSAGE":
       return {
         ...state,

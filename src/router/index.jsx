@@ -1,4 +1,3 @@
-import Home from "../pages/Home.jsx";
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../pages/layouts/Layout.jsx";
 import LoginUser from "../pages/auth/LoginUser.jsx";
@@ -8,6 +7,10 @@ import Download from "../pages/Download.jsx";
 import GameRequest from "../pages/GameRequest.jsx";
 import Softwares from "../pages/Softwares.jsx";
 import SoftwareDetails from "../pages/SoftwareDetails.jsx";
+import DownloadSoftware from "../pages/DownloadSoftware.jsx";
+import PopularGames from "../pages/PopularGames.jsx";
+import Games from "../pages/Games.jsx";
+import { Category } from "../pages/Category.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -15,7 +18,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Home />,
+        element: <PopularGames />,
+      },
+      {
+        path: "/games",
+        element: <Games />,
+      },
+      {
+        path: "/category",
+        element: <Category />,
       },
       {
         path: "/games/:slug",
@@ -44,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/softwares/:slug",
         element: <SoftwareDetails />,
+      },
+      {
+        path: "/download-software/:slug",
+        element: <DownloadSoftware />,
       },
     ],
   },

@@ -9,7 +9,6 @@ export default function ShareInfo() {
           className="btn col-12 text-light py-2 fb_btn"
           href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fmodsoftwaresmm.com%2Fsoftwares%2FNorthgard"
         >
-          {" "}
           <FiFacebook /> Share Facebook
         </a>
       </div>

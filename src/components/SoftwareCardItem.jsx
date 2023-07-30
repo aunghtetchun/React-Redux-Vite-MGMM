@@ -37,15 +37,7 @@ export default function SoftwareCardItem({ software }) {
             <h6 className="gcard_title mb-0">{software.name}</h6>
             <p className="mb-0 p-0 fs-13"> Version : {software.version}</p>
             <p className="mb-0 fs-13">
-              {software.size} ,
-              <span className="fw-bold">
-                {software.type.toLowerCase().includes("online") &&
-                software.type.toLowerCase().includes("offline")
-                  ? "Online & Offline"
-                  : software.type.toLowerCase().includes("online")
-                  ? "Online"
-                  : "Offline"}
-              </span>
+              {software.features} 
             </p>
             <div className="g_card_badge text-right">
               {software.new == 1 ? (

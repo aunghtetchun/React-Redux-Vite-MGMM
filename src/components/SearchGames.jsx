@@ -4,7 +4,7 @@ import { FiSearch } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
 import { fetchSoftwaresSearch, setAllSoftwares } from '../actions/softwareAction';
 
-export default function Search() {
+export default function SearchGames() {
   const [searchValue, setSearchValue] = useState('');
   const dispatch = useDispatch();
 

@@ -11,9 +11,10 @@ export default function RelatedGames({ id }) {
   useEffect(() => {
     // Fetch the related games when the component mounts or when the 'id' prop changes
     dispatch(fetchRelatedGames(id));
-  }, [dispatch]);
+  }, [dispatch,id]);
 
-  const seeGame = (slug) => {
+  const seeGame = (slug, e) => {
+    e.stopPropagation(); // Prevent click event from propagating to CardItem
     navigate(`/games/${slug}`);
   };
   console.log('related games');
@@ -26,7 +27,7 @@ export default function RelatedGames({ id }) {
             <div
               key={game.id}
               className="card related_game_card col-3 col-lg col-md game_card px-1 rounded-0"
-              onClick={() => seeGame(game.slug)}
+              onClick={(e) => seeGame(game.slug, e)}
             >
               <img className="card-img-top related_logo" src={game.logo} alt={game.name} />
               <div className="card-body p-1">

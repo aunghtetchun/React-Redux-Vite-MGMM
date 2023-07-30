@@ -1,9 +1,10 @@
-import { fetchPopularGames } from "../actions/gameActions";
+import { fetchPopularGames, setCurrentUrl } from "../actions/gameActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import CardItem from "./CardItem";
-import LoadingCard from "./LoadingCard";
+import TopNav from "../components/TopNav";
+import CardItem from "../components/CardItem";
+import LoadingCard from "../components/LoadingCard";
 
 export default function PopularGames() {
   const dispatch = useDispatch();
@@ -16,7 +17,13 @@ export default function PopularGames() {
         top: 0,
         behavior: "smooth",
       });
-    dispatch(fetchPopularGames());
+      if (!popular_games || popular_games.length === 0) {
+        dispatch(fetchPopularGames());
+    }
+  }, [dispatch,popular_games]);
+
+  useEffect(() => {
+    dispatch(setCurrentUrl('/'));
   }, [dispatch]);
   
   const seeGame = (slug, e) => {
@@ -28,6 +35,7 @@ export default function PopularGames() {
   }
   return (
     <>
+    <TopNav position={'/'}/>
      {loading ? <LoadingCard count={12}/>
     : 
       <div className="col-12 px-0 px-md-2 d-flex flex-wrap justify-content-center align-items-center">

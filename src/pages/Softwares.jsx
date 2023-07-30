@@ -14,6 +14,7 @@ export default function Softwares() {
   const loading = useSelector((state) => state.softwareReducer.loading);
   const softwares = useSelector((state) => state.softwareReducer.softwares);
   const page_number = useSelector((state) => state.softwareReducer.page);
+  const search_status = useSelector((state) => state.softwareReducer.search_status);
   let navigate = useNavigate();
   const containerRef = useRef(null);
 
@@ -46,7 +47,6 @@ export default function Softwares() {
       loadMore();
     }
     // Store the current scroll position in the state
-    console.log('Scroll position')
     dispatch(setScrollPosition(container.scrollTop));
   };
 
@@ -56,9 +56,9 @@ export default function Softwares() {
         containerRef.current.scrollTop = prevScrollPosition;
     }
   }, [prevScrollPosition]);
-
+  console.log(search_status);
   useEffect(() => {
-    if (!softwares || softwares.length === 0) {
+    if (!softwares || softwares.length === 0 ) {
       dispatch(fetchAllSoftwares());
     }
   }, [dispatch, softwares]);
@@ -66,6 +66,11 @@ export default function Softwares() {
   const seeSoftware = (slug) => {
     navigate(`/softwares/${slug}`);
   };
+
+  const getAll = () =>{
+    dispatch(fetchAllSoftwares());
+  }
+console.log(search_status);
 
   return (
     <>
@@ -80,7 +85,8 @@ export default function Softwares() {
           onScroll={handleScroll}
           className="col-12 px-0 px-md-2 d-flex flex-wrap justify-content-center max_height align-items-center"
         >
-          {softwares &&
+        {search_status == 'not_found' ? <h4 className='mt-3'>No Software Found</h4> :''}
+        {softwares && search_status != 'not_found' ? 
             softwares.map((software) => (
               <div
                 className="col-12 col-md-6 col-lg-4"
@@ -89,12 +95,15 @@ export default function Softwares() {
               >
                 <SoftwareCardItem software={software} />
               </div>
-            ))}
-          {see_more && (
+            )) : ''}
+        {see_more && search_status != 'search_softwares' ?
             <div className="mb-5 mt-3 pb-3">
               <Spinner animation="border" variant="success" />
             </div>
-          )}
+          : ''}
+        {search_status == 'search_softwares' ||  search_status == 'not_found' ?
+            <button onClick={getAll} className="back_all shadow shadow-lg btn btn-success px-3">Back to All Softwares</button> : ''
+        }
         </div>
       )}
     </>

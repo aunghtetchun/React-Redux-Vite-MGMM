@@ -22,7 +22,7 @@ const LoginUser = () => {
   }
 
   return (
-    <div className="col-12 card col-md-6 p-0">
+    <div className="col-12 mt-5 card col-md-6 p-0">
       <div className="card-body">
       <h6 className="my-3">LOGIN USER ACCOUNT</h6>
         <hr />

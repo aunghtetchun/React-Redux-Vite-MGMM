@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { FiCpu,FiBox, FiUserCheck, FiPackage} from "react-icons/fi";
+import { useSelector } from "react-redux";
 export default function BottomNav() {
   const location = useLocation();
   const isRequestPage = location.pathname.includes('/request');
@@ -12,12 +13,16 @@ export default function BottomNav() {
   const changeColorLogin = isLoginPage ? 'text_main bg-light' : 'text-light';
 
   const selectedHome = window.location.pathname === '/';
-  const changeColorHome = selectedHome ? 'text_main bg-light' : 'text-light';
+  const isCategory = location.pathname.includes('/category');
+  const isGames = location.pathname.includes('/games');
+  const changeColorHome = selectedHome || isCategory || isGames ? 'text_main bg-light' : 'text-light';
 
+  const current_url = useSelector((state) => state.gameReducer.current_url);
+  console.log(current_url);
   return (
     <>
       <div className="col-12 px-0 mx-0 shadow shadow-lg bg_main border border-red d-flex justify-content-center align-items-center mobile_nav">
-        <Link to="/" className={`${changeColorHome} col py-2 px-0 text-center `}>
+        <Link to={current_url} className={`${changeColorHome} col py-2 px-0 text-center `}>
           <FiPackage className={`${changeColorHome}`}/>
           <h6 className={`my-1 ${changeColorHome}`}>Game</h6>
         </Link>

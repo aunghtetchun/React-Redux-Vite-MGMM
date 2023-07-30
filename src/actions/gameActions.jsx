@@ -1,4 +1,4 @@
-import { getPopularGames, getGameDetails, getRelatedGames, getAllGames, requestGame } from "../services/api";
+import { getPopularGames, getGameDetails, getRelatedGames, getAllGames, requestGame, getCategories, getAllGamesByCategory } from "../services/api";
 
 export const setPopularGames = (popular_games) => ({
   type: "SET_POPULAR_GAMES",
@@ -58,11 +58,11 @@ export const setMoreGames = (all_games) => ({
   payload: all_games,
 });
 
-export const fetchAllGames = (category_id) => {
+export const fetchAllGames = () => {
   return async (dispatch) => {
     try {
       dispatch(setLoading(true));
-      const response = await getAllGames(category_id);
+      const response = await getAllGames();
       // console.log(response.games);
       dispatch(setAllGames(response.games.data));
       dispatch(setTitle(response.title));
@@ -84,6 +84,10 @@ export const setTitle = (title) => ({
   type: "SET_TITLE",
   payload: title,
 });
+export const setCurrentUrl = (current_url) => ({
+  type: "SET_CURRENT_URL",
+  payload: current_url,
+});
 
 export const submitGameRequest = (formData) => {
   return async (dispatch) => {
@@ -99,4 +103,48 @@ export const submitGameRequest = (formData) => {
 
 export const setLoading = (isLoading) => {
   return { type: "SET_LOADING", payload: isLoading };
+};
+
+
+export const setCategories = (categories) => ({
+  type: "SET_CATEGORIES",
+  payload: categories,
+});
+export const setCategory = (category) => ({
+  type: "SET_CATEGORY",
+  payload: category,
+});
+
+
+export const fetchAllGamesByCategory = (category_id) => {
+  return async (dispatch) => {
+    try {
+      dispatch(setLoading(true));
+      if(category_id!=null){
+        const response = await getAllGamesByCategory(category_id);
+        dispatch(setAllGames(response.games.data));
+        dispatch(setTitle(response.title));
+        dispatch(setLoading(false));
+      }else{
+        dispatch(fetchAllGames());
+      }
+      // console.log(response.games);
+      
+    } catch (error) {
+      console.error("Error fetching all_games:", error);
+    }
+  };
+};
+
+// A sample async action to fetch categories (you need to modify this based on your API)
+export const fetchCategories = () => {
+  return async (dispatch) => {
+    try {
+      const response = await getCategories();
+      dispatch(setCategories(response.category));
+
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
 };

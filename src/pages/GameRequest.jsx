@@ -44,7 +44,7 @@ export default function GameRequest() {
     {message &&
     <div className="alert alert-success">{message}</div>
     }
-      <h4 className="col-12 mt-2 text-center">Link Repair &amp; Request Game</h4>
+      <h4 className="col-12 mt-5 text-center">Link Repair &amp; Request Game</h4>
       <Col>
         <hr />
         <Form className="text-light pb-3" onSubmit={handleSubmit}>

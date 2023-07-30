@@ -1,22 +1,21 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import RelatedGames from "../components/RelatedGames";
 
-export default function Download() {
+export default function DownloadSoftware() {
   const { slug } = useParams();
-  const game = useSelector((state) => state.gameReducer.game);
+  const software = useSelector((state) => state.softwareReducer.software);
   let navigate = useNavigate();
   const back = (slug) => {
-    navigate(`/games/${slug}`);
+    navigate(`/softwares/${slug}`);
   };
-  if (!game) {
+  if (!software) {
     return (
       <button
         onClick={() => back(slug)}
         className="btn col-12 col-md-6 mt-5 mx-auto btn-danger py-2"
       >
-        Back To Game
+        Back To Software
       </button>
     );
   }
@@ -25,45 +24,44 @@ export default function Download() {
     <>
       <div className="card px-0 shadow mt-5">        
         <div className="card-body d-flex flex-wrap justify-content-center align-items-center">
-          <h4 className="col-12 mb-0 fw-bolder">{game.name}</h4>
+          <h4 className="col-12 mb-0 fw-bolder">{software.name}</h4>
             <hr className="col-12 px-0" />
-          {game.link1 && (
+          {software.link1 && (
             <div className="col-12 col-md-6 col-lg-4 p-2">
               <a
-                href={game.link1}
+                href={software.link1}
                 className="btn btn-primary px-3 py-2  w-100"
               >
-                {game.name_1}
+                {software.name_1}
               </a>
             </div>
           )}
 
-          {game.link2 && (
+          {software.link2 && (
             <div className="col-12 col-md-6 col-lg-4 p-2">
               <a
-                href={game.link2}
+                href={software.link2}
                 className="btn btn-primary px-3 py-2  w-100"
               >
-                {game.name_2}
+                {software.name_2}
               </a>
             </div>
           )}
-          {game.link3 && (
+          {software.link3 && (
             <div className="col-12 col-md-6 col-lg-4 p-2">
               <a
-                href={game.link3}
+                href={software.link3}
                 className="btn btn-primary px-3 py-2  w-100"
               >
-                {game.name_3}
+                {software.name_3}
               </a>
             </div>
           )}
         </div>
         <div className="card-footer text-center">
-            <h6 className="fw-bold">{game.count} ယောက် ဒေါင်းထားပါတယ်</h6>
+            <h6 className="fw-bold">{software.count} ယောက် ဒေါင်းထားပါတယ်</h6>
         </div>
       </div>
-      <RelatedGames id={game.category_id} />      
 
     </>
   );
