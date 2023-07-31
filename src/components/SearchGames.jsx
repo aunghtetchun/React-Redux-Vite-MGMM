@@ -25,7 +25,7 @@ export default function SearchGames() {
   const handleChange = (event) => {
     setSearchValue(event.target.value);
   };
-
+  console.log(search_keyword);
   useEffect(()=>{
     if(!isGames && search_keyword!=null){
       navigate(`/games/`);

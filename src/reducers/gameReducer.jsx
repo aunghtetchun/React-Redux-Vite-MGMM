@@ -10,7 +10,7 @@ const initialState = {
   categories: [],
   current_status:'games',
   scroll_position: 0,
-  search_status: null, 
+  search_game_status: null, 
   search_keyword: null, 
 };
 
@@ -79,19 +79,19 @@ const gameReducer = (state = initialState, action) => {
       case "SET_KEYWORD":
       return {
         ...state,
-        search_keyword: null,
+        search_keyword: action.payload,
       };
-      case "SET_STATUS":
+      case "SET_GAME_STATUS":
         return {
         ...state,
-        search_status: action.payload,
+        search_game_status: action.payload,
       };
       case "SET_SCROLL_POSITION":
         return {
         ...state,
         scroll_position: action.payload,
       };
-      case "SET_SEARCH_DATA":
+      case "SET_GAME_SEARCH_DATA":
         return {
             ...state,
             all_games: action.payload,

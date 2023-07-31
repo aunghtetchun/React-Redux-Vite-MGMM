@@ -25,7 +25,7 @@ export function Category() {
   }, [dispatch, categories]);
 
   useEffect(() => {
-    console.log("hello world!");
+    // console.log("hello world!");
     dispatch(setCurrentStatus('games'));
     dispatch(setCurrentUrl('/category'));
   }, [dispatch]);

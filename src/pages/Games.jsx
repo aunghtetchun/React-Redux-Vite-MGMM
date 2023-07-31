@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { fetchAllGames, fetchAllGamesByCategory, setCurrentUrl, setMoreGames } from "../actions/gameActions";
+import { fetchAllGames, fetchAllGamesByCategory, setCurrentUrl, setMoreGames, setTimeoutAction } from "../actions/gameActions";
 import CardItem from "../components/CardItem";
 import LoadingCard from "../components/LoadingCard";
 import TopNav from "../components/TopNav";
@@ -20,7 +20,7 @@ export default function Games() {
   const loading = useSelector((state) => state.gameReducer.loading);
   const all_games = useSelector((state) => state.gameReducer.all_games);
   const current_status = useSelector((state) => state.gameReducer.current_status);
-  const search_status = useSelector((state) => state.gameReducer.search_status);
+  const search_status = useSelector((state) => state.gameReducer.search_game_status);
   const search_keyword = useSelector((state) => state.gameReducer.search_keyword);
   const [page_number, setPageNumber] = useState(2);
   let navigate = useNavigate();
@@ -35,14 +35,13 @@ export default function Games() {
         setSeeMore(false);
       } else {
         dispatch(setMoreGames(response.games.data));
-        dispatch(setTimeout(response.title));
+        dispatch(setTimeoutAction(response.title));
         setSeeMore(true);
       }
     } catch (error) {
       console.error("Error fetching games:", error);
     }
   }, [dispatch, page_number,category_id,search_keyword]);
-  console.log(search_keyword);
   const handleScroll = () => {
     const container = containerRef.current;
     const distanceToBottom =
@@ -52,6 +51,7 @@ export default function Games() {
       loadMore();
     }
   };
+  console.log(url);
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -63,7 +63,7 @@ export default function Games() {
         }
       }
       else{
-        if(current_status != 'category' ) {
+        if(current_status != 'category' && current_status != 'search') {
           dispatch(fetchAllGames());
         }
       }
