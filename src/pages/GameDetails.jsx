@@ -13,6 +13,7 @@ export default function GameDetails() {
   const { slug } = useParams();
 
   const game = useSelector((state) => state.gameReducer.game);  /// state ယူတဲ့အဆင့်
+  
   useEffect(() => {
     window.scrollTo({
       top: 0,

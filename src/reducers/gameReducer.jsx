@@ -8,7 +8,7 @@ const initialState = {
   title: null,
   current_url: '/',
   categories: [],
-  current_status:'games',
+  current_status:'others',
   scroll_position_game: 0,
   search_game_status: null, 
   search_keyword: null, 

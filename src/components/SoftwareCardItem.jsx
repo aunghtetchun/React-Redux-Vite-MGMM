@@ -12,7 +12,7 @@ export default function SoftwareCardItem({ software }) {
   return (
     <>
    
-    <Card className="m-1 shadow">
+    <Card id={software.slug} className="m-1 shadow">
         <Card.Body className="d-flex px-1 py-1 flex-wrap justify-content-center align-items-center">
           <div className="col-3  pe-3">
             {software.logo ? (

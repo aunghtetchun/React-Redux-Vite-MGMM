@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { fetchAllGames, fetchAllGamesByCategory, setCurrentUrl, setMoreGames, setScrollPositionGame, setTimeoutAction } from "../actions/gameActions";
+import { fetchAllGames, fetchAllGamesByCategory, setCurrentUrl, setMoreGames, setTimeoutAction } from "../actions/gameActions";
 import CardItem from "../components/CardItem";
 import LoadingCard from "../components/LoadingCard";
 import TopNav from "../components/TopNav";
@@ -49,7 +49,7 @@ export default function Games() {
     const distanceToBottom =
     container.scrollHeight - (container.scrollTop + container.clientHeight);
     const threshold = 10;
-    dispatch(setScrollPositionGame(container.scrollTop));
+    // dispatch(setScrollPositionGame(container.scrollTop));
     if (distanceToBottom <= threshold) {
       loadMore();
     }
@@ -65,7 +65,7 @@ export default function Games() {
         }
       }
       else{
-        if(current_status != 'category' && current_status != 'search') {
+        if(current_status != 'category' && current_status != 'search' && current_status != 'games') {
           dispatch(fetchAllGames());
         }
       }
@@ -81,8 +81,14 @@ export default function Games() {
 
   useEffect(() => {
     // Restore the scroll position when coming back to the component
-    if (containerRef.current) {
-        containerRef.current.scrollTop = prevScrollPosition;
+    const targetElement = document.getElementById(prevScrollPosition);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'auto', // Use 'auto' for instant scrolling without animation
+        block: 'start',     // Scroll to the top of the element
+        inline: 'nearest'   // Scroll horizontally to the nearest edge
+      });
     }
   }, [prevScrollPosition]);
 

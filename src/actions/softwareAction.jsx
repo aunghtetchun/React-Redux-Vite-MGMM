@@ -42,6 +42,7 @@ export const setSoftwareDetails = (software) => ({
   export const fetchSoftwareDetails = (slug) => {
     return async (dispatch) => {
       try {
+        dispatch(setScrollPosition(slug));
         const response=await getSoftwareDetails(slug);
         dispatch(setSoftwareDetails(response.software));
       } catch (error) {

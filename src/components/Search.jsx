@@ -23,7 +23,7 @@ export default function Search() {
   
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className='my-3' onSubmit={handleSubmit}>
       <Row>
         <Col xs="10" className="pe-0">
           <Form.Control

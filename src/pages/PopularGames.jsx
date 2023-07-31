@@ -10,6 +10,8 @@ export default function PopularGames() {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.gameReducer.loading);
   const popular_games = useSelector((state) => state.gameReducer.popular_games);
+  const prevScrollPosition = useSelector((state) => state.gameReducer.scroll_position_game);
+
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -30,9 +32,23 @@ export default function PopularGames() {
     e.stopPropagation(); // Prevent click event from propagating to CardItem
     navigate(`/games/${slug}`);
   };
+  useEffect(() => {
+    // Restore the scroll position when coming back to the component
+    const targetElement = document.getElementById(prevScrollPosition);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'auto', // Use 'auto' for instant scrolling without animation
+        block: 'start',     // Scroll to the top of the element
+        inline: 'nearest'   // Scroll horizontally to the nearest edge
+      });
+    }
+  }, [prevScrollPosition]);
   if (!popular_games){
     return <LoadingCard count={12}/>
   }
+
+  
   return (
     <>
     <TopNav position={'/'}/>

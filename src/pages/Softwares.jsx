@@ -47,13 +47,19 @@ export default function Softwares() {
       loadMore();
     }
     // Store the current scroll position in the state
-    dispatch(setScrollPosition(container.scrollTop));
+    // dispatch(setScrollPosition(container.scrollTop));
   };
 
   useEffect(() => {
     // Restore the scroll position when coming back to the component
-    if (containerRef.current) {
-        containerRef.current.scrollTop = prevScrollPosition;
+    const targetElement = document.getElementById(prevScrollPosition);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'auto', // Use 'auto' for instant scrolling without animation
+        block: 'start',     // Scroll to the top of the element
+        inline: 'nearest'   // Scroll horizontally to the nearest edge
+      });
     }
   }, [prevScrollPosition]);
   // console.log(search_status);
@@ -73,7 +79,7 @@ export default function Softwares() {
 
   return (
     <>
-      <div className="col-12 px-0 my-3">
+      <div className="col-12 px-0 ">
         <Search />
       </div>
       {loading ? (

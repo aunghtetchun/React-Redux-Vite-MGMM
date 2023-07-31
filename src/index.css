@@ -3,7 +3,6 @@
  *{
     /* font-family: 'Oswald', sans-serif; */
     font-family: 'Edu SA Beginner', cursive;
-    scroll-behavior: smooth;
   }
 a{
     text-decoration: none; color: black;
@@ -23,6 +22,10 @@ a{
 .nowrap{
     white-space: nowrap;
 }
+::-webkit-scrollbar {
+    width: 0; /* Set the width of the scrollbar */
+    height: 0;
+  }
 /* .min_height{
     min-height: 80vh !important;
 } */
@@ -71,7 +74,7 @@ a{
     position: fixed; width: 100%; z-index:2900; bottom: 0; right: 0; ;
 }
 .top_nav{
-    position: sticky; width: 100%; z-index:3000; top: 0; background: white;
+    position: sticky; z-index:3000; top: 0; background: white;
 }
 
 /* Card List part  */

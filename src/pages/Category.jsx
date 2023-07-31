@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { fetchCategories, setCurrentStatus, setCurrentUrl } from "../actions/gameActions";
 import LoadingCategory from "../components/LoadingCategory";
 import TopNav from "../components/TopNav";
 
 export function Category() {
   const dispatch = useDispatch();
+  const navigate=useNavigate();
   const [loading, setLoading]=useState(false);
   const categories = useSelector((state) => state.gameReducer.categories);
   
@@ -30,6 +32,11 @@ export function Category() {
     dispatch(setCurrentUrl('/category'));
   }, [dispatch]);
 
+  const goAllGames = () => {
+    dispatch(setCurrentStatus('others'));
+    navigate('/games');
+  }
+
   return (
     <>
         <TopNav position={'/category'}/>
@@ -38,11 +45,11 @@ export function Category() {
       ) : (
         <div className="d-flex col-12 flex-wrap px-0 justify-content-center">
         <div className="col-6 p-1">
-          <Link to={`/games/`} 
+          <button onClick={goAllGames}
             className="btn rounded-0 btn-outline-danger  w-100 p-2"
           >
             ဂိမ်းအားလုံး
-          </Link>
+          </button>
         </div>
         {categories &&
           categories.map((category) => (
