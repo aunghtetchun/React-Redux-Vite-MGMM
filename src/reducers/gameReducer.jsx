@@ -9,7 +9,7 @@ const initialState = {
   current_url: '/',
   categories: [],
   current_status:'games',
-  scroll_position: 0,
+  scroll_position_game: 0,
   search_game_status: null, 
   search_keyword: null, 
 };
@@ -86,10 +86,10 @@ const gameReducer = (state = initialState, action) => {
         ...state,
         search_game_status: action.payload,
       };
-      case "SET_SCROLL_POSITION":
+      case "SET_SCROLL_POSITION_GAME":
         return {
         ...state,
-        scroll_position: action.payload,
+        scroll_position_game: action.payload,
       };
       case "SET_GAME_SEARCH_DATA":
         return {

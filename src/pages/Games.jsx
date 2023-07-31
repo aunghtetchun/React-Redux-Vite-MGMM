@@ -4,8 +4,8 @@ import { useRef } from "react";
 import { useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { fetchAllGames, fetchAllGamesByCategory, setCurrentUrl, setMoreGames, setTimeoutAction } from "../actions/gameActions";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { fetchAllGames, fetchAllGamesByCategory, setCurrentUrl, setMoreGames, setScrollPositionGame, setTimeoutAction } from "../actions/gameActions";
 import CardItem from "../components/CardItem";
 import LoadingCard from "../components/LoadingCard";
 import TopNav from "../components/TopNav";
@@ -14,7 +14,7 @@ import { getMoreGames } from "../services/api";
 export default function Games() {
   const location = useLocation();
   const url = location.pathname; 
-  const isCategory = location.pathname.includes('/category');
+  // const isCategory = location.pathname.includes('/category');
   const [see_more, setSeeMore] = useState(false);
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.gameReducer.loading);
@@ -22,6 +22,8 @@ export default function Games() {
   const current_status = useSelector((state) => state.gameReducer.current_status);
   const search_status = useSelector((state) => state.gameReducer.search_game_status);
   const search_keyword = useSelector((state) => state.gameReducer.search_keyword);
+  const prevScrollPosition = useSelector((state) => state.gameReducer.scroll_position_game);
+
   const [page_number, setPageNumber] = useState(2);
   let navigate = useNavigate();
   const containerRef = useRef(null);
@@ -47,11 +49,11 @@ export default function Games() {
     const distanceToBottom =
     container.scrollHeight - (container.scrollTop + container.clientHeight);
     const threshold = 10;
+    dispatch(setScrollPositionGame(container.scrollTop));
     if (distanceToBottom <= threshold) {
       loadMore();
     }
   };
-  console.log(url);
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -77,6 +79,12 @@ export default function Games() {
     dispatch(setCurrentUrl(url));
   }, [dispatch,url]);
 
+  useEffect(() => {
+    // Restore the scroll position when coming back to the component
+    if (containerRef.current) {
+        containerRef.current.scrollTop = prevScrollPosition;
+    }
+  }, [prevScrollPosition]);
 
   return (
     <>

@@ -3,6 +3,7 @@
  *{
     /* font-family: 'Oswald', sans-serif; */
     font-family: 'Edu SA Beginner', cursive;
+    scroll-behavior: smooth;
   }
 a{
     text-decoration: none; color: black;

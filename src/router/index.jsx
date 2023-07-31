@@ -29,6 +29,10 @@ const router = createBrowserRouter([
         element: <Games />,
       },
       {
+        path: "/games/search/:keywords",
+        element: <Games />,
+      },
+      {
         path: "/category",
         element: <Category />,
       },

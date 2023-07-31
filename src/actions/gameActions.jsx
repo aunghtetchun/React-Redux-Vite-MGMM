@@ -163,8 +163,8 @@ export const setKeyword = (search_keyword) => ({
   type: 'SET_KEYWORD',
   payload: search_keyword,
 });
-export const setScrollPosition= (current_position) => {
-  return { type: "SET_SCROLL_POSITION", payload: current_position };
+export const setScrollPositionGame= (current_position) => {
+  return { type: "SET_SCROLL_POSITION_GAME", payload: current_position };
 };
 export const fetchGamesSearch = (search_value) => {
   return async (dispatch) => {
