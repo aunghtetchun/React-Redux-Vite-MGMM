@@ -50,11 +50,11 @@ const RegisterUser = () => {
     <div className="col-12 col-md-6 mt-3 p-0 card">
       
       <div className="card-body">
-        <h4 className="mb-3 mt-1 fw-bolder">အကောင့်သစ်ဖွင့်မည်</h4>
+        <h4 className="mb-3 mt-1 ">အကောင့်သစ်ဖွင့်မည်</h4>
         <hr />
         <form onSubmit={handleSubmit}>
           <div className="mb-2">
-            <label className="form-label fw-bolder" htmlFor="name">နာမည်:</label>
+            <label className="form-label " htmlFor="name">နာမည်:</label>
             <input
               type="text"
               id="name"
@@ -66,7 +66,7 @@ const RegisterUser = () => {
              {errors.name && <div className="error text-danger mt-1">{errors.name[0]}</div>}
           </div>
           <div className="mb-2">
-            <label className="form-label fw-bolder" htmlFor="email">ဖုန်းနံပါတ်:</label>
+            <label className="form-label " htmlFor="email">ဖုန်းနံပါတ်:</label>
             <input
               type="number"
               id="email"
