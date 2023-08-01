@@ -67,14 +67,14 @@ export default function GameRequest() {
   };
 
   return (
-    <>
+    <div
+    onTouchStart={handleTouchStart}
+    onTouchMove={handleTouchMove}
+    className='col-12 px-0 min_height'>
     {message &&
     <div className="alert alert-success">{message}</div>
     }
-      <div 
-       onTouchStart={handleTouchStart}
-       onTouchMove={handleTouchMove}
-      className="card col-12 mt-3">
+      <div className="card col-12 mt-3">
           <div className="card-body">
           <h4 className="col-12 mt-2 text-center">Link Repair &amp; Request Game</h4>
       <Col>
@@ -135,6 +135,6 @@ export default function GameRequest() {
       </Col>
           </div>
       </div>
-    </>
+    </div>
   );
 }
