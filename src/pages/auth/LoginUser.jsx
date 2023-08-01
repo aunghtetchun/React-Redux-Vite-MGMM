@@ -1,24 +1,19 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 
 const LoginUser = () => {
-  const { handleLogin, isLoggedIn } = useContext(AuthContext);
+  const { handleLogin, isLoggedIn,errors } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
       await handleLogin(email, password);
-    } catch (error) {
-      setError(error.message);
-    }
   };
   if (isLoggedIn) {
-    navigate("/");
+    navigate("/profile");
   }
 
   return (
@@ -29,16 +24,17 @@ const LoginUser = () => {
         <form onSubmit={handleSubmit}>
           <div>
             <label className="form-label" htmlFor="email">
-              Email:
+              Phone:
             </label>
             <input
-              type="email"
+              type="number"
               id="email"
               className="form-control"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+             {errors.email && <div className="error text-danger mt-1">The phone number error</div>}
           </div>
           <div>
             <label className="form-label" htmlFor="password">
@@ -52,11 +48,12 @@ const LoginUser = () => {
               required
               className="form-control"
             />
+             {errors.password && <div className="error text-danger mt-1">{errors.password[0]}</div>}
           </div>
           <div className="text-end">
-            <button className="btn col-4 me-2 mt-3 btn-outline-success px-4 py-2">
+            <Link to={'/user/register'} className="btn col-4 me-2 mt-3 btn-outline-success px-4 py-2">
               Register
-            </button>
+            </Link>
             <button className="btn col-4 mt-3 btn-primary px-4 py-2" type="submit">
               Login
             </button>
@@ -65,8 +62,6 @@ const LoginUser = () => {
 
         </form>
       </div>
-
-      {error && <p>{error}</p>}
     </div>
   );
 };

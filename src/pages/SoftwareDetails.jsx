@@ -7,6 +7,7 @@ import {FiLayers, FiSettings, FiPackage, FiSave, FiCalendar, FiCpu} from "react-
 // import RelatedSoftwares from "../components/RelatedSoftwares";
 import ShareInfo from "../components/ShareInfo";
 import { fetchSoftwareDetails } from "../actions/softwareAction";
+import ImageCarousel from "../components/ImageCarousel";
 
 export default function SoftwareDetails() {
   const dispatch = useDispatch();
@@ -76,6 +77,9 @@ export default function SoftwareDetails() {
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div className="col-12 mt-4 text-center ">
+                <ImageCarousel images={software.photos}/>
             </div>
             <div className="col-12 text-center details_title">
                 <h4 className="col-12 font-weight-bolder mt-3 pb-0 fw-bolder text-center ">About Software</h4>                

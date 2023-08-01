@@ -12,17 +12,31 @@ export const login = async (email, password) => {
     });
     return response.data;
   } catch (error) {
-    throw new Error("Invalid credentials");
+    if (error.response && error.response.data.error) {
+      // If there are validation errors in the API response, update the errors state
+      return error;
+    } else {
+      // Handle other types of errors, e.g., network errors
+      console.error('An error occurred:', error);
+      throw new Error(error);
+    }
   }
 };
 
 // Function to perform user registration
 export const register = async (userData) => {
   try {
-    const response = await axios.post(`${BASE_URL}/register`, userData);
+    const response = await axios.post(`${BASE_URL}/signup`, userData);
     return response.data;
   } catch (error) {
-    throw new Error("Registration failed");
+    if (error.response && error.response.data.error) {
+      // If there are validation errors in the API response, update the errors state
+      return error;
+    } else {
+      // Handle other types of errors, e.g., network errors
+      console.error('An error occurred:', error);
+      throw new Error(error);
+    }
   }
 };
 
@@ -160,5 +174,49 @@ export const searchSoftwares = async (search_value) => {
     return response.data;
   } catch (error) {
     throw new Error("search failed");
+  }
+};
+
+export const saveGame = async ( post_id,user_id,token) => {
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/save-game`,
+      { user_id, post_id }, // Pass the data object for the POST request with the request body
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data.error) {
+      // If there are validation errors in the API response, update the errors state
+      return error;
+    } else {
+      // Handle other types of errors, e.g., network errors
+      console.error('An error occurred:', error);
+      throw new Error(error);
+    }
+  }
+};
+export const deleteSaveGame = async ( post_id,user_id,token) => {
+  try {
+    const response = await axios.delete(`${BASE_URL}/delete-save-game`, {
+      data: { user_id, post_id }, // Pass the data object for DELETE request with the request body
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data.error) {
+      // If there are validation errors in the API response, update the errors state
+      return error;
+    } else {
+      // Handle other types of errors, e.g., network errors
+      console.error('An error occurred:', error);
+      throw new Error(error);
+    }
   }
 };

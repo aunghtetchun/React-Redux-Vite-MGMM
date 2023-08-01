@@ -35,7 +35,7 @@ export default function BottomNav() {
           <FiBox className={`${changeColor}`}/> 
           <h6 className={`my-1  ${changeColor}`}>Request</h6>
         </Link>
-        <Link to="/user/login" className={`col py-2   px-0 text-center ${changeColorLogin}`}>
+        <Link to="/profile" className={`col py-2   px-0 text-center ${changeColorLogin}`}>
           <FiUserCheck className={`${changeColorLogin}`}/>
           <h6 className={`my-1 ${changeColorLogin}`}>Account</h6>
         </Link>

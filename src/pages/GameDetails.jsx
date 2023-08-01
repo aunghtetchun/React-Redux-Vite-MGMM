@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { Badge } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {  Link, useParams } from "react-router-dom";
 import { fetchGameDetails } from "../actions/gameActions";
-import {FiLayers, FiSettings, FiPackage, FiSave, FiCalendar, FiCpu} from "react-icons/fi";
+import {FiLayers, FiSettings, FiPackage, FiSave, FiCalendar, FiCpu, FiDownload} from "react-icons/fi";
 import RelatedGames from "../components/RelatedGames";
 import ShareInfo from "../components/ShareInfo";
+import ImageCarousel from "../components/ImageCarousel";
+import { AuthContext } from "../contexts/AuthContext";
+import { useContext } from "react";
+import { saveGame } from "../services/api";
 
 export default function GameDetails() {
   const dispatch = useDispatch();
   const { slug } = useParams();
 
   const game = useSelector((state) => state.gameReducer.game);  /// state ယူတဲ့အဆင့်
+  const { user, isLoggedIn,setGames } = useContext(AuthContext);
+  const [message,setMessage] = useState(null);
   
   useEffect(() => {
     window.scrollTo({
@@ -23,6 +29,16 @@ export default function GameDetails() {
     dispatch(fetchGameDetails(slug));
   }, [dispatch,slug]);
 
+  const saveData =async() => {
+    const post_id=game.id;
+    const user_id=user.id;
+      const response = await saveGame(post_id, user_id,user.oldToken);
+      setGames((prevGames) => [...prevGames, game]);
+      console.log(response);
+      if (response.success){
+        setMessage(response.success);
+      }
+  };
   
   if (!game) {
     return <div>Game not found.</div>;
@@ -34,7 +50,7 @@ export default function GameDetails() {
         <div className="d-flex mt-4 flex-wrap justify-content-center align-items-center">
           <div className="d-flex col-12 flex-wrap align-items-start justify-content-center">
             <div
-              className="col-3 details_img col-md-2 col-lg-1 px-1  pt-1 "
+              className="col-3  col-md-2 col-lg-1 px-1  pt-1 "
             >
               <img
                 src={game.logo}
@@ -88,6 +104,9 @@ export default function GameDetails() {
                     </tbody>
                 </table>
             </div>
+            <div className="col-12 mt-4 text-center ">
+                <ImageCarousel images={game.photos}/>
+            </div>
             <div className="col-12 text-center details_title">
                 <h4 className="col-12 font-weight-bolder mt-3 pb-0 fw-bolder text-center ">ဂိမ်းအကြောင်း</h4>                
                 <p key="game-description" dangerouslySetInnerHTML={{ __html: game.description }}></p>
@@ -101,7 +120,11 @@ export default function GameDetails() {
                 <h4 className="col-12 font-weight-bolder mt-3 pb-0 mb-0 text-center ">Mod Features</h4>                
                 <p >{game.features}</p>
                 <h4 className="col-12 font-weight-bolder my-3 pb-0 fw-bolder text-center ">ဒီမှာဒေါင်းပါ</h4>                
-                 <Link to={`/download/${game.slug}`} className="btn btn-primary px-4 py-2">Download Game</Link>
+                 <Link to={`/download/${game.slug}`} className="btn btn-primary px-4 py-2"><FiDownload/>&nbsp;Download Game</Link>
+                 {isLoggedIn && !message ?
+                    <button onClick={saveData} className="btn btn-outline-success px-4 py-2 ms-2"><FiSave/>&nbsp;သိမ်းထားမည်</button>
+                 :<div className="alert alert-success my-2 col-12">{message}</div>}
+
                  <div className="col-12 col-md-6 col-lg-6 mx-auto px-0 mt-3 text-center d-flex flex-wrap">
                  <ShareInfo/>
                  

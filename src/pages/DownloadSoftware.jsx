@@ -1,28 +1,31 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {  useParams } from "react-router-dom";
+import { fetchSoftwareDetails } from "../actions/softwareAction";
 
 export default function DownloadSoftware() {
+  const dispatch = useDispatch();
   const { slug } = useParams();
-  const software = useSelector((state) => state.softwareReducer.software);
-  let navigate = useNavigate();
-  const back = (slug) => {
-    navigate(`/softwares/${slug}`);
-  };
+
+  const software = useSelector((state) => state.softwareReducer.software);  /// state ယူတဲ့အဆင့်
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    // Fetch the software details when the component mounts  state ထည့်တဲ့အဆင့်
+    dispatch(fetchSoftwareDetails(slug));
+  }, [dispatch,slug]);
+
+  
   if (!software) {
-    return (
-      <button
-        onClick={() => back(slug)}
-        className="btn col-12 col-md-6 mt-5 mx-auto btn-danger py-2"
-      >
-        Back To Software
-      </button>
-    );
+    return <div>Software not found.</div>;
   }
 
   return (
     <>
-      <div className="card px-0 shadow mt-5">        
+      <div className="card col-12 px-0 shadow mt-3">        
         <div className="card-body d-flex flex-wrap justify-content-center align-items-center">
           <h4 className="col-12 mb-0 fw-bolder">{software.name}</h4>
             <hr className="col-12 px-0" />

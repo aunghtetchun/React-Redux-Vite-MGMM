@@ -11,6 +11,7 @@ import DownloadSoftware from "../pages/DownloadSoftware.jsx";
 import PopularGames from "../pages/PopularGames.jsx";
 import Games from "../pages/Games.jsx";
 import { Category } from "../pages/Category.jsx";
+import Profile from "../pages/Profile.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,10 +27,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/games/category/:category_id",
-        element: <Games />,
-      },
-      {
-        path: "/games/search/:keywords",
         element: <Games />,
       },
       {
@@ -55,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/request",
         element: <GameRequest />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
       {
         path: "/softwares",

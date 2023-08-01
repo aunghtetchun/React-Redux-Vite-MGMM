@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { FiUpload } from 'react-icons/fi';
+import { FiLogIn, FiUpload } from 'react-icons/fi';
 import {  Col, Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { submitGameRequest } from '../actions/gameActions';
+import { useContext } from 'react';
+import { AuthContext } from '../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 
 export default function GameRequest() {
   const message = useSelector((state) => state.gameReducer.message);
+  const {  isLoggedIn } = useContext(AuthContext);
+
   const initialFormData = {
     app_name: '',
     username: 'Unknown',
@@ -44,7 +49,9 @@ export default function GameRequest() {
     {message &&
     <div className="alert alert-success">{message}</div>
     }
-      <h4 className="col-12 mt-5 text-center">Link Repair &amp; Request Game</h4>
+      <div className="card col-12 mt-3">
+          <div className="card-body">
+          <h4 className="col-12 mt-2 text-center">Link Repair &amp; Request Game</h4>
       <Col>
         <hr />
         <Form className="text-light pb-3" onSubmit={handleSubmit}>
@@ -81,13 +88,28 @@ export default function GameRequest() {
               placeholder=""
             />
           </Form.Group>
+         
+        </Form>
+        {isLoggedIn ?
           <div className='d-flex justify-content-end'>
             <Button className="px-3 py-2 mt-3" type="submit" variant="primary" block>
-              <FiUpload /> &nbsp; Request Game
+              <FiUpload />&nbsp;Request Game
             </Button>
           </div>
-        </Form>
+          :
+          <div className='d-flex flex-wrap justify-content-end'>
+            <span className='col-12 alert alert-danger mt-3'>ဂိမ်းတောင်းဖို့ အတွက် အကောင့်ဝင်ထားဖို့လိုအပ်ပါတယ်...</span>
+            <Link to={'/user/login'} className="btn  me-2 mt-3 btn-outline-success px-4 py-2">
+              <FiLogIn/>&nbsp;Login Account
+            </Link>
+          <Button className="px-3 py-2 mt-3" disabled type="text" variant="primary" block>
+            <FiUpload />&nbsp;Request Game
+          </Button>
+        </div>
+          }
       </Col>
+          </div>
+      </div>
     </>
   );
 }

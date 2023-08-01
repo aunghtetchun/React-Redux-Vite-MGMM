@@ -1,7 +1,6 @@
 import { fetchPopularGames, setCurrentUrl } from "../actions/gameActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import TopNav from "../components/TopNav";
 import CardItem from "../components/CardItem";
 import LoadingCard from "../components/LoadingCard";
@@ -12,7 +11,6 @@ export default function PopularGames() {
   const popular_games = useSelector((state) => state.gameReducer.popular_games);
   const prevScrollPosition = useSelector((state) => state.gameReducer.scroll_position_game);
 
-  let navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo({
@@ -28,10 +26,7 @@ export default function PopularGames() {
     dispatch(setCurrentUrl('/'));
   }, [dispatch]);
   
-  const seeGame = (slug, e) => {
-    e.stopPropagation(); // Prevent click event from propagating to CardItem
-    navigate(`/games/${slug}`);
-  };
+
   useEffect(() => {
     // Restore the scroll position when coming back to the component
     const targetElement = document.getElementById(prevScrollPosition);
@@ -60,7 +55,6 @@ export default function PopularGames() {
           popular_games.map((game) => (
             <div
               className="col-12 col-md-6 col-lg-4"
-              onClick={(e) => seeGame(game.slug, e)}
               key={game.id}
             >
               <CardItem game={game} />

@@ -43,8 +43,10 @@ export const setRelatedGames = (related_games) => ({
 export const fetchRelatedGames = (id) => {
   return async (dispatch) => {
     try {
+      dispatch(setLoading(true));
       const response=await getRelatedGames(id);
       dispatch(setRelatedGames(response.related_games));
+      dispatch(setLoading(false));
     } catch (error) {
       console.error('Error fetching related games:', error);
     }

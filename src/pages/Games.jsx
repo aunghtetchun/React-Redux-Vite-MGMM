@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import {  useLocation, useParams } from "react-router-dom";
 import { fetchAllGames, fetchAllGamesByCategory, setCurrentUrl, setMoreGames, setTimeoutAction } from "../actions/gameActions";
 import CardItem from "../components/CardItem";
 import LoadingCard from "../components/LoadingCard";
@@ -25,7 +25,6 @@ export default function Games() {
   const prevScrollPosition = useSelector((state) => state.gameReducer.scroll_position_game);
 
   const [page_number, setPageNumber] = useState(2);
-  let navigate = useNavigate();
   const containerRef = useRef(null);
   const { category_id } = useParams();
 
@@ -71,9 +70,6 @@ export default function Games() {
       }
   }, [dispatch,category_id,current_status]);
 
-  const seeGame = (slug) => {
-    navigate(`/games/${slug}`);
-  };
 
   useEffect(() => {
     dispatch(setCurrentUrl(url));
@@ -108,7 +104,6 @@ export default function Games() {
             all_games.map((game) => (
               <div
                 className="col-12 col-md-6 col-lg-4"
-                onClick={() => seeGame(game.slug)}
                 key={game.id}
               >
                 <CardItem game={game} />

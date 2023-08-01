@@ -4,6 +4,9 @@
     /* font-family: 'Oswald', sans-serif; */
     font-family: 'Edu SA Beginner', cursive;
   }
+  /* .container-fluid{
+    min-height: 90vh;
+  } */
 a{
     text-decoration: none; color: black;
 }
@@ -30,7 +33,7 @@ a{
     min-height: 80vh !important;
 } */
 .max_height{
-    max-height: 85vh !important;
+    max-height: 80vh !important;
     overflow: scroll;
 }
 .gcard_title{
@@ -113,4 +116,17 @@ a{
     left: 50%;
     transform: translateX(-50%);
     z-index: 3000;
+}
+
+/* profile jsx  */
+
+.save_games{
+    max-height: 55vh !important;
+    overflow: scroll;
+    scroll-behavior: smooth;
+}
+.save_delete{
+    position: absolute;
+    top: -7%;
+    right: -2%;
 }
