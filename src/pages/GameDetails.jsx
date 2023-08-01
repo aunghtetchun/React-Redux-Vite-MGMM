@@ -47,7 +47,7 @@ export default function GameDetails() {
   return (
     <>
       {game && (
-        <div className="d-flex mt-4 flex-wrap justify-content-center align-items-center">
+        <div className="d-flex mt-4 px-2 flex-wrap justify-content-center align-items-center">
           <div className="d-flex col-12 flex-wrap align-items-start justify-content-center">
             <div
               className="col-3  col-md-2 col-lg-1 px-1  pt-1 "
@@ -120,9 +120,9 @@ export default function GameDetails() {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               ></iframe>
             </div>
-            <div className="col-12 text-center details_title">
+            <div className="col-12  text-center details_title">
                 <h4 className="col-12 font-weight-bolder mt-3 pb-0 fw-bolder text-center ">ဂိမ်းအကြောင်း</h4>                
-                <p key="game-description" dangerouslySetInnerHTML={{ __html: game.description }}></p>
+                <div className="px-3" key="game-description" dangerouslySetInnerHTML={{ __html: game.description }}></div>
                 <div className="text-center">
                     <Badge
                       pill bg="danger" className="font-weight-bold  px-3 py-2 my-2 mx-1"

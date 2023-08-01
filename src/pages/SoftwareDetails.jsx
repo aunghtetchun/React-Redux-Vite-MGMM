@@ -31,7 +31,7 @@ export default function SoftwareDetails() {
   return (
     <>
       {software && (
-        <div className="d-flex flex-wrap justify-content-center align-items-center">
+        <div className="d-flex px-2 flex-wrap justify-content-center align-items-center">
           <div className="d-flex col-12 flex-wrap align-items-start justify-content-center">
             <div
               className="col-3 details_img col-md-2 col-lg-1 px-1  pt-1 "
@@ -83,7 +83,7 @@ export default function SoftwareDetails() {
             </div>
             <div className="col-12 text-center details_title">
                 <h4 className="col-12 font-weight-bolder mt-3 pb-0 fw-bolder text-center ">About Software</h4>                
-                <p className="" dangerouslySetInnerHTML={{ __html: software.description}}></p>
+                <div className="px-3" dangerouslySetInnerHTML={{ __html: software.description}}></div>
                 <div className="text-center">
                     <Badge
                       pill bg="danger" className="font-weight-bold  px-3 py-2 my-2 mx-1"
