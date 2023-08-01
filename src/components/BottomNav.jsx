@@ -10,7 +10,9 @@ export default function BottomNav() {
   const changeColorSoftware = isSoftwarePage ? 'text_main bg-light' : 'text-light';
 
   const isLoginPage = location.pathname.includes('/user/login');
-  const changeColorLogin = isLoginPage ? 'text_main bg-light' : 'text-light';
+  const isLoginPageRegister = location.pathname.includes('/user/register');
+  const isLoginPageProfile = location.pathname.includes('/profile');
+  const changeColorLogin = isLoginPage || isLoginPageProfile || isLoginPageRegister? 'text_main bg-light' : 'text-light';
 
   const selectedHome = window.location.pathname === '/';
   const isCategory = location.pathname.includes('/category');

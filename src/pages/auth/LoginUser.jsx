@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useRef } from "react";
 import { FiLogIn, FiUserPlus } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -16,9 +17,30 @@ const LoginUser = () => {
   if (isLoggedIn) {
     navigate("/profile");
   }
+  const touchStartX = useRef(0);
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.touches[0].clientX;
+  };
+
+  const handleTouchMove = (event) => {
+    const touchX = event.touches[0].clientX;
+    const deltaX = touchX - touchStartX.current;
+
+    // Determine the threshold for considering it a left slide (you can adjust this value)
+    const threshold = 50;
+
+    if (deltaX > threshold) {
+      console.log("Sliding left");
+      navigate('/request')
+    } 
+  };
 
   return (
-    <div className="col-12 mt-5 card col-md-6 p-0">
+   <div 
+   onTouchStart={handleTouchStart}
+   onTouchMove={handleTouchMove}
+   className="col-12 px-0 min_height">
+     <div className="col-12 mt-5 card col-md-6 p-0">
       <div className="card-body">
       <h4 className="mb-3 mt-1 fw-bolder">အကောင့်ဝင်မည်</h4>
         <hr />
@@ -64,6 +86,7 @@ const LoginUser = () => {
         </form>
       </div>
     </div>
+   </div>
   );
 };
 
