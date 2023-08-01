@@ -1,5 +1,6 @@
 // src/components/Register.js
 import React, { useContext, useState } from "react";
+import { useRef } from "react";
 import { useEffect } from "react";
 import { FiLogIn, FiUserPlus } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
@@ -23,8 +24,29 @@ const RegisterUser = () => {
       navigate("/profile");
     }
   }, [isLoggedIn, navigate]);
+  const touchStartX = useRef(0);
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.touches[0].clientX;
+  };
 
+  const handleTouchMove = (event) => {
+    const touchX = event.touches[0].clientX;
+    const deltaX = touchX - touchStartX.current;
+
+    // Determine the threshold for considering it a left slide (you can adjust this value)
+    const threshold = 50;
+
+    if (deltaX > threshold) {
+      console.log("Sliding left");
+      navigate('/request')
+    } 
+  };
   return (
+    <div 
+    onTouchStart={handleTouchStart}
+    onTouchMove={handleTouchMove}
+    className="col-12 px-0 min_height">
+
     <div className="col-12 col-md-6 mt-3 p-0 card">
       
       <div className="card-body">
@@ -93,6 +115,8 @@ const RegisterUser = () => {
       </div>
 
     </div>
+    </div>
+
   );
 };
 export default RegisterUser;
