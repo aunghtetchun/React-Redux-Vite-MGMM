@@ -26,15 +26,21 @@ export function Category() {
     }
   }, [dispatch, categories]);
 
-  useEffect(() => {
-    // console.log("hello world!");
-    dispatch(setCurrentStatus('games'));
-    dispatch(setCurrentUrl('/category'));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   // console.log("hello world!");
+  //   dispatch(setCurrentStatus('category'));
+  //   dispatch(setCurrentUrl('/category'));
+  // }, [dispatch]);
 
   const goAllGames = () => {
-    dispatch(setCurrentStatus('others'));
+    dispatch(setCurrentStatus('games'));
     navigate('/games');
+  }
+
+  const goGamesByCategory= (category_id)=>{
+    dispatch(setCurrentStatus('category'));
+    navigate('/games/category/'+category_id);
+
   }
 
   return (
@@ -54,11 +60,11 @@ export function Category() {
         {categories &&
           categories.map((category) => (
             <div className="col-6 p-1" key={category.id}>
-              <Link to={`/games/category/${category.id}`} 
+              <button onClick={()=>goGamesByCategory(category.id)} 
                 className="btn rounded-0 btn-outline-danger  w-100 p-2"
               >
                 {category.title}
-              </Link>
+              </button>
             </div>
           ))}
       </div>

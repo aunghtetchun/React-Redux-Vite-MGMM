@@ -11,6 +11,9 @@ export const setAllSoftwares = (softwares) => ({
   export const setLoading = (isLoading) => {
     return { type: "SET_LOADING", payload: isLoading };
   };
+  export const setSeeMore = (see_more) => {
+    return { type: "SET_SEE_MORE", payload: see_more };
+  };
   export const setSearchStatus = (status) => {
     return { type: "SET_STATUS", payload: status };
   };
@@ -63,6 +66,7 @@ export const setSoftwareDetails = (software) => ({
             dispatch(setPageNumber(2));
         }else{
             dispatch(setLoading(true));
+            dispatch(setSeeMore(true));
             const response=await searchSoftwares(search_value);
             // console.log(response);
             dispatch(setLoading(false));

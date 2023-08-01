@@ -2,14 +2,14 @@ import React, { useEffect, useRef, useCallback, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { fetchAllSoftwares, setMoreSoftwares, setPageNumber, setScrollPosition } from '../actions/softwareAction';
+import { fetchAllSoftwares, setMoreSoftwares, setPageNumber, setScrollPosition, setSeeMore } from '../actions/softwareAction';
 import SoftwareCardItem from '../components/SoftwareCardItem';
 import LoadingCard from '../components/LoadingCard';
 import {  getMoreSoftwares } from '../services/api';
 import Search from '../components/Search';
 
 export default function Softwares() {
-  const [see_more, setSeeMore] = useState(false);
+  const see_more=useSelector((state) => state.softwareReducer.see_more);
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.softwareReducer.loading);
   const softwares = useSelector((state) => state.softwareReducer.softwares);
@@ -22,21 +22,21 @@ export default function Softwares() {
   const prevScrollPosition = useSelector((state) => state.softwareReducer.scroll_position);
 
   const loadMore = useCallback(async () => {
-    const nextPageNumber = page_number + 1;
-    dispatch(setPageNumber(nextPageNumber));
-
-    try {
-      const response = await getMoreSoftwares(nextPageNumber);
-      if (response.softwares.data.length < 1) {
-        setSeeMore(false);
-      } else {
-        dispatch(setMoreSoftwares(response.softwares.data));
-        setSeeMore(true);
+    if(see_more){
+      const nextPageNumber = page_number + 1;
+      dispatch(setPageNumber(nextPageNumber));
+      try {
+        const response = await getMoreSoftwares(nextPageNumber);
+        if (response.softwares.data.length < 1) {
+          dispatch(setSeeMore(false));
+        } else {
+          dispatch(setMoreSoftwares(response.softwares.data));
+        }
+      } catch (error) {
+        console.error('Error fetching softwares:', error);
       }
-    } catch (error) {
-      console.error('Error fetching softwares:', error);
     }
-  }, [dispatch, page_number]);
+  }, [dispatch, page_number,see_more]);
 
   const handleScroll = () => {
     const container = containerRef.current;
@@ -107,7 +107,7 @@ export default function Softwares() {
             </div>
           : ''}
         {search_status == 'search_softwares' ||  search_status == 'not_found' ?
-            <button onClick={getAll} className="back_all shadow shadow-lg btn btn-success px-3">Back to All Softwares</button> : ''
+            <button onClick={getAll} className="back_all shadow shadow-lg btn btn-success py-2 px-3">Back to All Softwares</button> : ''
         }
         </div>
       )}

@@ -23,7 +23,9 @@ export const setGameDetails = (game) => ({
   type: 'SET_GAME_DETAILS',
   payload: game,
 });
-
+export const setCurrentPage = (current_page) => {
+  return { type: "SET_CURRENT_PAGE", payload: current_page };
+};
 export const fetchGameDetails = (slug) => {
   return async (dispatch) => {
     try {
@@ -66,11 +68,13 @@ export const fetchAllGames = () => {
     try {
       dispatch(setKeyword(null));
       dispatch(setLoading(true));
+      dispatch(setCurrentPage(2));
+      dispatch(setSeeMore(true));
       const response = await getAllGames();
       // console.log(response.games);
       dispatch(setAllGames(response.games.data));
       dispatch(setTitle(response.title));
-      dispatch(setCurrentStatus('games'));
+      dispatch(setCurrentStatus('close'));
       dispatch(setLoading(false));
     } catch (error) {
       console.error("Error fetching all_games:", error);
@@ -97,6 +101,11 @@ export const setCurrentStatus = (current_status) => ({
   type: 'SET_CURRENT_STATUS',
   payload: current_status,
 });
+export const setSeeMore = (seemore) => ({
+  type: 'SET_SEEMORE',
+  payload: seemore,
+});
+
 
 export const submitGameRequest = (formData) => {
   return async (dispatch) => {
@@ -123,13 +132,15 @@ export const setCategories = (categories) => ({
 export const fetchAllGamesByCategory = (category_id) => {
   return async (dispatch) => {
     try {
+      dispatch(setCurrentPage(2));
+      dispatch(setSeeMore(true));
       dispatch(setKeyword(null));
       dispatch(setLoading(true));
       if(category_id!=null){
         const response = await getAllGamesByCategory(category_id);
         dispatch(setAllGames(response.games.data));
         dispatch(setTitle(response.title));
-        dispatch(setCurrentStatus('category'));
+        dispatch(setCurrentStatus('close'));
         dispatch(setLoading(false));
       }else{
         dispatch(fetchAllGames());
@@ -158,10 +169,7 @@ export const fetchCategories = () => {
 export const setGameSearchStatus = (status) => {
   return { type: "SET_GAME_STATUS", payload: status };
 };
-export const setGameSearchData = (all_games) => ({
-  type: 'SET_GAME_SEARCH_DATA',
-  payload: all_games,
-});
+
 export const setKeyword = (search_keyword) => ({
   type: 'SET_KEYWORD',
   payload: search_keyword,
@@ -173,9 +181,11 @@ export const fetchGamesSearch = (search_value) => {
   return async (dispatch) => {
     try {
       dispatch(setKeyword(search_value));
-      dispatch(setCurrentStatus('search'));
+      dispatch(setCurrentPage(2));
+      dispatch(setCurrentStatus('close'));
+      dispatch(setSeeMore(true));
       if(search_value.length==0){
-          dispatch(setGameSearchStatus('found'));
+          dispatch(setGameSearchStatus('empty'));
       }else{
           dispatch(setLoading(true));
           const response=await searchGames(search_value);
@@ -183,8 +193,8 @@ export const fetchGamesSearch = (search_value) => {
           // console.log(response);
           dispatch(setLoading(false));
           if(response.games.data.length > 0) {
-              dispatch(setGameSearchData(response.games.data));
-              dispatch(setGameSearchStatus('search_games'));
+              dispatch(setAllGames(response.games.data));
+              dispatch(setGameSearchStatus('found'));
           }else if(response.games.data.length == 0){
               dispatch(setGameSearchStatus('not_found'));
           }

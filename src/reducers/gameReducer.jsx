@@ -8,10 +8,13 @@ const initialState = {
   title: null,
   current_url: '/',
   categories: [],
-  current_status:'others',
+  current_status:'games',
   scroll_position_game: 0,
   search_game_status: null, 
   search_keyword: null, 
+  current_page: 2,
+  seemore:true,
+
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -56,6 +59,11 @@ const gameReducer = (state = initialState, action) => {
         ...state,
         message: action.payload,
       };
+      case "SET_CURRENT_PAGE":
+        return {
+          ...state,
+          current_page: action.payload,
+        };
       case "SET_CURRENT_URL":
         return {
           ...state,
@@ -71,6 +79,11 @@ const gameReducer = (state = initialState, action) => {
         ...state,
         loading: action.payload,
       };
+      case "SET_SEEMORE":
+        return {
+          ...state,
+          seemore: action.payload,
+        };
       case "SET_TITLE":
       return {
         ...state,
@@ -91,11 +104,6 @@ const gameReducer = (state = initialState, action) => {
         ...state,
         scroll_position_game: action.payload,
       };
-      case "SET_GAME_SEARCH_DATA":
-        return {
-            ...state,
-            all_games: action.payload,
-        };
     default:
       return state;
   }

@@ -105,7 +105,20 @@ export default function GameDetails() {
                 </table>
             </div>
             <div className="col-12 mt-4 text-center ">
+             <h4 className="col-12 font-weight-bolder  pb-0 mb-4 text-center ">Gameplay Photos</h4>                
+
                 <ImageCarousel images={game.photos}/>
+            </div>
+            <div className="col-12 mt-4 text-center">
+            <h4 className="col-12 font-weight-bolder pb-0 mb-4 text-center ">Gameplay Video</h4>                
+
+              <iframe
+                width="100%"
+                height="300"
+                src={ `https://www.youtube.com/embed/${game.video}`}
+                title="YouTube Video Player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              ></iframe>
             </div>
             <div className="col-12 text-center details_title">
                 <h4 className="col-12 font-weight-bolder mt-3 pb-0 fw-bolder text-center ">ဂိမ်းအကြောင်း</h4>                
