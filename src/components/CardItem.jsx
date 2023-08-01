@@ -10,7 +10,7 @@ import { deleteSaveGame } from "../services/api";
 export default function CardItem({ game,user_id }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   let navigate = useNavigate();
-  const { user,games,setGames,setUser } = useContext(AuthContext);
+  const { user,games,setGames } = useContext(AuthContext);
 
   const handleImageLoad = () => {
     setImageLoaded(true);
@@ -23,6 +23,8 @@ export default function CardItem({ game,user_id }) {
   }
   const seeGame = (slug) => {
     navigate(`/games/${slug}`);
+    // const url = `/games/${slug}`;
+    // window.open(url, '_blank');
   };
   return (
     <>

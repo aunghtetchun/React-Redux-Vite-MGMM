@@ -55,18 +55,22 @@ export default function Games() {
     }
   };
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
       if(category_id){
         if(current_status == 'category' ) {
           dispatch(fetchAllGamesByCategory(category_id));
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
         }
       }
       else{
         if(current_status == 'games') {
           dispatch(fetchAllGames());
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
         }
       }
   }, [dispatch,category_id,current_status]);

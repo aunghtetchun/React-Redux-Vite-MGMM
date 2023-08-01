@@ -98,8 +98,8 @@ export default function GameRequest() {
           </div>
           :
           <div className='d-flex flex-wrap justify-content-end'>
-            <span className='col-12 alert alert-danger mt-3'>ဂိမ်းတောင်းဖို့ အတွက် အကောင့်ဝင်ထားဖို့လိုအပ်ပါတယ်...</span>
-            <Link to={'/user/login'} className="btn  me-2 mt-3 btn-outline-success px-4 py-2">
+            <span className='col-12 alert alert-danger mt-2'>ဂိမ်းတောင်းဖို့ အတွက် အကောင့်ဝင်ထားဖို့လိုအပ်ပါတယ်...</span>
+            <Link to={'/user/login'} className="btn  me-2 mt-2 btn-outline-success px-4 py-2">
               <FiLogIn/>&nbsp;Login Account
             </Link>
           <Button className="px-3 py-2 mt-3" disabled type="text" variant="primary" block>

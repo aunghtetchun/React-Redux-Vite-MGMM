@@ -52,7 +52,7 @@ export default function Profile() {
                 <CardItem user_id={user.id} game={game} />
               </div>
             )):
-              <h5 className="m-2" style={{lineHeight:1.7 }}>သိမ်းထားသောဂိမ်းများ မရှိသေးပါ... မိမိ သိမ်းထားလိုသောဂိမ်းအား နောင်တစ်ချိန်အလွယ်တကူဒေါင်းနိုင်ရန် ဂိမ်းစာမျက်နှာမှ <span className="text-danger">Download Game</span>  အောက်ဘက်ရှိ <span className="text-danger">သိမ်းထားမည် </span> ခလုပ်အားအသုံးပြု၍ သိမ်းထားနိုင်ပါတယ်...</h5>
+              <h5 className="m-2" style={{lineHeight:1.7 }}>သိမ်းထားသောဂိမ်းများ မရှိသေးပါ... မိမိ သိမ်းထားလိုသောဂိမ်းအား နောင်တစ်ချိန်အလွယ်တကူဒေါင်းနိုင်ရန် ဂိမ်းစာမျက်နှာမှ <span className="text-danger">Download Game</span>  ဘေးဘက်ရှိ <span className="text-danger">သိမ်းထားမည် </span> ခလုပ်အားအသုံးပြု၍ သိမ်းထားနိုင်ပါတယ်...</h5>
             }
             </div>
           </div>
