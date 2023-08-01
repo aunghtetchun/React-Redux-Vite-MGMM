@@ -3,13 +3,16 @@ import { useContext } from "react";
 import { useState } from "react";
 import { Badge, Card, Placeholder } from "react-bootstrap";
 import { FiArrowUp, FiEye, FiGift, FiX } from "react-icons/fi";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setScrollPositionGame } from "../actions/gameActions";
 import { AuthContext } from "../contexts/AuthContext";
 import { deleteSaveGame } from "../services/api";
 
 export default function CardItem({ game,user_id }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   let navigate = useNavigate();
+  const dispatch=useDispatch();
   const { user,games,setGames } = useContext(AuthContext);
 
   const handleImageLoad = () => {
@@ -23,6 +26,7 @@ export default function CardItem({ game,user_id }) {
   }
   const seeGame = (slug) => {
     navigate(`/games/${slug}`);
+    dispatch(setScrollPositionGame(slug));
     // const url = `/games/${slug}`;
     // window.open(url, '_blank');
   };

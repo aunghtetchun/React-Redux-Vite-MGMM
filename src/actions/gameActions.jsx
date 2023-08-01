@@ -29,7 +29,6 @@ export const setCurrentPage = (current_page) => {
 export const fetchGameDetails = (slug) => {
   return async (dispatch) => {
     try {
-      dispatch(setScrollPositionGame(slug));
       const response=await getGameDetails(slug);
       dispatch(setGameDetails(response.game));
     } catch (error) {

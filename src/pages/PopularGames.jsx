@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import TopNav from "../components/TopNav";
 import CardItem from "../components/CardItem";
 import LoadingCard from "../components/LoadingCard";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function PopularGames() {
   const dispatch = useDispatch();
@@ -39,9 +41,32 @@ export default function PopularGames() {
       });
     }
   }, [prevScrollPosition]);
+
+  const navigate=useNavigate();
+
+  const touchStartX = useRef(0);
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.touches[0].clientX;
+  };
+
+  const handleTouchMove = (event) => {
+    const touchX = event.touches[0].clientX;
+    const deltaX = touchX - touchStartX.current;
+
+    // Determine the threshold for considering it a left slide (you can adjust this value)
+    const threshold = 50;
+
+    if (deltaX < -threshold) {
+      console.log("Sliding left");
+      navigate('/category')
+    }
+  };
+
+
   if (!popular_games){
     return <LoadingCard count={12}/>
   }
+  
 
   
   return (
@@ -49,7 +74,10 @@ export default function PopularGames() {
     <TopNav position={'/'}/>
      {loading ? <LoadingCard count={12}/>
     : 
-      <div className="col-12 px-0 px-md-2 d-flex flex-wrap justify-content-center align-items-center">
+      <div
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      className="col-12 px-0 px-md-2 d-flex flex-wrap justify-content-center align-items-center">
         {/* <h3 className="col-12 ps-2">Most Popular Games</h3> */}
         {popular_games &&
           popular_games.map((game) => (

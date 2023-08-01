@@ -1,20 +1,20 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import { SwitchTransition, CSSTransition } from "react-transition-group";
+// import { SwitchTransition, CSSTransition } from "react-transition-group";
 import "./style.css";
 import BottomNav from "../../components/BottomNav";
 export default function Layout() {
-  const location = useLocation();
+  // const location = useLocation();
 
   return (
     <div className="container-fluid mb-5 pb-5">
       <div className="row justify-content-center">
-        <SwitchTransition>
+        {/* <SwitchTransition>
           <CSSTransition
             timeout={200}
             classNames="fade"
             key={location.pathname}
-          >
+          > */}
             <div className="col-12 col-lg-10 mt-0 px-0">
               <div className="container">
                 <div className="row justify-content-center align-items-center mx-0 mx-md-0">
@@ -24,8 +24,8 @@ export default function Layout() {
                 </div>
               </div>
             </div>
-          </CSSTransition>
-        </SwitchTransition>
+          {/* </CSSTransition>
+        </SwitchTransition> */}
         <BottomNav/>
 
       </div>

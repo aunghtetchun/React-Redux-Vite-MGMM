@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { submitGameRequest } from '../actions/gameActions';
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 
 export default function GameRequest() {
   const message = useSelector((state) => state.gameReducer.message);
@@ -44,12 +45,36 @@ export default function GameRequest() {
     }
   }, [message, dispatch]);
 
+  const touchStartX = useRef(0);
+  const navigate=useNavigate();
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.touches[0].clientX;
+  };
+
+  const handleTouchMove = (event) => {
+    const touchX = event.touches[0].clientX;
+    const deltaX = touchX - touchStartX.current;
+
+    // Determine the threshold for considering it a left slide (you can adjust this value)
+    const threshold = 50;
+
+    if (deltaX < -threshold) {
+      console.log("Sliding left");
+      navigate('/profile')
+    } else if (deltaX > threshold) {
+      navigate('/softwares')
+    }
+  };
+
   return (
     <>
     {message &&
     <div className="alert alert-success">{message}</div>
     }
-      <div className="card col-12 mt-3">
+      <div 
+       onTouchStart={handleTouchStart}
+       onTouchMove={handleTouchMove}
+      className="card col-12 mt-3">
           <div className="card-body">
           <h4 className="col-12 mt-2 text-center">Link Repair &amp; Request Game</h4>
       <Col>
@@ -102,7 +127,7 @@ export default function GameRequest() {
             <Link to={'/user/login'} className="btn  me-2 mt-2 btn-outline-success px-4 py-2">
               <FiLogIn/>&nbsp;Login Account
             </Link>
-          <Button className="px-3 py-2 mt-3" disabled type="text" variant="primary" block>
+          <Button className="px-3 py-2 mt-2" disabled type="text" variant="primary" block>
             <FiUpload />&nbsp;Request Game
           </Button>
         </div>

@@ -38,7 +38,9 @@ a{
 .bg-danger{
     background-color: lightseagreen !important;
 }
-
+.min_height{
+    min-height: 80vh !important;
+}
 .max_height{
     max-height: 80vh !important;
     overflow: scroll;

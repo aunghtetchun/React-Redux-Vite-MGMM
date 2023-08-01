@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useCallback, useState } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { fetchAllSoftwares, setMoreSoftwares, setPageNumber, setScrollPosition, setSeeMore } from '../actions/softwareAction';
+import { fetchAllSoftwares, setMoreSoftwares, setPageNumber, setSeeMore } from '../actions/softwareAction';
 import SoftwareCardItem from '../components/SoftwareCardItem';
 import LoadingCard from '../components/LoadingCard';
 import {  getMoreSoftwares } from '../services/api';
@@ -77,15 +77,40 @@ export default function Softwares() {
     dispatch(fetchAllSoftwares());
   }
 
+  const touchStartX = useRef(0);
+
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.touches[0].clientX;
+  };
+
+  const handleTouchMove = (event) => {
+    const touchX = event.touches[0].clientX;
+    const deltaX = touchX - touchStartX.current;
+
+    // Determine the threshold for considering it a left slide (you can adjust this value)
+    const threshold = 50;
+
+    if (deltaX < -threshold) {
+      console.log("Sliding left");
+      navigate('/request')
+    } else if (deltaX > threshold) {
+      navigate('/games')
+    }
+  };
+
   return (
     <>
-      <div className="col-12 px-0 ">
+      <div 
+      
+      className="col-12 px-0 ">
         <Search />
       </div>
       {loading ? (
         <LoadingCard count={12} />
       ) : (
         <div
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
           ref={containerRef}
           onScroll={handleScroll}
           className="col-12 px-0 px-md-2 d-flex flex-wrap justify-content-center max_height align-items-center"

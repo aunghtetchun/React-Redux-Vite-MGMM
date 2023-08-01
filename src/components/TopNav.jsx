@@ -7,7 +7,6 @@ import SearchGames from './SearchGames'
 export default function TopNav({ position }) {
   const title = useSelector((state) => state.gameReducer.title);
   const navigate= useNavigate();
-
   const handleClick =  (url) => {
     navigate(url)
   }
@@ -29,13 +28,13 @@ export default function TopNav({ position }) {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link id="new" onClick={()=>handleClick('/games')} className="px-0 fw-bold " eventKey="/games">
-              {title ? title : 'All'}
+            <Nav.Link onClick={()=>handleClick('/category')} className="px-0 fw-bold " eventKey="/category">
+              Category
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link onClick={()=>handleClick('/category')} className="px-0 fw-bold " eventKey="/category">
-              Category
+            <Nav.Link id="new" onClick={()=>handleClick('/games')} className="px-0 fw-bold " eventKey="/games">
+              {title ? title : 'All'}
             </Nav.Link>
           </Nav.Item>
         </Nav>

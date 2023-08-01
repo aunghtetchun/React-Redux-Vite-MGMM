@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useCallback } from "react";
+import { useState } from "react";
 import { useRef } from "react";
 import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import {  useLocation, useParams } from "react-router-dom";
+import {  useLocation, useNavigate, useParams } from "react-router-dom";
 import { fetchAllGames, fetchAllGamesByCategory, setCurrentPage, setCurrentUrl, setMoreGames, setSeeMore, setTimeoutAction } from "../actions/gameActions";
 import CardItem from "../components/CardItem";
 import LoadingCard from "../components/LoadingCard";
@@ -13,6 +14,7 @@ import { getMoreGames } from "../services/api";
 export default function Games() {
   const location = useLocation();
   const url = location.pathname; 
+  const navigate=useNavigate();
   // const isCategory = location.pathname.includes('/category');
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.gameReducer.loading);
@@ -83,15 +85,34 @@ export default function Games() {
   useEffect(() => {
     // Restore the scroll position when coming back to the component
     const targetElement = document.getElementById(prevScrollPosition);
-
     if (targetElement) {
       targetElement.scrollIntoView({
         behavior: 'auto', // Use 'auto' for instant scrolling without animation
-        block: 'start',     // Scroll to the top of the element
+        block: 'nearest',     // Scroll to the top of the element
         inline: 'nearest'   // Scroll horizontally to the nearest edge
       });
     }
   }, [prevScrollPosition]);
+
+  const touchStartX = useRef(0);
+
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.touches[0].clientX;
+  };
+
+  const handleTouchMove = (event) => {
+    const touchX = event.touches[0].clientX;
+    const deltaX = touchX - touchStartX.current;
+
+    // Determine the threshold for considering it a left slide (you can adjust this value)
+    const threshold = 50;
+
+    if (deltaX > threshold) {
+      navigate('/category')
+    } 
+  };
+
+
 
   return (
     <>
@@ -102,6 +123,8 @@ export default function Games() {
         <div
           ref={containerRef}
           onScroll={handleScroll}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
           className="col-12 px-0 px-md-2 d-flex flex-wrap justify-content-center max_height align-items-center"
         >
         {search_status == 'not_found' ? <h4 className='mt-5'>No Game Found</h4> :''}

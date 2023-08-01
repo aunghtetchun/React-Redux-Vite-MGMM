@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -42,6 +42,27 @@ export function Category() {
     navigate('/games/category/'+category_id);
 
   }
+  const touchStartX = useRef(0);
+
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.touches[0].clientX;
+  };
+
+  const handleTouchMove = (event) => {
+    const touchX = event.touches[0].clientX;
+    const deltaX = touchX - touchStartX.current;
+
+    // Determine the threshold for considering it a left slide (you can adjust this value)
+    const threshold = 50;
+
+    if (deltaX < -threshold) {
+      console.log("Sliding left");
+      navigate('/games')
+    } else if (deltaX > threshold) {
+      navigate('/')
+    }
+  };
+
 
   return (
     <>
@@ -49,7 +70,10 @@ export function Category() {
       {loading ? (
         <LoadingCategory />
       ) : (
-        <div className="d-flex col-12 flex-wrap px-0 justify-content-center">
+        <div
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        className="d-flex col-12 flex-wrap px-0 justify-content-center">
         <div className="col-6 p-1">
           <button onClick={goAllGames}
             className="btn rounded-0 btn-outline-danger  w-100 p-2"

@@ -1,4 +1,5 @@
 import React from "react";
+import { useRef } from "react";
 import { useContext } from "react";
 import { Button, Card } from "react-bootstrap";
 import {  FiLogOut } from "react-icons/fi";
@@ -10,9 +11,29 @@ import LoginUser from "./auth/LoginUser";
 export default function Profile() {
   const { user, isLoggedIn,games, handleLogout } = useContext(AuthContext);
  
+  const touchStartX = useRef(0);
+  const navigate=useNavigate();
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.touches[0].clientX;
+  };
 
+  const handleTouchMove = (event) => {
+    const touchX = event.touches[0].clientX;
+    const deltaX = touchX - touchStartX.current;
+
+    // Determine the threshold for considering it a left slide (you can adjust this value)
+    const threshold = 50;
+
+    if (deltaX > threshold) {
+      console.log("Sliding left");
+      navigate('/request')
+    } 
+  };
   return (
-    <>
+    <div 
+    onTouchStart={handleTouchStart}
+    onTouchMove={handleTouchMove}
+    className="col-12 px-0 min_height">    
       {!isLoggedIn ? (
         <LoginUser />
       ) : (
@@ -58,6 +79,6 @@ export default function Profile() {
           </div>
         </div>
       )}
-    </>
+      </div>
   );
 }
