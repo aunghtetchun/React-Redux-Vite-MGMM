@@ -27,7 +27,7 @@ const LoginUser = () => {
     const deltaX = touchX - touchStartX.current;
 
     // Determine the threshold for considering it a left slide (you can adjust this value)
-    const threshold = 50;
+    const threshold = 66;
 
     if (deltaX > threshold) {
       console.log("Sliding left");
@@ -38,7 +38,7 @@ const LoginUser = () => {
   return (
    <div 
    onTouchStart={handleTouchStart}
-   onTouchMove={handleTouchMove}
+    onTouchMove={handleTouchMove}
    className="col-12 px-0 min_height">
      <div className="col-12 mt-5 card col-md-6 p-0">
       <div className="card-body">
@@ -46,7 +46,7 @@ const LoginUser = () => {
         <hr />
         <form onSubmit={handleSubmit}>
           <div>
-            <label className="form-label mt-2" htmlFor="email">
+            <label className="form-label mt-2 " htmlFor="email">
               ဖုန်းနံပါတ်:
             </label>
             <input

@@ -54,7 +54,7 @@ export default function PopularGames() {
     const deltaX = touchX - touchStartX.current;
 
     // Determine the threshold for considering it a left slide (you can adjust this value)
-    const threshold = 50;
+    const threshold = 80;
 
     if (deltaX < -threshold) {
       console.log("Sliding left");
