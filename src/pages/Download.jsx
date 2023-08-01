@@ -35,7 +35,7 @@ export default function Download() {
             <div className="col-12 col-md-6 col-lg-4 p-2">
               <a
                 href={game.link1}
-                className="btn btn-primary px-3 py-2  w-100"
+                className="btn bg_main px-3 py-2  w-100"
               >
                 {game.name_1}
               </a>
@@ -46,7 +46,7 @@ export default function Download() {
             <div className="col-12 col-md-6 col-lg-4 p-2">
               <a
                 href={game.link2}
-                className="btn btn-primary px-3 py-2  w-100"
+                className="btn bg_main px-3 py-2  w-100"
               >
                 {game.name_2}
               </a>
@@ -56,7 +56,7 @@ export default function Download() {
             <div className="col-12 col-md-6 col-lg-4 p-2">
               <a
                 href={game.link3}
-                className="btn btn-primary px-3 py-2  w-100"
+                className="btn bg_main px-3 py-2  w-100"
               >
                 {game.name_3}
               </a>

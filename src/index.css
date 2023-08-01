@@ -32,6 +32,13 @@ a{
 /* .min_height{
     min-height: 80vh !important;
 } */
+.bg_viewer{
+    background-color: #6752e8 !important;
+}
+.bg-danger{
+    background-color: lightseagreen !important;
+}
+
 .max_height{
     max-height: 80vh !important;
     overflow: scroll;
@@ -109,6 +116,7 @@ a{
 .search_btn{
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    background-color: #a81d1d !important;
 }
 .back_all{
     position: absolute;

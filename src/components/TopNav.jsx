@@ -24,17 +24,17 @@ export default function TopNav({ position }) {
           defaultActiveKey={position}
         >
           <Nav.Item>
-            <Nav.Link onClick={()=>handleClick('/')} className="px-0 fw-bolder" eventKey="/">
+            <Nav.Link onClick={()=>handleClick('/')} className="px-0 fw-bold " eventKey="/">
               Popular
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link id="new" onClick={()=>handleClick('/games')} className="px-0 fw-bolder" eventKey="/games">
+            <Nav.Link id="new" onClick={()=>handleClick('/games')} className="px-0 fw-bold " eventKey="/games">
               {title ? title : 'All'}
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link onClick={()=>handleClick('/category')} className="px-0 fw-bolder" eventKey="/category">
+            <Nav.Link onClick={()=>handleClick('/category')} className="px-0 fw-bold " eventKey="/category">
               Category
             </Nav.Link>
           </Nav.Item>

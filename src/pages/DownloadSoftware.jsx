@@ -33,7 +33,7 @@ export default function DownloadSoftware() {
             <div className="col-12 col-md-6 col-lg-4 p-2">
               <a
                 href={software.link1}
-                className="btn btn-primary px-3 py-2  w-100"
+                className="btn bg_main px-3 py-2  w-100"
               >
                 {software.name_1}
               </a>
@@ -44,7 +44,7 @@ export default function DownloadSoftware() {
             <div className="col-12 col-md-6 col-lg-4 p-2">
               <a
                 href={software.link2}
-                className="btn btn-primary px-3 py-2  w-100"
+                className="btn bg_main px-3 py-2  w-100"
               >
                 {software.name_2}
               </a>
@@ -54,7 +54,7 @@ export default function DownloadSoftware() {
             <div className="col-12 col-md-6 col-lg-4 p-2">
               <a
                 href={software.link3}
-                className="btn btn-primary px-3 py-2  w-100"
+                className="btn bg_main px-3 py-2  w-100"
               >
                 {software.name_3}
               </a>

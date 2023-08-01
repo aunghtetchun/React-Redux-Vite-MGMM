@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { FiCpu,FiBox, FiUserCheck, FiPackage} from "react-icons/fi";
+import { FiCpu, FiUserCheck, FiGrid, FiSend} from "react-icons/fi";
 import { useSelector } from "react-redux";
 export default function BottomNav() {
   const location = useLocation();
@@ -23,7 +23,7 @@ export default function BottomNav() {
     <>
       <div className="col-12 px-0 mx-0 shadow shadow-lg bg_main border border-red d-flex justify-content-center align-items-center mobile_nav">
         <Link to={current_url} className={`${changeColorHome} col py-2 px-0 text-center `}>
-          <FiPackage className={`${changeColorHome}`}/>
+          <FiGrid className={`${changeColorHome}`}/>
           <h6 className={`my-1 ${changeColorHome}`}>Game</h6>
         </Link>
        
@@ -32,7 +32,7 @@ export default function BottomNav() {
           <h6 className="my-1">Software</h6>
         </Link>
         <Link to="/request" className={`col py-2   px-0 text-center ${changeColor}`}>
-          <FiBox className={`${changeColor}`}/> 
+          <FiSend className={`${changeColor}`}/> 
           <h6 className={`my-1  ${changeColor}`}>Request</h6>
         </Link>
         <Link to="/profile" className={`col py-2   px-0 text-center ${changeColorLogin}`}>

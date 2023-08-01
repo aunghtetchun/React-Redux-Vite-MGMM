@@ -55,7 +55,7 @@ export default function GameDetails() {
               <img
                 src={game.logo}
                 alt=""
-                className="w-100 mb-2"
+                className="w-100 my-2"
               />
             </div>
             <div className="col-12 text-center px-0">
@@ -120,10 +120,10 @@ export default function GameDetails() {
                 <h4 className="col-12 font-weight-bolder mt-3 pb-0 mb-0 text-center ">Mod Features</h4>                
                 <p >{game.features}</p>
                 <h4 className="col-12 font-weight-bolder my-3 pb-0 fw-bolder text-center ">ဒီမှာဒေါင်းပါ</h4>                
-                 <Link to={`/download/${game.slug}`} className="btn btn-primary px-4 py-2"><FiDownload/>&nbsp;Download Game</Link>
+                 <Link to={`/download/${game.slug}`} className="btn bg_main px-4 py-2"><FiDownload/>&nbsp;Download Game</Link>
                  {isLoggedIn && !message ?
                     <button onClick={saveData} className="btn btn-outline-success px-4 py-2 ms-2"><FiSave/>&nbsp;သိမ်းထားမည်</button>
-                 :<div className="alert alert-success my-2 col-12">{message}</div>}
+                 : message ? <div className="alert alert-success my-2 col-12">{message}</div> :''}
 
                  <div className="col-12 col-md-6 col-lg-6 mx-auto px-0 mt-3 text-center d-flex flex-wrap">
                  <ShareInfo/>

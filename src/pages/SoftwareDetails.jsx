@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Badge } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {  Link, useParams } from "react-router-dom";
-import {FiLayers, FiSettings, FiPackage, FiSave, FiCalendar, FiCpu} from "react-icons/fi";
+import {FiLayers, FiSettings, FiPackage, FiSave, FiCalendar, FiCpu, FiDownload} from "react-icons/fi";
 // import RelatedSoftwares from "../components/RelatedSoftwares";
 import ShareInfo from "../components/ShareInfo";
 import { fetchSoftwareDetails } from "../actions/softwareAction";
@@ -39,7 +39,7 @@ export default function SoftwareDetails() {
               <img
                 src={software.logo}
                 alt=""
-                className="w-100 mb-2"
+                className="w-100 my-2"
               />
             </div>
             <div className="col-12 text-center px-0">
@@ -94,7 +94,7 @@ export default function SoftwareDetails() {
                 <h4 className="col-12 font-weight-bolder mt-3 pb-0 mb-0 text-center ">Mod Features</h4>                
                 <p >{software.features}</p>
                 <h4 className="col-12 font-weight-bolder my-3 pb-0 fw-bolder text-center ">ဒီမှာဒေါင်းပါ</h4>                
-                 <Link to={`/download-software/${software.slug}`} className="btn btn-primary px-4 py-2">Download Software</Link>
+                 <Link to={`/download-software/${software.slug}`} className="btn bg_main px-4 py-2"><FiDownload/> Download Software</Link>
                  <ShareInfo/>
                 {/* <RelatedSoftwares id={software.category_id} />       */}
             </div>

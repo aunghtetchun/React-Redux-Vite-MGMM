@@ -52,22 +52,20 @@ export default function CardItem({ game,user_id }) {
           </div>
           <div className="col-9 ">
             <h6 className="gcard_title mb-0">{game.name}</h6>
-            <p className="mb-0 p-0 fs-13"> Version : {game.version}</p>
+            <p className="mb-0 text-muted p-0 py-1 fs-13"> Version : {game.version}</p>
             <p className="mb-0 fs-13">
               {game.size} ,
-              <span className="fw-bold">
                 {game.type.toLowerCase().includes("online") &&
                 game.type.toLowerCase().includes("offline")
-                  ? "Online & Offline"
+                  ? <span className="fw-bold text-success">Online </span> & <span className="fw-bold text-danger"> Offline</span>
                   : game.type.toLowerCase().includes("online")
-                  ? "Online"
-                  : "Offline"}
-              </span>
+                  ? <span className="fw-bold text-success">Online</span>
+                  : <span className="fw-bold text-danger">Offline</span>}
             </p>
             <div className="g_card_badge text-right">
               {game.new == 1  ?  (
                 <Badge bg="danger" className="font-weight-bold card_badge">
-                  <FiGift /> <span> New</span>
+                  <FiGift />&nbsp; <span>New</span>
                 </Badge>
               ) : game.new == 2  ? (
                 <Badge bg="success" className="font-weight-bold card_badge">
@@ -78,9 +76,9 @@ export default function CardItem({ game,user_id }) {
                 ""
               )}
               <br />
-              <Badge bg="primary" className="font-weight-bold card_badge">
+              <Badge className="font-weight-bold bg_viewer card_badge">
                 <FiEye />
-                <span> {game.count}</span>
+                <span>&nbsp; {game.count}</span>
               </Badge>
             </div>
           </div>

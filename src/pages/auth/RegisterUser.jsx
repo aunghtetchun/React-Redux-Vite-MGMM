@@ -26,13 +26,13 @@ const RegisterUser = () => {
 
   return (
     <div className="col-12 col-md-6 mt-3 p-0 card">
-      <div className="card-header">
-        <h6 className="my-3">REGISTER ACCOUNT</h6>
-      </div>
+      
       <div className="card-body">
+        <h4 className="mb-3 mt-1 fw-bolder">အကောင့်သစ်ဖွင့်မည်</h4>
+        <hr />
         <form onSubmit={handleSubmit}>
           <div className="mb-2">
-            <label className="form-label" htmlFor="name">Name:</label>
+            <label className="form-label fw-bolder" htmlFor="name">နာမည်:</label>
             <input
               type="text"
               id="name"
@@ -44,7 +44,7 @@ const RegisterUser = () => {
              {errors.name && <div className="error text-danger mt-1">{errors.name[0]}</div>}
           </div>
           <div className="mb-2">
-            <label className="form-label" htmlFor="email">Phone:</label>
+            <label className="form-label fw-bolder" htmlFor="email">ဖုန်းနံပါတ်:</label>
             <input
               type="number"
               id="email"
@@ -81,10 +81,10 @@ const RegisterUser = () => {
              {errors.confirm_password && <div className="error text-danger mt-1">{errors.confirm_password[0]}</div>}
           </div>
           <div className="text-end">
-            <Link to={'/user/login'} className="btn col-4 me-2 mt-3 btn-outline-success px-4 py-2">
+            <Link to={'/user/login'} className="btn me-2 mt-3 btn-outline-success px-3 py-2">
               <FiLogIn/>&nbsp;Login
             </Link>
-            <button className="btn col-4 mt-3 btn-primary px-4 py-2" type="submit">
+            <button className="btn mt-3 bg_main px-3 py-2" type="submit">
              <FiUserPlus/>&nbsp;Register
             </button>
             

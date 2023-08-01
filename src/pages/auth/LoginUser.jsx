@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { FiLogIn, FiUserPlus } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -19,12 +20,12 @@ const LoginUser = () => {
   return (
     <div className="col-12 mt-5 card col-md-6 p-0">
       <div className="card-body">
-      <h6 className="my-3">LOGIN USER ACCOUNT</h6>
+      <h4 className="mb-3 mt-1 fw-bolder">အကောင့်ဝင်မည်</h4>
         <hr />
         <form onSubmit={handleSubmit}>
           <div>
-            <label className="form-label" htmlFor="email">
-              Phone:
+            <label className="form-label mt-2 fw-bolder" htmlFor="email">
+              ဖုန်းနံပါတ်:
             </label>
             <input
               type="number"
@@ -37,7 +38,7 @@ const LoginUser = () => {
              {errors.email && <div className="error text-danger mt-1">The phone number error</div>}
           </div>
           <div>
-            <label className="form-label" htmlFor="password">
+            <label className="form-label mt-2" htmlFor="password">
               Password:
             </label>
             <input
@@ -51,11 +52,11 @@ const LoginUser = () => {
              {errors.password && <div className="error text-danger mt-1">{errors.password[0]}</div>}
           </div>
           <div className="text-end">
-            <Link to={'/user/register'} className="btn col-4 me-2 mt-3 btn-outline-success px-4 py-2">
-              Register
+            <Link to={'/user/register'} className="btn me-2 mt-3 btn-outline-success px-3 py-2">
+              <FiUserPlus/>&nbsp;အကောင့်သစ်
             </Link>
-            <button className="btn col-4 mt-3 btn-primary px-4 py-2" type="submit">
-              Login
+            <button className="btn mt-3 bg_main px-3 py-2" type="submit">
+             <FiLogIn/>&nbsp;Login
             </button>
             
           </div>

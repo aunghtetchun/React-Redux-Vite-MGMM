@@ -53,7 +53,7 @@ export default function SoftwareCardItem({ software }) {
                 ""
               )}
               <br />
-              <Badge bg="primary" className="font-weight-bold card_badge">
+              <Badge  className="font-weight-bold bg_viewer card_badge">
                 <FiEye />
                 <span> {software.count}</span>
               </Badge>
