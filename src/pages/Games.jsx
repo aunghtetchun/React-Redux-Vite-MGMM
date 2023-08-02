@@ -109,7 +109,7 @@ export default function Games() {
 
     if (deltaX > threshold) {
       navigate('/category')
-    } else if (deltaX < threshold) {
+    } else if (deltaX <- threshold) {
       navigate('/softwares')
     }
   };

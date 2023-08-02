@@ -19,6 +19,7 @@ export default function GameDetails() {
   const game = useSelector((state) => state.gameReducer.game);  /// state ယူတဲ့အဆင့်
   const { user, isLoggedIn,setGames,games } = useContext(AuthContext);
   const [message,setMessage] = useState(null);
+  const [loading,setLoading] = useState(false);
   
   useEffect(() => {
     window.scrollTo({
@@ -31,6 +32,7 @@ export default function GameDetails() {
   }, [dispatch,slug]);
 
   const saveData =async() => {
+    setLoading(true);
     const post_id=game.id;
     const user_id=user.id;
       const response = await saveGame(post_id, user_id,user.oldToken);
@@ -140,7 +142,11 @@ export default function GameDetails() {
                 <h4 className="col-12 font-weight-bolder my-3 pb-0 fw-bolder text-center ">ဒီမှာဒေါင်းပါ</h4>                
                  <Link to={`/download-game/${game.slug}`} className="btn bg_main px-4 py-2"><FiDownload/>&nbsp;Download Game</Link>
                  {isLoggedIn && !message ?
-                    <button onClick={saveData} className="btn btn-outline-success px-4 py-2 ms-2"><FiSave/>&nbsp;သိမ်းထားမည်</button>
+                    <button onClick={saveData} className="btn btn-outline-success px-4 py-2 ms-2"><FiSave/>&nbsp;
+                     
+                    { !loading ? 'သိမ်းထားမည်' :   <Spinner animation="border" size="sm" />}
+                   
+                    </button>
                  : !message && isLoggedIn  ? <Placeholder.Button xs={4} aria-hidden="true" />: message && isLoggedIn ?<div className="alert alert-success my-2 col-12">{message}</div> :''}
 
                 <div className="col-12 mx-auto px-0 mt-3 text-center d-flex flex-wrap">
