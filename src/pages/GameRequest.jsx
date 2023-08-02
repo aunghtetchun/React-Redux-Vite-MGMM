@@ -56,7 +56,7 @@ export default function GameRequest() {
     const deltaX = touchX - touchStartX.current;
 
     // Determine the threshold for considering it a left slide (you can adjust this value)
-    const threshold = 50;
+    const threshold = 150;
 
     if (deltaX < -threshold) {
       console.log("Sliding left");

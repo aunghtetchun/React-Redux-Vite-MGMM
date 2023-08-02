@@ -105,12 +105,12 @@ export default function Games() {
     const deltaX = touchX - touchStartX.current;
 
     // Determine the threshold for considering it a left slide (you can adjust this value)
-    const threshold = 100;
-
-    if (deltaX > threshold) {
-      navigate('/category')
-    } else if (deltaX <- threshold) {
+    const threshold = 150;
+    if (deltaX < -threshold) {
+      console.log("Sliding left");
       navigate('/softwares')
+    } else if (deltaX > threshold) {
+      navigate('/category')
     }
   };
 
