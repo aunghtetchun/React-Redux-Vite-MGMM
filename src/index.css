@@ -44,7 +44,7 @@ a{
     min-height: 85vh !important;
 }
 .max_height{
-    /* max-height: 80vh !important; */
+    max-height: 80vh !important;
     overflow: scroll;
 }
 .gcard_title{
