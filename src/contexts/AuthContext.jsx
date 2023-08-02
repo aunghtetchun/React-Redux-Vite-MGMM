@@ -38,8 +38,9 @@ const AuthProvider = ({ children }) => {
       setErrors(userData.response.data.error);
    }else{
       let name = userData.name;
+      let phone=userData.email;
       let token = userData.token;
-      setUser({ name, token });
+      setUser({ name, token,phone });
       setIsLoggedIn(true);
       localStorage.setItem("authToken", token);
     }
@@ -49,11 +50,11 @@ const AuthProvider = ({ children }) => {
       const response=await register(userData);
       if (response.response && response.response.data.error){
          setErrors(response.response.data.error);
-         alert('hello')
       }else{
         let name = userData.name;
+        let phone=userData.email;
         let token = response.token; // Replace with the actual new token received after registration.
-        setUser({ name, token });
+        setUser({ name, token,phone });
         setIsLoggedIn(true);
         localStorage.setItem("authToken", token);   
       }

@@ -44,6 +44,7 @@ export const setRelatedGames = (related_games) => ({
 export const fetchRelatedGames = (id) => {
   return async (dispatch) => {
     try {
+      dispatch(setRelatedGames([]));
       dispatch(setLoading(true));
       const response=await getRelatedGames(id);
       dispatch(setRelatedGames(response.related_games));

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { Badge } from "react-bootstrap";
+import { Badge, Placeholder } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {  Link, useParams } from "react-router-dom";
 import { fetchGameDetails } from "../actions/gameActions";
@@ -17,7 +17,7 @@ export default function GameDetails() {
   const { slug } = useParams();
 
   const game = useSelector((state) => state.gameReducer.game);  /// state ယူတဲ့အဆင့်
-  const { user, isLoggedIn,setGames } = useContext(AuthContext);
+  const { user, isLoggedIn,setGames,games } = useContext(AuthContext);
   const [message,setMessage] = useState(null);
   
   useEffect(() => {
@@ -27,14 +27,18 @@ export default function GameDetails() {
     });
     // Fetch the game details when the component mounts  state ထည့်တဲ့အဆင့်
     dispatch(fetchGameDetails(slug));
+    setMessage(null);
   }, [dispatch,slug]);
 
   const saveData =async() => {
     const post_id=game.id;
     const user_id=user.id;
       const response = await saveGame(post_id, user_id,user.oldToken);
-      setGames((prevGames) => [...prevGames, game]);
-      console.log(response);
+      const idExists = games.some((existingGame) => existingGame.id === game.id);
+      if (!idExists) {
+        // If the game's ID does not exist, add the new game to the array
+        setGames((prevGames) => [...prevGames, game]);
+      }
       if (response.success){
         setMessage(response.success);
       }
@@ -106,7 +110,6 @@ export default function GameDetails() {
             </div>
             <div className="col-12 mt-4 text-center ">
              <h4 className="col-12 font-weight-bolder  pb-0 mb-4 text-center ">Gameplay Photos</h4>                
-
                 <ImageCarousel images={game.photos}/>
             </div>
             <div className="col-12 mt-4 text-center">
@@ -114,7 +117,7 @@ export default function GameDetails() {
 
               <iframe
                 width="100%"
-                height="300"
+                height="200"
                 src={ `https://www.youtube.com/embed/${game.video}`}
                 title="YouTube Video Player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -125,7 +128,7 @@ export default function GameDetails() {
                 <div className="px-3" key="game-description" dangerouslySetInnerHTML={{ __html: game.description }}></div>
                 <div className="text-center">
                     <Badge
-                      pill bg="danger" className="font-weight-bold  px-3 py-2 my-2 mx-1"
+                      pill bg="secondary" className="font-weight-bold  px-3 py-2 my-2 mx-1"
                     >
                       Uploaded by {game.username}
                     </Badge>
@@ -136,11 +139,10 @@ export default function GameDetails() {
                  <Link to={`/download/${game.slug}`} className="btn bg_main px-4 py-2"><FiDownload/>&nbsp;Download Game</Link>
                  {isLoggedIn && !message ?
                     <button onClick={saveData} className="btn btn-outline-success px-4 py-2 ms-2"><FiSave/>&nbsp;သိမ်းထားမည်</button>
-                 : message ? <div className="alert alert-success my-2 col-12">{message}</div> :''}
+                 : !message ? <Placeholder.Button xs={4} aria-hidden="true" />: message?<div className="alert alert-success my-2 col-12">{message}</div> :''}
 
-                 <div className="col-12 col-md-6 col-lg-6 mx-auto px-0 mt-3 text-center d-flex flex-wrap">
-                 <ShareInfo/>
-                 
+                <div className="col-12 mx-auto px-0 mt-3 text-center d-flex flex-wrap">
+                    <ShareInfo/>                 
                 </div>
                 <h4 className="col-12 font-weight-bolder my-3 pb-0 fw-bolder text-center ">ဆင်တူသောဂိမ်းများ</h4>   
                 <RelatedGames id={game.category_id} />      

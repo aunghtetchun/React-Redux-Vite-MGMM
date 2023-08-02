@@ -1,9 +1,9 @@
 import React from "react";
-import { FiFacebook } from "react-icons/fi";
+import { FiFacebook, FiSend } from "react-icons/fi";
 
 export default function ShareInfo() {
   return (
-    <div className="col-12 col-md-6 col-lg-6 mx-auto px-0 mt-3 text-center d-flex flex-wrap">
+    <div className="col-12 col-md-10 mx-auto px-0 mt-3 text-center d-flex flex-wrap">
       <div className="col-6 pl-0 pe-2">
         <a
           className="btn col-12 text-light py-2 fb_btn"
@@ -17,7 +17,7 @@ export default function ShareInfo() {
           href="https://t.me/+skU4FVRG3_ZkYzE1"
           className="btn py-2 px-0 col-12  tg_btn"
         >
-          Join Telegram
+          <FiSend/> Join Telegram
         </a>
       </div>
     </div>

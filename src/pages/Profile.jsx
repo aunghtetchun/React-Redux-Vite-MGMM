@@ -67,7 +67,7 @@ export default function Profile() {
             <div className="card-body px-2 pt-0 save_games">
             {games && games.length>0 ? games.map((game) => (
               <div
-                className="col-12 mb-3 pt-2"
+                className="col-12 my-2"
                 key={game.id}
               >
                 <CardItem user_id={user.id} game={game} />
