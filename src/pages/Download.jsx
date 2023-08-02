@@ -34,7 +34,7 @@ export default function Download() {
             <hr className="col-12 px-0" />
           {game.link1 && (
             <div className="col-12 col-md-6 col-lg-4 p-2">
-              <a target="_blank" rel="noopener noreferrer"
+              <a
                 href={`https://modgamesmm.com/download/${game.slug}/link1/game`}
                 className="btn bg_main px-3 py-2  w-100"
               >
@@ -45,7 +45,7 @@ export default function Download() {
 
           {game.link2 && (
             <div className="col-12 col-md-6 col-lg-4 p-2">
-              <a target="_blank" rel="noopener noreferrer"
+              <a
                href={`https://modgamesmm.com/download/${game.slug}/link2/game`}
                 className="btn bg_main px-3 py-2  w-100"
               >
@@ -55,7 +55,7 @@ export default function Download() {
           )}
           {game.link3 && (
             <div className="col-12 col-md-6 col-lg-4 p-2">
-              <a target="_blank" rel="noopener noreferrer"
+              <a
                 href={`https://modgamesmm.com/download/${game.slug}/link3/game`}
                 className="btn bg_main px-3 py-2  w-100"
               >

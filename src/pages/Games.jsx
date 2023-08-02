@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {  useLocation, useNavigate, useParams } from "react-router-dom";
-import { fetchAllGames, fetchAllGamesByCategory, setCurrentPage, setCurrentUrl, setLoading, setMoreGames, setSeeMore, setTimeoutAction } from "../actions/gameActions";
+import { fetchAllGames, fetchAllGamesByCategory, setCurrentPage, setCurrentUrl, setMoreGames, setSeeMore, setTimeoutAction } from "../actions/gameActions";
 import CardItem from "../components/CardItem";
 import LoadingCard from "../components/LoadingCard";
 import TopNav from "../components/TopNav";
@@ -92,7 +92,7 @@ export default function Games() {
         inline: 'nearest'   // Scroll horizontally to the nearest edge
       });
     }
-  }, [prevScrollPosition,dispatch]);
+  }, [prevScrollPosition]);
 
   const touchStartX = useRef(0);
 
@@ -109,7 +109,7 @@ export default function Games() {
 
     if (deltaX > threshold) {
       navigate('/category')
-    } else if (deltaX <- threshold) {
+    } else if (deltaX < threshold) {
       navigate('/softwares')
     }
   };
