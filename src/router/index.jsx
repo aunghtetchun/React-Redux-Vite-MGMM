@@ -46,7 +46,7 @@ const router = createBrowserRouter([
         element: <RegisterUser />,
       },
       {
-        path: "/download/:slug",
+        path: "/download-game/:slug",
         element: <Download />,
       },
       {
