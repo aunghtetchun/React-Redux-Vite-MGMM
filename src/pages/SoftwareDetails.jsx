@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { Badge } from "react-bootstrap";
+import { Badge, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {  Link, useParams } from "react-router-dom";
 import {FiLayers, FiSettings, FiPackage, FiSave, FiCalendar, FiCpu, FiDownload} from "react-icons/fi";
@@ -25,7 +25,9 @@ export default function SoftwareDetails() {
 
   
   if (!software) {
-    return <div>Software not found.</div>;
+    return  <Spinner animation="border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </Spinner>;
   }
 
   return (

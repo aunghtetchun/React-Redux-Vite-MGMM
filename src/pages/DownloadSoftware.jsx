@@ -32,7 +32,7 @@ export default function DownloadSoftware() {
           {software.link1 && (
             <div className="col-12 col-md-6 col-lg-4 p-2">
               <a
-                href={software.link1}
+                href={`https://modgamesmm.com/download/${software.slug}/link1/software`}
                 className="btn bg_main px-3 py-2  w-100"
               >
                 {software.name_1}
@@ -43,7 +43,7 @@ export default function DownloadSoftware() {
           {software.link2 && (
             <div className="col-12 col-md-6 col-lg-4 p-2">
               <a
-                href={software.link2}
+                href={`https://modgamesmm.com/download/${software.slug}/link2/software`}
                 className="btn bg_main px-3 py-2  w-100"
               >
                 {software.name_2}
@@ -53,7 +53,7 @@ export default function DownloadSoftware() {
           {software.link3 && (
             <div className="col-12 col-md-6 col-lg-4 p-2">
               <a
-                href={software.link3}
+                href={`https://modgamesmm.com/download/${software.slug}/link3/software`}
                 className="btn bg_main px-3 py-2  w-100"
               >
                 {software.name_3}

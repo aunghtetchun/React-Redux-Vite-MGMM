@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { Badge, Placeholder } from "react-bootstrap";
+import { Badge, Placeholder, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {  Link, useParams } from "react-router-dom";
 import { fetchGameDetails } from "../actions/gameActions";
@@ -45,7 +45,9 @@ export default function GameDetails() {
   };
   
   if (!game) {
-    return <div>Game not found.</div>;
+    return  <Spinner animation="border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </Spinner>;
   }
 
   return (
