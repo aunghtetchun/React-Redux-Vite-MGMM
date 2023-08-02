@@ -1,9 +1,8 @@
 import { useRef, useState } from "react";
 import { useEffect } from "react";
-import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { fetchCategories, setCurrentStatus, setCurrentUrl } from "../actions/gameActions";
+import {  useNavigate } from "react-router-dom";
+import { fetchCategories, setCurrentStatus } from "../actions/gameActions";
 import LoadingCategory from "../components/LoadingCategory";
 import TopNav from "../components/TopNav";
 
@@ -78,7 +77,7 @@ export function Category() {
           <button onClick={goAllGames}
             className="btn rounded-0 btn-danger  w-100 p-2"
           >
-            ဂိမ်းအားလုံး
+            ဂိမ်းအားလုံး 
           </button>
         </div>
         {categories &&
@@ -87,7 +86,7 @@ export function Category() {
               <button onClick={()=>goGamesByCategory(category.id)} 
                 className="btn rounded-0 btn-outline-danger  w-100 p-2"
               >
-                {category.title}
+                {category.title}  <span className="text-dark"> ( { category.count } ) </span> 
               </button>
             </div>
           ))}

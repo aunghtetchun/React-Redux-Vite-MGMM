@@ -61,7 +61,7 @@ export default function Profile() {
           </div>
           <div className="card col-12 mt-4">
             <div className="card-title mb-0 text-center">
-                <h3 className="fw-bolder pt-3">သင်သိမ်းထားသောဂိမ်းများ</h3>
+                <h3 className="fw-bolder pt-3">သင်သိမ်းထားသောဂိမ်းများ ( {games.length} )</h3>
                 <hr/>
             </div>
             <div className="card-body px-2 pt-0 save_games">

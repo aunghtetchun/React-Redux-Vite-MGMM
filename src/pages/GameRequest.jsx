@@ -72,14 +72,14 @@ export default function GameRequest() {
     onTouchMove={handleTouchMove}
     className='col-12 px-0 min_height'>
     {message &&
-    <div className="alert alert-success">{message}</div>
+    <div className="alert alert-success mt-2">{message}</div>
     }
       <div className="card col-12 mt-3">
           <div className="card-body">
           <h4 className="col-12 mt-2 text-center">Link Repair &amp; Request Game</h4>
       <Col>
         <hr />
-        <Form className="text-light pb-3" onSubmit={handleSubmit}>
+        <Form className="text-light pb-3" id="reqgame" onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Label className="fw-bold text-dark mt-3">Game Name</Form.Label>
             <Form.Control
@@ -117,7 +117,7 @@ export default function GameRequest() {
         </Form>
         {isLoggedIn ?
           <div className='d-flex justify-content-end'>
-            <Button className="px-3 py-2 mt-3" type="submit" variant="primary" block>
+            <Button className="px-3 py-2 mt-3" form='reqgame' type="submit" variant="primary" block>
               <FiUpload />&nbsp;Request Game
             </Button>
           </div>

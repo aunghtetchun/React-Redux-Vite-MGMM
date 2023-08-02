@@ -41,7 +41,7 @@ export default function SearchGames() {
         <Col xs="10" className="pe-0">
           <Form.Control
             type="text"
-            placeholder="Search data..."
+            placeholder="Search games..."
             className="pe-0 search_input"
             value={searchValue}
             onChange={handleChange}

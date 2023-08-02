@@ -44,7 +44,7 @@ const LoginUser = () => {
       <div className="card-body">
       <h4 className="mb-3 mt-1 ">အကောင့်ဝင်မည်</h4>
         <hr />
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} id="loginuser">
           <div>
             <label className="form-label mt-2 " htmlFor="email">
               ဖုန်းနံပါတ်:
@@ -77,7 +77,7 @@ const LoginUser = () => {
             <Link to={'/user/register'} className="btn me-2 mt-3 btn-outline-success px-3 py-2">
               <FiUserPlus/>&nbsp;အကောင့်သစ်
             </Link>
-            <button className="btn mt-3 bg_main px-3 py-2" type="submit">
+            <button className="btn mt-3 bg_main px-3 py-2" form="loginuser" type="submit">
              <FiLogIn/>&nbsp;Login
             </button>
             

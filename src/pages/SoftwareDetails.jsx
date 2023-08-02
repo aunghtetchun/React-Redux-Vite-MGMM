@@ -88,7 +88,7 @@ export default function SoftwareDetails() {
                 <div className="px-3" dangerouslySetInnerHTML={{ __html: software.description}}></div>
                 <div className="text-center">
                     <Badge
-                      pill bg="danger" className="font-weight-bold  px-3 py-2 my-2 mx-1"
+                      pill bg="secondary" className="font-weight-bold  px-3 py-2 my-2 mx-1"
                     >
                       Uploaded by {software.username}
                     </Badge>

@@ -40,10 +40,10 @@ const AuthProvider = ({ children }) => {
       let id = userData.id;
       let name = userData.name;
       let phone=userData.email;
-      let token = userData.token;
-      setUser({id, name, token,phone });
+      let oldToken = userData.token;
+      setUser({id, name, oldToken,phone });
       setIsLoggedIn(true);
-      localStorage.setItem("authToken", token);
+      localStorage.setItem("authToken", oldToken);
     }
   };
 
@@ -55,10 +55,10 @@ const AuthProvider = ({ children }) => {
         let id = response.id;
         let name = response.name;
         let phone=response.email;
-        let token = response.token; // Replace with the actual new token received after registration.
-        setUser({id, name, token,phone });
+        let oldToken = response.token; // Replace with the actual new token received after registration.
+        setUser({id, name, oldToken,phone });
         setIsLoggedIn(true);
-        localStorage.setItem("authToken", token);   
+        localStorage.setItem("authToken", oldToken);   
       }
     
   };
