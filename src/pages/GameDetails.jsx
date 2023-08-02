@@ -139,7 +139,7 @@ export default function GameDetails() {
                  <Link to={`/download/${game.slug}`} className="btn bg_main px-4 py-2"><FiDownload/>&nbsp;Download Game</Link>
                  {isLoggedIn && !message ?
                     <button onClick={saveData} className="btn btn-outline-success px-4 py-2 ms-2"><FiSave/>&nbsp;သိမ်းထားမည်</button>
-                 : !message ? <Placeholder.Button xs={4} aria-hidden="true" />: message?<div className="alert alert-success my-2 col-12">{message}</div> :''}
+                 : !message && isLoggedIn  ? <Placeholder.Button xs={4} aria-hidden="true" />: message && isLoggedIn ?<div className="alert alert-success my-2 col-12">{message}</div> :''}
 
                 <div className="col-12 mx-auto px-0 mt-3 text-center d-flex flex-wrap">
                     <ShareInfo/>                 
