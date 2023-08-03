@@ -10,8 +10,8 @@ export default function SearchGames() {
   const [searchValue, setSearchValue] = useState('');
   const dispatch = useDispatch();
   const isGames = location.pathname.includes('/games');
-  const isCategory = location.pathname.includes('/category');
-  const selectedHome = window.location.pathname === '/';
+  // const isCategory = location.pathname.includes('/category');
+  // const selectedHome = window.location.pathname === '/';
   const search_keyword = useSelector((state) => state.gameReducer.search_keyword);
   let navigate = useNavigate();
 
@@ -28,11 +28,11 @@ export default function SearchGames() {
     setSearchValue(event.target.value);
   };
   useEffect(()=>{
-    if(!isGames && search_keyword!=null && !selectedHome && !isCategory){
+    if(!isGames && search_keyword!=null && searchValue!=''){
       navigate(`/games/`);
     }
     console.log(search_keyword);
-  },[isGames,navigate,search_keyword,selectedHome,isCategory])
+  },[isGames,navigate,search_keyword,searchValue])
   
 
   return (
