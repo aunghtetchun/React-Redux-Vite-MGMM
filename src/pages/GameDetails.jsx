@@ -72,15 +72,16 @@ export default function GameDetails() {
               </h5>
             </div>
           </div>
-          <div className="col-12 px-0 text-center">
+          <div className="col-12 d-flex flex-wrap px-0 justify-content-center">
             {game.categories &&
-              game.categories.map((category) => {
-                  <div key={category.id}>
-                    <Badge pill bg="warning" className="font-weight-bold my-1 mx-1">
-                      {category.title}
-                    </Badge>
-                  </div>
-              })}
+              game.categories.map((category) => (
+                <div key={category.id}>
+                  <Badge pill bg="dark" className="font-weight-bold my-1 px-3 py-2 mx-1">
+                    {category.title}
+                  </Badge>
+                </div>
+              ))
+            }              
           </div>
           <div className="col-12 col-md-7 mx-auto px-0 mt-2">
                 <table className="table table-bordered mx-0 mb-0 px-0 w-100 table-striped">
@@ -140,9 +141,9 @@ export default function GameDetails() {
                 <h4 className="col-12 font-weight-bolder mt-3 pb-0 mb-0 text-center ">Mod Features</h4>                
                 <p >{game.features}</p>
                 <h4 className="col-12 font-weight-bolder my-3 pb-0 fw-bolder text-center ">ဒီမှာဒေါင်းပါ</h4>                
-                 <Link to={`/download-game/${game.slug}`} className="btn bg_main px-4 py-2"><FiDownload/>&nbsp;Download Game</Link>
+                 <Link to={`/download-game/${game.slug}`} className="btn bg_main px-3 py-2"><FiDownload/>&nbsp;Download Game</Link>
                  {isLoggedIn && !message ?
-                    <button onClick={saveData} className="btn btn-outline-success px-4 py-2 ms-2"><FiSave/>&nbsp;
+                    <button onClick={saveData} className="btn btn-outline-success px-3 py-2 ms-2"><FiSave/>&nbsp;
                      
                     { !loading ? 'သိမ်းထားမည်' :   <Spinner animation="border" size="sm" />}
                    

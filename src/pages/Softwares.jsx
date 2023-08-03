@@ -126,7 +126,7 @@ export default function Softwares() {
                 <SoftwareCardItem software={software} />
               </div>
             )) : ''}
-        {see_more && search_status != 'search_softwares' ?
+        {see_more && search_status != 'search_softwares' && softwares.length>10  && search_status != 'not_found'?
             <div className="mb-5 mt-3 pb-3">
               <Spinner animation="border" variant="success" />
             </div>

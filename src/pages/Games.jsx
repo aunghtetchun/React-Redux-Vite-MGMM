@@ -139,7 +139,7 @@ export default function Games() {
                 <CardItem game={game} />
               </div>
             )): ''}
-          {seemore && all_games.length > 20 ?
+          {seemore && all_games.length > 20 || search_status != 'not_found'?
             <div className="mb-5 mt-3 pb-3">
               <Spinner animation="border" variant="success" />
             </div>
