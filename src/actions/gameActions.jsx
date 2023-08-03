@@ -136,6 +136,7 @@ export const fetchAllGamesByCategory = (category_id) => {
       dispatch(setSeeMore(true));
       dispatch(setKeyword(null));
       dispatch(setLoading(true));
+      dispatch(setGameSearchStatus('empty'));
       if(category_id!=null){
         const response = await getAllGamesByCategory(category_id);
         dispatch(setAllGames(response.games.data));
