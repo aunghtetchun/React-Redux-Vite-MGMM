@@ -2,12 +2,13 @@ import React from "react";
 import { FiFacebook, FiSend } from "react-icons/fi";
 
 export default function ShareInfo() {
+  const path=window.location.pathname;
   return (
     <div className="col-12 col-md-10 mx-auto px-0 mt-3 text-center d-flex flex-wrap">
       <div className="col-6 pl-0 pe-2">
         <a
           className="btn col-12 text-light py-2 fb_btn"
-          href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fmodsoftwaresmm.com%2Fsoftwares%2FNorthgard"
+          href={`https://www.facebook.com/sharer/sharer.php?u=https://modgamesmm.com/${path}`}
         >
           <FiFacebook /> Share Facebook
         </a>

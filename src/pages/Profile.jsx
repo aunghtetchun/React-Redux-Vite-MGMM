@@ -1,16 +1,44 @@
 import React from "react";
+import { useState } from "react";
 import { useRef } from "react";
 import { useContext } from "react";
-import { Button, Card } from "react-bootstrap";
-import {  FiLogOut } from "react-icons/fi";
+import { Badge, Button, Card, Modal } from "react-bootstrap";
+import {  FiLogOut, FiMail } from "react-icons/fi";
 import {  useNavigate } from "react-router-dom";
 import CardItem from "../components/CardItem";
 import { AuthContext } from "../contexts/AuthContext";
 import LoginUser from "./auth/LoginUser";
 
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter fw-bold">
+          အသိပေးချက်
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p>
+          အသိပေးချက်များမရှိသေးပါ... </p><p>ကံစမ်းမဲဖောက်ပေးသည့် ကာလများတွင် မိမိပေါက်သည့် ဆုမဲကုဒ်ကို အသိပေးချက်မှာ ဖော်ပြပေးသွားမှာပါ...
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>ပိတ်မည်</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
 export default function Profile() {
   const { user, isLoggedIn,games, handleLogout } = useContext(AuthContext);
- 
+  const [modalShow, setModalShow] = React.useState(false);
+
   const touchStartX = useRef(0);
   const navigate=useNavigate();
   const handleTouchStart = (event) => {
@@ -38,6 +66,10 @@ export default function Profile() {
         <LoginUser />
       ) : (
         <div className="col-12  ">
+          <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
           <div className="d-flex shadow mt-3 border rounded py-3 flex-wrap justify-content-between align-items center">
             <div className="col-3 p-2">
               <Card.Img
@@ -47,7 +79,12 @@ export default function Profile() {
             </div>
             <div className="col-9 p-2">
               <Card.Body>
-                <Card.Title>{user.name}</Card.Title>
+                <Card.Title className="d-flex justify-content-between align-items-start">
+                  {user.name} 
+                  <div className="pe-3 ">
+                      <Badge bg="primary" onClick={() => setModalShow(true)} className="font-weight-bold"><FiMail/> 0</Badge>
+                  </div>
+                </Card.Title>
                 <Card.Text> Ph - {user.phone}</Card.Text>
                 <Button
                   variant="danger"

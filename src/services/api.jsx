@@ -191,10 +191,8 @@ export const saveGame = async ( post_id,user_id,token) => {
     return response.data;
   } catch (error) {
     if (error.response && error.response.data.error) {
-      // If there are validation errors in the API response, update the errors state
       return error;
     } else {
-      // Handle other types of errors, e.g., network errors
       console.error('An error occurred:', error);
       throw new Error(error);
     }
@@ -208,6 +206,27 @@ export const deleteSaveGame = async ( post_id,user_id,token) => {
         Authorization: `Bearer ${token}`,
       },
     });
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data.error) {
+      return error;
+    } else {
+      console.error('An error occurred:', error);
+      throw new Error(error);
+    }
+  }
+};
+
+export const saveComment = async ( post_id,comment,token) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/comment-game`,
+      { post_id,comment }, 
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     return response.data;
   } catch (error) {
     if (error.response && error.response.data.error) {

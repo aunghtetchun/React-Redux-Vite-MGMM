@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { Badge, Placeholder, Spinner } from "react-bootstrap";
+import { Badge, ListGroup, ListGroupItem, Placeholder, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {  Link, useParams } from "react-router-dom";
 import { fetchGameDetails } from "../actions/gameActions";
@@ -11,10 +11,12 @@ import ImageCarousel from "../components/ImageCarousel";
 import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from "react";
 import { saveGame } from "../services/api";
+import CommentBox from "../components/CommentBox";
 
 export default function GameDetails() {
   const dispatch = useDispatch();
   const { slug } = useParams();
+  const [comments, setComments] = useState('');
 
   const game = useSelector((state) => state.gameReducer.game);  /// state ယူတဲ့အဆင့်
   const { user, isLoggedIn,setGames,games } = useContext(AuthContext);
@@ -26,10 +28,18 @@ export default function GameDetails() {
       top: 0,
       behavior: "smooth",
     });
-    // Fetch the game details when the component mounts  state ထည့်တဲ့အဆင့်
     dispatch(fetchGameDetails(slug));
-    setMessage(null);
-  }, [dispatch,slug]);
+  
+  }, [dispatch, slug]);
+  
+  useEffect(() => {
+    if (game) {
+      setComments(game.get_comment);
+      // console.log(game);
+      setMessage(null);
+    }
+  }, [game]);
+
 
   const saveData =async() => {
     setLoading(true);
@@ -75,7 +85,7 @@ export default function GameDetails() {
           <div className="col-12 d-flex flex-wrap px-0 justify-content-center">
             {game.categories &&
               game.categories.map((category) => (
-                <div key={category.id}>
+                <div key={category.title}>
                   <Badge pill bg="dark" className="font-weight-bold my-1 px-3 py-2 mx-1">
                     {category.title}
                   </Badge>
@@ -150,9 +160,23 @@ export default function GameDetails() {
                     </button>
                  : !message && isLoggedIn  ? <Placeholder.Button xs={4} aria-hidden="true" />: message && isLoggedIn ?<div className="alert alert-success my-2 col-12">{message}</div> :''}
 
-                <div className="col-12 mx-auto px-0 mt-3 text-center d-flex flex-wrap">
+                <div className="col-12 mx-auto px-0 mt-3 text-center d-flex flex-wrap justify-content-center">
                     <ShareInfo/>                 
                 </div>
+                <ListGroup className="mt-4">
+                {comments &&
+                   comments.map((cmt) => (
+                    <ListGroupItem className="text-start py-0 cmt_card " key={cmt.id}>
+                        <small className="d-block text-muted">{cmt.username}</small>
+                        <small>{cmt.comment}</small>
+                    </ListGroupItem>
+                            
+                  ))}
+                </ListGroup>
+                {isLoggedIn && <div className="col-12 mx-auto px-0 text-center">
+                  <CommentBox post_id={game.id} setComments={setComments}/>
+                </div>
+                }
                 <h4 className="col-12 font-weight-bolder my-3 pb-0 fw-bolder text-center ">ဆင်တူသောဂိမ်းများ</h4>   
                 <RelatedGames id={game.category_id} />      
             </div>
