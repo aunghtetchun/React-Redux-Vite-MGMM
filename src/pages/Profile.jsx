@@ -39,10 +39,15 @@ function MyVerticallyCenteredModal(props) {
         {props.messages.length>0 ? props.messages.map((m) => (
         <>
             <h5 style={{lineHeight:2}}>{m.message} </h5>
-            <h5>(<span id="textToCopy" className="text-danger"> {m.code} </span>  ) </h5>
-            <button className="btn btn-outline-success" onClick={handleCopy}>
+            {m.code &&
+            <>
+              <h5>(<span id="textToCopy" className="text-danger"> {m.code} </span>  ) </h5>
+             <button className="btn btn-outline-success" onClick={handleCopy}>
               {copied ? 'Copied!' : 'Click to Copy'}
             </button>
+            </>
+            }
+           
 
         </>))
         :
