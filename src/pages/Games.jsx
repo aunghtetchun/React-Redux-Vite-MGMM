@@ -88,7 +88,7 @@ export default function Games() {
     if (targetElement) {
       targetElement.scrollIntoView({
         behavior: 'auto', // Use 'auto' for instant scrolling without animation
-        block: 'nearest',     // Scroll to the top of the element
+        block: 'start',     // Scroll to the top of the element
         inline: 'nearest'   // Scroll horizontally to the nearest edge
       });
     }
@@ -139,7 +139,7 @@ export default function Games() {
                 <CardItem game={game} />
               </div>
             )): ''}
-          {seemore && all_games.length > 20 || search_status != 'not_found'?
+          {seemore || all_games.length > 20 || search_status != 'not_found'?
             <div className="mb-5 mt-3 pb-3">
               <Spinner animation="border" variant="success" />
             </div>

@@ -133,7 +133,7 @@ a{
 /* profile jsx  */
 
 .save_games{
-    max-height: 55vh !important;
+    max-height: 35vh !important;
     overflow: scroll;
     scroll-behavior: smooth;
 }

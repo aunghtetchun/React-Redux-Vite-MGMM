@@ -11,10 +11,10 @@ export default function Layout() {
       <div className="row justify-content-center">
         <SwitchTransition>
           <CSSTransition
-            timeout={200}
-            classNames="fade"
+             timeout={200} 
+             classNames="fade"
             key={location.pathname}
-          >
+          > 
             <div className="col-12 col-lg-10 mt-0 px-0">
               <div className="container">
                 <div className="row justify-content-center align-items-center mx-0 mx-md-0">

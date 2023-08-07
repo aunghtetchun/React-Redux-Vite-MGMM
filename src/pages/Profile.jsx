@@ -11,6 +11,18 @@ import LoginUser from "./auth/LoginUser";
 
 
 function MyVerticallyCenteredModal(props) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    const textToCopy = document.getElementById('textToCopy');
+    const textArea = document.createElement('textarea');
+    textArea.value = textToCopy.innerText;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    setCopied(true);
+  };
   return (
     <Modal
       {...props}
@@ -19,14 +31,27 @@ function MyVerticallyCenteredModal(props) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter fw-bold">
-          အသိပေးချက်
+        <Modal.Title id="contained-modal-title-vcenter ">
+          <span className="fw-bolder">အသိပေးချက်</span>  
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p>
-          အသိပေးချက်များမရှိသေးပါ... </p><p>ကံစမ်းမဲဖောက်ပေးသည့် ကာလများတွင် မိမိပေါက်သည့် ဆုမဲကုဒ်ကို အသိပေးချက်မှာ ဖော်ပြပေးသွားမှာပါ...
-        </p>
+        {props.messages.length>0 ? props.messages.map((m) => (
+        <>
+            <h5 style={{lineHeight:2}}>{m.message} </h5>
+            <h5>(<span id="textToCopy" className="text-danger"> {m.code} </span>  ) </h5>
+            <button className="btn btn-outline-success" onClick={handleCopy}>
+              {copied ? 'Copied!' : 'Click to Copy'}
+            </button>
+
+        </>))
+        :
+        <>
+          <p>အသိပေးချက်များမရှိသေးပါ... </p>
+          <p>ကံစမ်းမဲဖောက်ပေးသည့် ကာလများတွင် မိမိပေါက်သည့် ဆုမဲကုဒ်ကို အသိပေးချက်မှာ ဖော်ပြပေးသွားမှာပါ...</p>
+        </>
+        }
+        
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>ပိတ်မည်</Button>
@@ -35,8 +60,9 @@ function MyVerticallyCenteredModal(props) {
   );
 }
 
+
 export default function Profile() {
-  const { user, isLoggedIn,games, handleLogout } = useContext(AuthContext);
+  const { user, isLoggedIn,games,messages, handleLogout } = useContext(AuthContext);
   const [modalShow, setModalShow] = React.useState(false);
 
   const touchStartX = useRef(0);
@@ -67,6 +93,7 @@ export default function Profile() {
       ) : (
         <div className="col-12  ">
           <MyVerticallyCenteredModal
+          messages={messages}
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
@@ -82,7 +109,7 @@ export default function Profile() {
                 <Card.Title className="d-flex justify-content-between align-items-start">
                   {user.name} 
                   <div className="pe-3 ">
-                      <Badge bg="primary" onClick={() => setModalShow(true)} className="font-weight-bold"><FiMail/> 0</Badge>
+                      <Badge bg={messages.length>0?'success':'primary'} onClick={() => setModalShow(true)} className="font-weight-bold"><FiMail/> {messages.length}</Badge>
                   </div>
                 </Card.Title>
                 <Card.Text> Ph - {user.phone}</Card.Text>
@@ -94,6 +121,11 @@ export default function Profile() {
                   <FiLogOut/>&nbsp;Logout
                 </Button>
               </Card.Body>
+            </div>
+          </div>
+          <div className="card col-12 mt-4">
+            <div className="card-body">
+                  <h6 style={{lineHeight:2}}>MGMM အသုံးပြုသူများအတွက် အပတ်စဥ် ဖုန်းဘေများ မဲဖောက်ပေးနေပါပြီ... သင့်အကောင့် Profile ဘေးက Message စာအိပ်လေးကိုနှိပ်ပီး ဒီအပတ်အတွက် <span className="text-danger">သင်ကံထူးသွားလား</span> ဆိုတာကို စစ်ဆေးလိုက်ပါ...</h6>
             </div>
           </div>
           <div className="card col-12 mt-4">
