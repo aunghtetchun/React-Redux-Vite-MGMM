@@ -1,16 +1,105 @@
-import React, { useEffect } from "react";
-import { FiDownload } from "react-icons/fi";
+import React, { useContext, useEffect } from "react";
+import { FiDownload, FiLink } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchGameDetails } from "../actions/gameActions";
 import RelatedGames from "../components/RelatedGames";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { Form, Placeholder } from "react-bootstrap";
+import { useState } from "react";
+import { setLinkRequest } from "../services/api";
+import { AuthContext } from "../contexts/AuthContext";
+
+function MyVerticallyCenteredModal(props) {
+  const [selectedOption, setSelectedOption] = useState('linkerr');
+  const [message, setMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const { user } = useContext(AuthContext);
+
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    setLoading(true);
+    const post_id=props.game_id;
+    const response = await setLinkRequest(selectedOption,post_id,user.oldToken);
+    if(response.finish){
+      setMessage(response.finish);
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          ဂိမ်းလင့် ပြန်ပြင်ခိုင်းရန်
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+      <Form id="report" onSubmit={handleSubmit}>
+      {[ 'radio'].map((type) => (
+        <div key={`default-${type}`} className="mb-3">
+          <Form.Check // prettier-ignore
+            type={type}
+            name="report"
+            id={`download-error-${type}`}
+            label={`ဂိမ်းကဒေါင်းမရတော့ပါဘူး`}
+            value="linkerr"
+            onChange={handleOptionChange}
+            checked={selectedOption === 'linkerr'}
+          />
+          <Form.Check
+            type={type}
+            name="report"
+            label={'ဂိမ်းကခိုးပီးသားမဟုတ်ပါဘူး'}
+            id={`mod-error-${type}`}
+            value="moderr"
+            onChange={handleOptionChange}
+            checked={selectedOption === 'moderr'}
+          />
+          <Form.Check
+            type={type}
+            name="report"
+            label={'ဂိမ်းကဒေါင်းလို့ရပီး ဆော့လို့မရဘူး'}
+            id={`game-error-${type}`}
+            value="gameerr"
+            onChange={handleOptionChange}
+            checked={selectedOption === 'gameerr'}
+          />
+        </div>
+      ))}
+     
+    </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+        {!message ?
+        <Button className="px-3 btn bg_main" form="report"  type="submit" block>
+            <FiLink />&nbsp;Report Link
+        </Button>
+         : !message && loading  ? <Placeholder.Button xs={4} aria-hidden="true" />: message && !loading ?<div className="alert alert-success my-2 col-12">{message}</div> :''}
+      </Modal.Footer>
+    </Modal>
+  );
+}
 
 export default function Download() {
   const { slug } = useParams();
   const dispatch = useDispatch();
 
   const game = useSelector((state) => state.gameReducer.game);  /// state ယူတဲ့အဆင့်
-  
+  const [modalShow, setModalShow] = React.useState(false);
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -63,6 +152,16 @@ export default function Download() {
               </a>
             </div>
           )}
+          <div className="col-12 col-md-6 col-lg-4 p-2">
+          <Button className="btn bg-success px-3 py-2  w-100" onClick={() => setModalShow(true)}>
+            <FiLink/> လင့်ပြန်ပြင်ခိုင်းရန်နှိပ်ပါ
+          </Button> 
+          <MyVerticallyCenteredModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            game_id={game.id}
+          />
+          </div>
         </div>
         <div className="card-footer text-center">
             <h6 className="fw-bold">{game.count} ယောက် ဒေါင်းထားပါတယ်</h6>

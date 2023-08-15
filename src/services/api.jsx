@@ -239,3 +239,26 @@ export const saveComment = async ( post_id,comment,token) => {
     }
   }
 };
+
+export const setLinkRequest = async ( selectedOption,post_id,token) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/report-game`,
+      { selectedOption,post_id }, 
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data.error) {
+      // If there are validation errors in the API response, update the errors state
+      return error;
+    } else {
+      // Handle other types of errors, e.g., network errors
+      console.error('An error occurred:', error);
+      throw new Error(error);
+    }
+  }
+};

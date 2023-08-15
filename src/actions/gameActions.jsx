@@ -212,3 +212,14 @@ export const setTimeoutAction = (title) => {
   };
 };
 
+
+// A sample async action to fetch categories (you need to modify this based on your API)
+// export const submitLinkRequest = (selectedOption) => {
+//   return async () => {
+//     try {
+//       const response = await setLinkRequest(selectedOption);
+//     } catch (error) {
+//       console.error("Error fetching categories:", error);
+//     }
+//   };
+// };
