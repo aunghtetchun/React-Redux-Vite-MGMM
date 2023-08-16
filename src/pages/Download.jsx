@@ -109,7 +109,9 @@ export default function Download() {
     dispatch(fetchGameDetails(slug));
   }, [dispatch,slug]);
 
-  
+  const goUrl=(url)=>{
+    window.location.href = url;
+  }
   if (!game) {
     return <div>Game not found.</div>;
   }
@@ -117,7 +119,7 @@ export default function Download() {
 
   return (
     <>
-     <div className="col-12 my-2 shadow ">
+     <div className="col-12 my-2 shadow " onClick={()=>goUrl('https://www.facebook.com/KVCMyanmar?mibextid=ZbWKwL')}>
      <Badge  bg="dark" className="fw-bold  px-4 py-2" text="light" >
         ကြော်ငြာ
       </Badge>
@@ -173,7 +175,7 @@ export default function Download() {
             <h6 className="fw-bold">{game.count} ယောက် ဒေါင်းထားပါတယ်</h6>
         </div>
       </div>
-      <div className="col-12 shadow my-2">
+      <div className="col-12 shadow my-2" onClick={()=>goUrl('https://www.facebook.com/profile.php?id=100089471109757&mibextid=ZbWKwL')}>
       <Badge  bg="dark" className="fw-bold px-4 py-2" text="light" >
         ကြော်ငြာ
       </Badge>

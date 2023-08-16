@@ -53,6 +53,10 @@ export default function GameDetails() {
     }
   }, [game]);
 
+  const goUrl=(url)=>{
+    window.location.href = url;
+  }
+
   const saveData = async () => {
     setLoading(true);
     const post_id = game.id;
@@ -197,7 +201,7 @@ export default function GameDetails() {
               Mod Features
             </h4>
             <p>{game.features}</p>
-            <div className="col-12 text-start">
+            <div className="col-12 text-start" onClick={()=>goUrl('https://www.facebook.com/profile.php?id=100089471109757&mibextid=ZbWKwL')}>
              
               <img
                 src="https://i.ibb.co/4fmcGCS/367501504-334105872378221-4151896815920128807-n.jpg"
@@ -254,7 +258,7 @@ export default function GameDetails() {
                   </ListGroupItem>
                 ))}
             </ListGroup>
-            <div className="col-12 text-start">
+            <div className="col-12 text-start" onClick={()=>goUrl('https://www.facebook.com/KVCMyanmar?mibextid=ZbWKwL')}>
               
               <img
                 src="https://i.ibb.co/PN9sKH7/367495909-1243618689655999-7963063728003866697-n.jpg"

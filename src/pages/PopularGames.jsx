@@ -63,7 +63,10 @@ export default function PopularGames() {
     }
   };
 
-
+  const goUrl=(url)=>{
+    window.location.href = url;
+  }
+  
   if (!popular_games){
     return <LoadingCard count={12}/>
   }
@@ -73,7 +76,7 @@ export default function PopularGames() {
   return (
     <>
     <TopNav position={'/'}/>
-    <div className="col-12 my-2 shadow ">
+    <div className="col-12 my-2 shadow " onClick={()=>goUrl('https://www.facebook.com/KVCMyanmar?mibextid=ZbWKwL')}>
      
                   <img src="https://i.ibb.co/PN9sKH7/367495909-1243618689655999-7963063728003866697-n.jpg" className="w-100" alt="" />
                   <Badge  bg="dark" className="fw-bold  px-4 py-2" text="light" >
