@@ -6,6 +6,7 @@ import CardItem from "../components/CardItem";
 import LoadingCard from "../components/LoadingCard";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { Badge } from "react-bootstrap";
 
 export default function PopularGames() {
   const dispatch = useDispatch();
@@ -72,6 +73,13 @@ export default function PopularGames() {
   return (
     <>
     <TopNav position={'/'}/>
+    <div className="col-12 my-2 shadow ">
+     
+                  <img src="https://i.ibb.co/PN9sKH7/367495909-1243618689655999-7963063728003866697-n.jpg" className="w-100" alt="" />
+                  <Badge  bg="dark" className="fw-bold  px-4 py-2" text="light" >
+        ကြော်ငြာ
+      </Badge>
+                </div>
      {loading ? <LoadingCard count={12}/>
     : 
       <div

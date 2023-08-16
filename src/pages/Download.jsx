@@ -6,7 +6,7 @@ import { fetchGameDetails } from "../actions/gameActions";
 import RelatedGames from "../components/RelatedGames";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { Form, Placeholder } from "react-bootstrap";
+import { Badge, Form, Placeholder } from "react-bootstrap";
 import { useState } from "react";
 import { setLinkRequest } from "../services/api";
 import { AuthContext } from "../contexts/AuthContext";
@@ -117,7 +117,13 @@ export default function Download() {
 
   return (
     <>
-      <div className="card col-12 px-0 shadow mt-3">        
+     <div className="col-12 my-2 shadow ">
+     <Badge  bg="dark" className="fw-bold  px-4 py-2" text="light" >
+        ကြော်ငြာ
+      </Badge>
+                  <img src="https://i.ibb.co/PN9sKH7/367495909-1243618689655999-7963063728003866697-n.jpg" className="w-100" alt="" />
+                </div>
+      <div className="card col-12 px-0 shadow mt-1">        
         <div className="card-body d-flex flex-wrap justify-content-center align-items-center">
           <h4 className="col-12 mb-0 fw-bolder">{game.name}</h4>
             <hr className="col-12 px-0" />
@@ -167,6 +173,12 @@ export default function Download() {
             <h6 className="fw-bold">{game.count} ယောက် ဒေါင်းထားပါတယ်</h6>
         </div>
       </div>
+      <div className="col-12 shadow my-2">
+      <Badge  bg="dark" className="fw-bold px-4 py-2" text="light" >
+        ကြော်ငြာ
+      </Badge>
+                  <img src="https://i.ibb.co/4fmcGCS/367501504-334105872378221-4151896815920128807-n.jpg" className="w-100" alt="" />
+                </div>
       <RelatedGames id={game.category_id} />      
 
     </>

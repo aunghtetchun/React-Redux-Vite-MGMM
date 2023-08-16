@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { useEffect } from "react";
+import { Badge } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {  useNavigate } from "react-router-dom";
 import { fetchCategories, setCurrentStatus } from "../actions/gameActions";
@@ -92,6 +93,13 @@ export function Category() {
           ))}
       </div>
       )}
+        <div className="col-12 shadow my-2">
+      <img src="https://i.ibb.co/4fmcGCS/367501504-334105872378221-4151896815920128807-n.jpg" className="w-100" alt="" />
+      <Badge  bg="dark" className="fw-bold px-4 py-2" text="light" >
+        ကြော်ငြာ
+      </Badge>
+                 
+                </div>
     </>
   );
 }
