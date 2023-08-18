@@ -102,14 +102,14 @@ export default function Profile() {
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
-          <div className="d-flex shadow mt-3 border rounded py-3 flex-wrap justify-content-between align-items center">
-            <div className="col-3 p-2">
+          <div className="d-flex shadow mt-3 border rounded py-3 flex-wrap justify-content-center align-items center">
+            <div className="col-3 col-md-2 p-2">
               <Card.Img
                 variant="top"
                 src="https://static.vecteezy.com/system/resources/previews/007/033/146/original/profile-icon-login-head-icon-vector.jpg"
               />
             </div>
-            <div className="col-9 p-2">
+            <div className="col-9 p-2 ps-md-4">
               <Card.Body>
                 <Card.Title className="d-flex justify-content-between align-items-start">
                   {user.name} 
@@ -138,10 +138,10 @@ export default function Profile() {
                 <h4 className="fw-bolder pt-3">သိမ်းထားသောဂိမ်းများ ( {games && games.length} )</h4>
                 <hr/>
             </div>
-            <div className="card-body px-2 pt-0 save_games">
+            <div className="card-body d-flex flex-wrap px-2 pt-0 save_games">
             {games && games.length>0 ? games.map((game) => (
               <div
-                className="col-12 my-2"
+                className="col-12 col-md-6 col-lg-4 my-2"
                 key={game.id}
               >
                 <CardItem user_id={user.id} game={game} />
