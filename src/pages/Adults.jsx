@@ -7,7 +7,6 @@ import AdultCardItem from '../components/AdultCardItem';
 import LoadingCard from '../components/LoadingCard';
 import {  getMoreAdults } from '../services/api';
 import SearchAdults from '../components/SearchAdults';
-import AdultBottom from '../components/AdultBottom';
 
 export default function Adults() {
   const see_more=useSelector((state) => state.adultReducer.see_more);

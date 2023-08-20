@@ -8,7 +8,6 @@ import {FiLayers, FiSettings, FiPackage, FiSave, FiCalendar, FiCpu, FiDownload} 
 import ShareInfo from "../components/ShareInfo";
 import { fetchAdultDetails } from "../actions/adultAction";
 import ImageCarousel from "../components/ImageCarousel";
-import AdultBottom from "../components/AdultBottom";
 
 export default function AdultDetails() {
   const dispatch = useDispatch();

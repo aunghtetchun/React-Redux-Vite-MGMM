@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {  useParams } from "react-router-dom";
 import { fetchAdultDetails } from "../actions/adultAction";
-import AdultBottom from "../components/AdultBottom";
 
 export default function DownloadAdult() {
   const dispatch = useDispatch();
