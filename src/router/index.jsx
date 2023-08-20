@@ -12,6 +12,9 @@ import PopularGames from "../pages/PopularGames.jsx";
 import Games from "../pages/Games.jsx";
 import { Category } from "../pages/Category.jsx";
 import Profile from "../pages/Profile.jsx";
+import Adults from "../pages/Adults.jsx";
+import AdultDetails from "../pages/AdultDetails.jsx";
+import DownloadAdult from "../pages/DownloadAdult.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -68,6 +71,18 @@ const router = createBrowserRouter([
       {
         path: "/download-software/:slug",
         element: <DownloadSoftware />,
+      },
+      {
+        path: "/adults",
+        element: <Adults />,
+      },
+      {
+        path: "/adults/:slug",
+        element: <AdultDetails />,
+      },
+      {
+        path: "/download-adult/:slug",
+        element: <DownloadAdult />,
       },
     ],
   },

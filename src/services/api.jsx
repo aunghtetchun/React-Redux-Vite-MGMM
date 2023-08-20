@@ -140,42 +140,6 @@ export const searchGames = async (search_value) => {
     throw new Error("search failed");
   }
 };
-export const getAllSoftwares = async () => {
-  try {
-      const response = await axios.get(`${BASE_URL}/softwares`);
-      return response.data;
-  } catch (error) {
-    throw new Error("Failed to fetch all softwares data");
-  }
-};
-export const getMoreSoftwares = async (page_number) => {
-  try {
-      if(page_number<100){
-        const response = await axios.get(`${BASE_URL}/softwares?page=${page_number}`);
-        return response.data;
-      }
-      
-  } catch (error) {
-    throw new Error("Failed to fetch all softwares data");
-  }
-};
-export const getSoftwareDetails = async (slug) => {
-  try {
-    const response = await axios.get(`${BASE_URL}/softwares/details/${slug}`);
-    return response.data;
-  } catch (error) {
-    throw new Error("Failed to fetch software details data");
-  }
-};
-
-export const searchSoftwares = async (search_value) => {
-  try {
-    const response = await axios.get(`${BASE_URL}/softwares/search/${search_value}`);
-    return response.data;
-  } catch (error) {
-    throw new Error("search failed");
-  }
-};
 
 export const saveGame = async ( post_id,user_id,token) => {
   try {
@@ -260,5 +224,80 @@ export const setLinkRequest = async ( selectedOption,post_id,token) => {
       console.error('An error occurred:', error);
       throw new Error(error);
     }
+  }
+};
+export const getAllSoftwares = async () => {
+  try {
+      const response = await axios.get(`${BASE_URL}/softwares`);
+      return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch all softwares data");
+  }
+};
+export const getMoreSoftwares = async (page_number) => {
+  try {
+      if(page_number<100){
+        const response = await axios.get(`${BASE_URL}/softwares?page=${page_number}`);
+        return response.data;
+      }
+      
+  } catch (error) {
+    throw new Error("Failed to fetch all softwares data");
+  }
+};
+export const getSoftwareDetails = async (slug) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/softwares/details/${slug}`);
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch software details data");
+  }
+};
+
+export const searchSoftwares = async (search_value) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/softwares/search/${search_value}`);
+    return response.data;
+  } catch (error) {
+    throw new Error("search failed");
+  }
+};
+
+///////// Adults Api Methods ///////////  
+
+export const getAllAdults = async () => {
+  try {
+      const response = await axios.get(`${BASE_URL}/adults`);
+      return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch all adults data");
+  }
+};
+export const getMoreAdults = async (page_number) => {
+  try {
+      if(page_number<100){
+        const response = await axios.get(`${BASE_URL}/adults?page=${page_number}`);
+        return response.data;
+      }
+      
+  } catch (error) {
+    throw new Error("Failed to fetch all adults data");
+  }
+};
+export const getAdultDetails = async (slug) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/adults/details/${slug}`);
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch software details data");
+  }
+};
+
+export const searchAdults = async (search_value) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/adults/search/${search_value}`);
+    return response.data;
+  } catch (error) {
+    throw new Error("search failed");
   }
 };
