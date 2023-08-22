@@ -204,10 +204,10 @@ export const saveComment = async ( post_id,comment,token) => {
   }
 };
 
-export const setLinkRequest = async ( selectedOption,post_id,token) => {
+export const setLinkRequest = async ( selectedOption,post_id,type,token) => {
   try {
     const response = await axios.post(`${BASE_URL}/report-game`,
-      { selectedOption,post_id }, 
+      { selectedOption,post_id,type }, 
       {
         headers: {
           Authorization: `Bearer ${token}`,

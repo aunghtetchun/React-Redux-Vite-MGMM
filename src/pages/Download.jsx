@@ -26,9 +26,11 @@ function MyVerticallyCenteredModal(props) {
     e.preventDefault();
     setLoading(true);
     const post_id = props.data_id;
+    const type = props.type;
     const response = await setLinkRequest(
       selectedOption,
       post_id,
+      type,
       user.oldToken
     );
     if (response.finish) {
@@ -209,6 +211,7 @@ export default function Download({ type }) {
               show={modalShow}
               onHide={() => setModalShow(false)}
               data_id={data.id}
+              type={type}
             />
           </div>
         </div>
