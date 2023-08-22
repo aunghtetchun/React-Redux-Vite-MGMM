@@ -129,11 +129,11 @@ export default function Adults() {
                 <AdultCardItem adult={adult} />
               </div>
             )) : ''}
-        {/* {see_more && search_status != 'search_adults' && adults.length>10  && search_status != 'not_found'?
+        {see_more && search_status != 'search_adults' && adults.length>10  && search_status != 'not_found'?
             <div className="mb-5 mt-3 pb-3">
               <Spinner animation="border" variant="success" />
             </div>
-          : ''} */}
+          : ''}
         {search_status == 'search_adults' ||  search_status == 'not_found' ?
             <button onClick={getAll} className="back_all shadow shadow-lg btn btn-success py-2 px-3">Back to All Adults</button> : ''
         }

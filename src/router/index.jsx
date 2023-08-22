@@ -3,7 +3,6 @@ import Layout from "../pages/layouts/Layout.jsx";
 import LoginUser from "../pages/auth/LoginUser.jsx";
 import RegisterUser from "../pages/auth/RegisterUser.jsx";
 import GameDetails from "../pages/GameDetails.jsx";
-import Download from "../pages/Download.jsx";
 import GameRequest from "../pages/GameRequest.jsx";
 import Softwares from "../pages/Softwares.jsx";
 import SoftwareDetails from "../pages/SoftwareDetails.jsx";
@@ -14,7 +13,7 @@ import { Category } from "../pages/Category.jsx";
 import Profile from "../pages/Profile.jsx";
 import Adults from "../pages/Adults.jsx";
 import AdultDetails from "../pages/AdultDetails.jsx";
-import DownloadAdult from "../pages/DownloadAdult.jsx";
+import Download from "../pages/Download.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -50,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/download-game/:slug",
-        element: <Download />,
+        element: <Download type={'game'}/>,
       },
       {
         path: "/request",
@@ -82,7 +81,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/download-adult/:slug",
-        element: <DownloadAdult />,
+        element: <Download type={'adult'}/>,
       },
     ],
   },
