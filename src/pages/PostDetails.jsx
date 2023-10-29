@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Badge, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {  Link, useParams } from "react-router-dom";
-import { FiMessageCircle, FiSend} from "react-icons/fi";
+import { FiMessageCircle, FiPhoneCall, FiSend} from "react-icons/fi";
 import { fetchPostDetails } from "../actions/postAction";
 
 export default function PostDetails() {
@@ -104,6 +104,7 @@ export default function PostDetails() {
               </div>
               <div className="card-body">              
                  <Link to="https://m.me/100059336683324" className="btn btn-primary text-light w-100 py-2"><FiMessageCircle/> စာပို့မည်</Link>
+                 <Link to="tel:+959971404793" className="btn btn-dark mt-2 text-light w-100 py-2"><FiPhoneCall/> ဖုန်းဆက်မည်</Link>
               </div>
             </div>
             
