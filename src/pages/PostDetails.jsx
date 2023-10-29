@@ -61,7 +61,7 @@ export default function PostDetails() {
               <table className="table table-bordered border-success mb-0">
                 <tbody>
                 <tr>
-                    <td  className="fw-bold">Game Id</td>
+                    <td  className="fw-bold">Game Info</td>
                     <td >{post.game_id} <span className="text-dark">( {post.server_id} )</span></td>
                   </tr>
                   <tr>
