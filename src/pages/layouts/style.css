@@ -73,4 +73,6 @@
    left: 0;
    bottom: 0;
    width: 100% !important;
+   border-top-right-radius: 0;
+   border-top-left-radius: 0;
 }
