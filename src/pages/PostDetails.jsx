@@ -54,7 +54,7 @@ export default function PostDetails() {
             <div className="col-12 border-primary mb-2 shadow card  px-0">
               <div className="card-header bg_main text-light text-center">
               <h5 className="lh mb-0 fw-bolder ">
-                အကောင့်အချက်အလက်
+                အရေးကြီးအချက်အလက်
               </h5>
               </div>
               <div className="card-body p-1">
@@ -85,7 +85,7 @@ export default function PostDetails() {
            
             <div className="col-12 card shadow mt-2">
               <div className="card-header bg_main text-light text-center">
-                <h5 className="mb-0 fw-bolder">ပိုင်ဆိုင်ထားသော Item များ</h5>
+                <h5 className="mb-0 fw-bolder">ဓာတ်ပုံများ</h5>
               </div>
               <div className="card-body p-2">
                 {post.photos.map((skin) => ( 
