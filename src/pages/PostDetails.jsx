@@ -103,8 +103,7 @@ export default function PostDetails() {
                   </h5>
               </div>
               <div className="card-body">              
-                 <Link to="https://www.messenger.com/t/100059336683324" className="btn btn-primary text-light w-100 py-2"><FiMessageCircle/> စာပို့မည်</Link>
-
+                 <Link to="https://m.me/100059336683324" className="btn btn-primary text-light w-100 py-2"><FiMessageCircle/> စာပို့မည်</Link>
               </div>
             </div>
             
