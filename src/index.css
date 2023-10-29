@@ -1,0 +1,154 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap'); */
+  /* @import url('https://fonts.googleapis.com/css2?family=Edu+SA+Beginner:wght@500&display=swap'); */
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+ *{
+    /* font-family: 'Oswald', sans-serif; */
+    /* font-family: 'Edu SA Beginner', cursive; */
+font-family: 'Roboto Condensed', sans-serif;
+  }
+  /* .container-fluid{
+    min-height: 90vh;
+  } */
+a{
+    text-decoration: none; color: black;
+}
+
+.bg_main{
+    color: white !important;
+    background: #a81d1d !important;
+}
+
+.text_main{
+    color:  #a81d1d !important;
+}
+
+.fs-13{
+    font-size: 13px !important;
+}
+.nowrap{
+    white-space: nowrap;
+}
+::-webkit-scrollbar {
+    width: 0; /* Set the width of the scrollbar */
+    height: 0;
+  }
+/* .min_height{
+    min-height: 80vh !important;
+} */
+.bg_viewer{
+    background-color: #6752e8 !important;
+}
+/* .bg-danger{
+    background-color: lightseagreen !important;
+} */
+.min_height{
+    min-height: 85vh !important;
+}
+.max_height{
+    max-height: 80vh !important;
+    overflow: scroll;
+}
+.gcard_title{
+    white-space: nowrap;
+    overflow: hidden;
+}
+.gcard_logo{
+    border-radius: 13%;
+    max-height: 77px !important;
+}
+/* .sticky_nav{
+    position: sticky; top: 0; left: 0;
+} */
+.details_img{
+   max-height: 100px !important;
+}
+.details_title{
+    color: #080c0d; line-height: 2;
+}
+.related_logo{
+    width: 100%; border-radius:13px; min-height: 76px;  max-height: 85px; padding: 2px;
+}
+.related_game_card{
+    cursor: pointer; min-height: 125px;
+}
+.p-13{
+    padding: 13px;
+}
+.related_card_title{
+    font-size: 14px; color:black; overflow:hidden; white-space: nowrap;
+}
+.fb_btn{
+    background: rgb(60, 60, 187)
+}
+.tg_btn{
+    background-color: #0088cc; color: #fff; border-color: #0088cc;
+}
+
+/* mobile nav  */
+.mobile_nav{
+    position: fixed; width: 100%; z-index:2900; bottom: 0; right: 0; ;
+}
+.top_nav{
+    position: sticky; z-index:3000; top: 0; background: white;
+}
+
+/* Card List part  */
+
+.g_card_badge{
+    position: absolute;
+    right: 0;
+    bottom: 33%;
+    
+}
+.card_badge{
+    position: absolute;
+    right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    min-width: 50px;
+}
+
+.img_holder{
+    height: 66px !important;
+}
+
+
+/* search jsx  */
+.search_input{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.search_btn{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: #a81d1d !important;
+}
+.back_all{
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3000;
+}
+
+/* profile jsx  */
+
+.save_games{
+    max-height: 35vh !important;
+    overflow: scroll;
+    scroll-behavior: smooth;
+}
+.save_delete{
+    position: absolute;
+    top: -7%;
+    right: -2%;
+}
+
+
+.adult-bottom{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3000;
+}

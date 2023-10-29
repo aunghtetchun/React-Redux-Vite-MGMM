@@ -1,0 +1,76 @@
+.fade-enter{
+    opacity: 0;
+ }
+ .fade-exit{
+    opacity: 0;
+ }
+ .fade-enter-active{
+    opacity: 1;
+ }
+ .fade-exit-active{
+    opacity: 0;
+ }
+ .fade-enter-active,
+ .fade-exit-active{
+    transition: opacity 500ms;
+ }
+ .post-card{
+   height: 210px !important;
+   background-position: center;
+   background-size: cover;
+   border-bottom-right-radius: 7px;
+   border-bottom-left-radius: 7px;
+   word-wrap: break-word;
+ }
+ .post-title{
+   border-top-right-radius: 7px;
+   border-top-left-radius: 7px;
+   font-size: 18px;
+   line-height: 25px;
+   word-wrap: break-word;
+ }
+ .lh{
+   line-height: 1.6;
+ }
+.card{
+   overflow: hidden !important;
+}
+.instock-badge span{
+   display: block;
+   padding: 3px;
+	transform: rotate(-45deg);
+	font-weight: bold;
+	text-align: center;
+	width: 100px;
+	position: absolute;	/* top: ; */
+   color: white !important;
+	left: -30px;
+	background: #18cf0b;
+	top: 15px;
+	width: 116px;
+	overflow: hidden;
+}
+ .sold-out-badge span {
+	display: block;
+   padding: 3px;
+	transform: rotate(-45deg);
+	font-weight: bold;
+	text-align: center;
+	width: 100px;
+	position: absolute;	/* top: ; */
+   color: white !important;
+	left: -30px;
+	background: #c01d1d;
+	top: 15px;
+	width: 116px;
+	overflow: hidden;
+}
+ 
+.bg_post{
+   color: white !important;
+   position: absolute !important;
+   background: #000000a3 !important;
+   left: 0;
+   bottom: 0;
+   width: 100% !important;
+}
