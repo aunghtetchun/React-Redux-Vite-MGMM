@@ -38,7 +38,7 @@ export default function PostDetails() {
               </h5>
               </div>
               <div className="card-body">
-                <p>{post.description}</p>
+                <p className="mb-0">{post.description}</p>
                
               </div>
             </div>
@@ -66,11 +66,14 @@ export default function PostDetails() {
                   </tr>
                   <tr>
                     <td className="fw-bold">စျေးနှုန်း</td>
-                    <td>{post.price} ကျပ်</td>
+                    <td> <span className="fw-bolder h5">
+                    {post.price} ကျပ်
+                      </span>
+                      </td>
                   </tr>
                   <tr>
                     <td className="fw-bold">အခြေအနေ</td>
-                    <td>{post.sold = 0 ? 'ရောင်းထွက်သွားပါပြီ' : 'ဝယ်ယူလို့ရပါသေးတယ်'}</td>
+                    <td>{post.sold == 1 ?  'ရောင်းထွက်သွားပါပြီ' : 'ဝယ်ယူလို့ရပါသေးတယ်'}</td>
                   </tr>
                   <tr>
                     <td className="fw-bold">ရောင်းချသူ၏အဆင့်</td>
@@ -99,11 +102,11 @@ export default function PostDetails() {
             <div className="col-12 card border_main mt-2 shadow mb-5">
               <div className="card-header bg_main text-light text-center">
                   <h5 className="mb-0 fw-bolder">
-                  ဒီမှာဝယ်ပါ
+                  How to buy?
                   </h5>
               </div>
               <div className="card-body">              
-                 <Link to="https://m.me/100059336683324" className="btn btn-primary text-light w-100 py-2"><FiMessageCircle/> စာပို့မည်</Link>
+                 <Link to="https://m.facebook.com/profile.php?id=100059336683324" className="btn btn-primary text-light w-100 py-2"><FiMessageCircle/> စာပို့မည်</Link>
                  <Link to="tel:+959971404793" className="btn btn-dark mt-2 text-light w-100 py-2"><FiPhoneCall/> ဖုန်းဆက်မည်</Link>
               </div>
             </div>

@@ -15,7 +15,7 @@
     transition: opacity 500ms;
  }
  .post-card{
-   height: 210px !important;
+   height: 115px !important;
    background-position: center;
    background-size: cover;
    border-bottom-right-radius: 7px;
@@ -29,15 +29,26 @@
    line-height: 25px;
    word-wrap: break-word;
  }
+ .stickycard{
+   position: sticky;
+   top: 0;
+   z-index: 3000;
+ }
+ .callcard{
+   font-size: 18px;
+  
+ }
  .lh{
    line-height: 1.6;
  }
 .card{
    overflow: hidden !important;
 }
+.pcard{
+   width: 47% !important;
+}
 .instock-badge span{
    display: block;
-   padding: 3px;
 	transform: rotate(-45deg);
 	font-weight: bold;
 	text-align: center;
@@ -52,7 +63,6 @@
 }
  .sold-out-badge span {
 	display: block;
-   padding: 3px;
 	transform: rotate(-45deg);
 	font-weight: bold;
 	text-align: center;

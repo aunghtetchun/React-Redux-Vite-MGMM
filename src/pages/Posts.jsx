@@ -6,7 +6,8 @@ import { fetchAllPosts } from '../actions/postAction';
 import { useDispatch, useSelector } from "react-redux";
 import SearchPosts from "../components/SearchPost";
 import { Badge } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FiPhoneCall } from "react-icons/fi";
 
 export default function Posts() {
   let navigate = useNavigate();
@@ -31,12 +32,19 @@ export default function Posts() {
       {loading ? (
         <h5>Loading Data...</h5>
       ) : (
-        <>
+        <div className="d-flex justify-content-around flex-wrap col-12 p-0"> 
+          <div className="col-12 bg-white stickycard">
+              <div className="fw-bold card shadow callcard col-12 px-4 py-2 mb-2 text-center lh mt-3" text="light" >
+              <Link to="tel:+959971404793" >
+              ဂိမ်းနှင့်ပက်သက်သော ပစ္စည်းများ မိမိစိတ်ကြိုက်စျေးဖြင့် တင်ရောင်းလိုပါက...  <span className="fw-bolder text_main">09971404793</span>  ကိုဆက်သွယ်ပါ... </Link> 
+              </div>  
+          </div>
+                                      
           {search_status == 'not_found' ? <h4 className='mt-4'>No Post Found</h4> :''}
-          {posts && search_status != 'not_found' ? 
+          {posts && search_status != 'not_found' ?            
             posts.map((post) => (
               <div
-              className="col-12 shadow  card mt-3 col-md-6 col-lg-4 "
+              className="pcard shadow  card mt-3 "
               onClick={() => seePost(post.id)}
               key={post.id}
             >
@@ -44,15 +52,15 @@ export default function Posts() {
                 <span>{post.sold == 1 ? "Sold Out" : "Instock"}</span>
               </div>
 
-              <span className="fw-bold post-title p-2 mb-0 text-center bg_post"  >
+              {/* <span className="fw-bold post-title p-2 mb-0 text-center bg_post"  >
                 {post.title}
-              </span>
+              </span> */}
               <div className="post-card" style={{ backgroundImage: `url(${post.profile})` }}>
                 
               </div>
               </div>
             )) : ''}
-        </>
+        </div>
       )}
     </>
   );
