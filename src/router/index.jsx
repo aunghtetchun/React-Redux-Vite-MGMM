@@ -8,7 +8,7 @@ import Softwares from "../pages/Softwares.jsx";
 import SoftwareDetails from "../pages/SoftwareDetails.jsx";
 import DownloadSoftware from "../pages/DownloadSoftware.jsx";
 import PopularGames from "../pages/PopularGames.jsx";
-import Games from "../pages/Games.jsx";
+// import Games from "../pages/Games.jsx";
 import { Category } from "../pages/Category.jsx";
 import Profile from "../pages/Profile.jsx";
 import Adults from "../pages/Adults.jsx";
@@ -16,6 +16,7 @@ import AdultDetails from "../pages/AdultDetails.jsx";
 import Download from "../pages/Download.jsx";
 import Posts from "../pages/Posts.jsx";
 import PostDetails from "../pages/PostDetails.jsx";
+import GameList from "../pages/GameList.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,13 +26,17 @@ const router = createBrowserRouter([
         path: "",
         element: <PopularGames />,
       },
+      // {
+      //   path: "/games",
+      //   element: <Games />,
+      // },
       {
         path: "/games",
-        element: <Games />,
+        element: <GameList />,
       },
       {
         path: "/games/category/:category_id",
-        element: <Games />,
+        element: <GameList />,
       },
       {
         path: "/category",

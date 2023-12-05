@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { useCallback } from "react";
-import { useState } from "react";
 import { useRef } from "react";
 import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {  useLocation, useNavigate, useParams } from "react-router-dom";
-import { fetchAllGames, fetchAllGamesByCategory, setCurrentPage, setCurrentUrl, setMoreGames, setSeeMore, setTimeoutAction } from "../actions/gameActions";
+import { fetchAllGames, fetchAllGamesByCategory, setCurrentPage, setCurrentUrl, setMoreGames, setSeeMore } from "../actions/gameActions";
 import CardItem from "../components/CardItem";
 import LoadingCard from "../components/LoadingCard";
 import TopNav from "../components/TopNav";
@@ -38,7 +37,6 @@ export default function Games() {
           dispatch(setSeeMore(false));
         } else {
           dispatch(setMoreGames(response.games.data));
-          dispatch(setTimeoutAction(response.title));
         }
       }
       

@@ -12,9 +12,9 @@ const initialState = {
   scroll_position_game: 0,
   search_game_status: null, 
   search_keyword: null, 
-  current_page: 2,
+  current_page: 1,
   seemore:true,
-
+  total_page:0,
 };
 
 const gameReducer = (state = initialState, action) => {
@@ -63,7 +63,12 @@ const gameReducer = (state = initialState, action) => {
         return {
           ...state,
           current_page: action.payload,
-        };
+        };   
+        case "SET_TOTAL_PAGE":
+        return {
+          ...state,
+          total_page: action.payload,
+        };        
       case "SET_CURRENT_URL":
         return {
           ...state,

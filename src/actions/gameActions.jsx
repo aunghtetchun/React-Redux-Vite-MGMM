@@ -26,6 +26,9 @@ export const setGameDetails = (game) => ({
 export const setCurrentPage = (current_page) => {
   return { type: "SET_CURRENT_PAGE", payload: current_page };
 };
+export const setTotalPage = (total_page) => {
+  return { type: "SET_TOTAL_PAGE", payload: total_page };
+};
 export const fetchGameDetails = (slug) => {
   return async (dispatch) => {
     try {
@@ -68,11 +71,11 @@ export const fetchAllGames = () => {
     try {
       dispatch(setKeyword(null));
       dispatch(setLoading(true));
-      dispatch(setCurrentPage(2));
-      dispatch(setSeeMore(true));
+      
+      dispatch(setCurrentPage(1));
       const response = await getAllGames();
-      // console.log(response.games);
       dispatch(setAllGames(response.games.data));
+      dispatch(setTotalPage(response.games.last_page));
       dispatch(setTitle(response.title));
       dispatch(setCurrentStatus('close'));
       dispatch(setLoading(false));
@@ -132,14 +135,16 @@ export const setCategories = (categories) => ({
 export const fetchAllGamesByCategory = (category_id) => {
   return async (dispatch) => {
     try {
-      dispatch(setCurrentPage(2));
-      dispatch(setSeeMore(true));
+      dispatch(setCurrentPage(1));
+      
       dispatch(setKeyword(null));
       dispatch(setLoading(true));
+      dispatch(setCurrentPage(1));
       dispatch(setGameSearchStatus('empty'));
       if(category_id!=null){
         const response = await getAllGamesByCategory(category_id);
         dispatch(setAllGames(response.games.data));
+        dispatch(setTotalPage(response.games.last_page));
         dispatch(setTitle(response.title));
         dispatch(setCurrentStatus('close'));
         dispatch(setLoading(false));
@@ -182,9 +187,8 @@ export const fetchGamesSearch = (search_value) => {
   return async (dispatch) => {
     try {
       dispatch(setKeyword(search_value));
-      dispatch(setCurrentPage(2));
+      dispatch(setCurrentPage(1));
       dispatch(setCurrentStatus('close'));
-      dispatch(setSeeMore(true));
       if(search_value.length==0){
           dispatch(setGameSearchStatus('empty'));
       }else{
@@ -195,6 +199,7 @@ export const fetchGamesSearch = (search_value) => {
           dispatch(setLoading(false));
           if(response.games.data.length > 0) {
               dispatch(setAllGames(response.games.data));
+              dispatch(setTotalPage(response.games.last_page));
               dispatch(setGameSearchStatus('found'));
           }else if(response.games.data.length == 0){
               dispatch(setGameSearchStatus('not_found'));
@@ -205,12 +210,12 @@ export const fetchGamesSearch = (search_value) => {
     }
   };
 }
-export const setTimeoutAction = (title) => {
-  return {
-    type: 'SET_TIMEOUT',
-    payload: title,
-  };
-};
+// export const setTimeoutAction = (title) => {
+//   return {
+//     type: 'SET_TIMEOUT',
+//     payload: title,
+//   };
+// };
 
 
 // A sample async action to fetch categories (you need to modify this based on your API)

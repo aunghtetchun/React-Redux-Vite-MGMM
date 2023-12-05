@@ -76,11 +76,14 @@ export default function PopularGames() {
   return (
     <>
     <TopNav position={'/'}/>
-    <div className="col-12 col-md-7 mx-auto py-2 " onClick={()=>goUrl('https://www.facebook.com/profile.php?id=100059336683324')}>
-     
+    <div className="col-12 col-md-7 mx-auto text-center py-2 " onClick={()=>goUrl('https://www.facebook.com/profile.php?id=100059336683324')}>
+    
                   <img src="https://i.ibb.co/k8pMx2w/Screenshot-from-2023-10-02-14-40-57.png" className="w-100" alt="" />
                   <Badge  bg="dark" className="fw-bold  px-4 py-2" text="light" >
        ကြော်ငြာများ ထည့်လိုပါက 09971404793 ကိုဆက်သွယ်ပါ   
+      </Badge>
+      <Badge  bg="primary" className="fw-bold mt-2 px-4 py-2" text="light" >
+       Vpn မခံဘဲသုံးပါက ပိုမြန်ပါမည်...
       </Badge>
                 </div>
      {loading ? <LoadingCard count={12}/>
