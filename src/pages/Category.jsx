@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { useEffect } from "react";
-import { Badge } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {  useNavigate } from "react-router-dom";
 import { fetchCategories, setCurrentStatus } from "../actions/gameActions";
