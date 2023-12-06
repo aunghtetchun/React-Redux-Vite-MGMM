@@ -54,20 +54,6 @@ export default function GameList() {
     dispatch(setCurrentUrl(url));
   }, [dispatch,url]);
 
-  const touchStartX = useRef(0);
-
-  const handleTouchMove = (event) => {
-    const touchX = event.touches[0].clientX;
-    const deltaX = touchX - touchStartX.current;
-    const threshold = 150;
-    if (deltaX < -threshold) {
-      console.log("Sliding left");
-      navigate('/softwares')
-    } else if (deltaX > threshold) {
-      navigate('/category')
-    }
-  };
-  
   const handlePageChange = useCallback(async (pageNumber) => {
     dispatch(setCurrentPage(pageNumber));
     dispatch(setLoading(true));
@@ -90,7 +76,6 @@ export default function GameList() {
       ) : (
         <div
           ref={containerRef}
-          onTouchMove={handleTouchMove}
           className="col-12 px-0 px-md-2 d-flex flex-wrap justify-content-center align-items-center"
         >
         {search_status == 'not_found' ? <h3 className='mt-5 text-center lh'>ဂိမ်းနာမည်အစစာလုံးကိုသာ ရိုက်ရှာပေးပါ... ဥပမာ Subway Surfer အစား Subway ဒါမှမဟုတ် Surfer လို့ရှာကြည့်ပေးပါ</h3> :''}
