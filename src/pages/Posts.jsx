@@ -1,13 +1,7 @@
 import React, { useEffect } from "react";
-import { useCallback } from "react";
-import { useState } from "react";
-import { useRef } from "react";
 import { fetchAllPosts } from '../actions/postAction';
 import { useDispatch, useSelector } from "react-redux";
-import SearchPosts from "../components/SearchPost";
-import { Badge } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { FiPhoneCall } from "react-icons/fi";
 
 export default function Posts() {
   let navigate = useNavigate();

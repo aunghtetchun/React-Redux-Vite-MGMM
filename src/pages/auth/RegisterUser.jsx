@@ -16,7 +16,10 @@ const RegisterUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await handleRegister({ name, email, password, confirm_password });
+    const response=await handleRegister({ name, email, password, confirm_password });
+    if(response.token){
+      navigate("/profile");
+    }
   };
   
   useEffect(() => {
@@ -24,6 +27,7 @@ const RegisterUser = () => {
       navigate("/profile");
     }
   }, [isLoggedIn, navigate]);
+
   const touchStartX = useRef(0);
   const handleTouchStart = (event) => {
     touchStartX.current = event.touches[0].clientX;

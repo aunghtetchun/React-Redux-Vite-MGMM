@@ -63,7 +63,7 @@ export default function SoftwareDetails() {
                         </tr>
                         <tr>
                             <td className="nowrap"> <FiSave className="text-primary"/>&nbsp; Size</td>
-                            <td>{software.size}</td>
+                            <td className="text-uppercase">{software.size}</td>
                         </tr>
                         <tr>
                             <td className="nowrap"> <FiLayers className="text-primary"/>&nbsp; Version</td>
@@ -81,11 +81,11 @@ export default function SoftwareDetails() {
                 </table>
             </div>
             <div className="col-12 mt-4 text-center ">
-                <ImageCarousel images={software.photos}/>
+                <ImageCarousel key={software.id} images={software.photos}/>
             </div>
             <div className="col-12 text-center details_title">
                 <h4 className="col-12 font-weight-bolder mt-3 pb-0 fw-bolder text-center ">About Software</h4>                
-                <div className="px-3" dangerouslySetInnerHTML={{ __html: software.description}}></div>
+                <div className="px-3 word-wrap" dangerouslySetInnerHTML={{ __html: software.description}}></div>
                 <div className="text-center">
                     <Badge
                       pill bg="secondary" className="font-weight-bold  px-3 py-2 my-2 mx-1"

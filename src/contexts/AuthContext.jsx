@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
           // Format the phone number with spaces
           const formattedPhoneNumber = cleanPhoneNumber.replace(/(\d{2})(\d{3})(\d{3})(\d{3})/, '$1 $2 $3 $4');
           let phone=formattedPhoneNumber;
-          let id=userData.id;
+          let id=userData.id; 
           setUser({id, name, oldToken,phone });
           setGames(userData.games);
           setMessages(userData.messages);
@@ -50,10 +50,9 @@ const AuthProvider = ({ children }) => {
       if (response.response && response.response.data.error){
          setErrors(response.response.data.error);
       }else{
-        let oldToken = response.token; // Replace with the actual new token received after registration.
-        setIsLoggedIn(true);
-        localStorage.setItem("authToken", oldToken); 
-        fetchUserData(oldToken);  
+        let token = response.token; // Replace with the actual new token received after registration.
+        localStorage.setItem("authToken", token); 
+        fetchUserData(token);  
       }
     
   };

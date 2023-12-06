@@ -60,10 +60,10 @@ export default function CardItem({ game,user_id }) {
             <h6 className="gcard_title mb-0">{game.name}</h6>
             <p className="mb-0 text-muted p-0 py-1 fs-13"> Version : {game.version}</p>
             <p className="mb-0 fs-13">
-              {game.size} ,
+              <span className="text-uppercase">{game.size}</span> ,
                 {game.type.toLowerCase().includes("online") &&
                 game.type.toLowerCase().includes("offline")
-                  ? <span className="fw-bold text-success">Online </span> & <span className="fw-bold text-danger"> Offline</span>
+                  ? <span><span className="fw-bold text-success">Online </span> & <span className="fw-bold text-danger"> Offline</span></span>
                   : game.type.toLowerCase().includes("online")
                   ? <span className="fw-bold text-success">Online</span>
                   : <span className="fw-bold text-danger">Offline</span>}

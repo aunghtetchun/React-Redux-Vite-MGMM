@@ -62,7 +62,7 @@ export default function AdultDetails() {
                             <td>{adult.updated}</td>
                         </tr>
                         <tr>
-                            <td className="nowrap"> <FiSave className="text-primary"/>&nbsp; Size</td>
+                            <td className="nowrap text-uppercase"> <FiSave className="text-primary"/>&nbsp; Size</td>
                             <td>{adult.size}</td>
                         </tr>
                         <tr>
@@ -81,11 +81,11 @@ export default function AdultDetails() {
                 </table>
             </div>
             <div className="col-12 mt-4 text-center ">
-                <ImageCarousel images={adult.photos}/>
+                <ImageCarousel key={adult.slug} images={adult.photos}/>
             </div>
             <div className="col-12 text-center details_title">
                 <h4 className="col-12 font-weight-bolder mt-3 pb-0 fw-bolder text-center ">About Adult</h4>                
-                <div className="px-3" dangerouslySetInnerHTML={{ __html: adult.description}}></div>
+                <div className="px-3 word-wrap" dangerouslySetInnerHTML={{ __html: adult.description}}></div>
                 <div className="text-center">
                     <Badge
                       pill bg="secondary" className="font-weight-bold  px-3 py-2 my-2 mx-1"

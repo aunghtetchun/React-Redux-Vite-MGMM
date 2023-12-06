@@ -131,7 +131,7 @@ export default function GameDetails() {
                     <FiSave className="text-primary" />
                     &nbsp; Size
                   </td>
-                  <td>{game.size}</td>
+                  <td className="text-uppercase">{game.size}</td>
                 </tr>
                 <tr>
                   <td className="nowrap">
@@ -164,7 +164,7 @@ export default function GameDetails() {
             <h4 className="col-12 font-weight-bolder  pb-0 mb-4 text-center ">
               Gameplay Photos
             </h4>
-            <ImageCarousel images={game.photos} />
+            <ImageCarousel key={game.slug} className="detail-img" images={game.photos} />
           </div>
           <div className="col-12 mt-4 text-center">
             <h4 className="col-12 font-weight-bolder pb-0 mb-4 text-center ">
@@ -179,12 +179,12 @@ export default function GameDetails() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             ></iframe>
           </div>
-          <div className="col-12  text-center details_title">
+          <div className="col-12 w-100  text-center details_title">
             <h4 className="col-12 font-weight-bolder mt-3 pb-0 fw-bolder text-center ">
               ဂိမ်းအကြောင်း
             </h4>
             <div
-              className="px-3"
+              className="px-3 word-wrap"
               key="game-description"
               dangerouslySetInnerHTML={{ __html: game.description }}
             ></div>
@@ -201,17 +201,7 @@ export default function GameDetails() {
               Mod Features
             </h4>
             <p>{game.features}</p>
-            <div className="col-12 col-md-7 mx-auto text-start" onClick={()=>goUrl('https://www.facebook.com/profile.php?id=100089471109757&mibextid=ZbWKwL')}>
-             
-              <img
-                src="https://i.ibb.co/4fmcGCS/367501504-334105872378221-4151896815920128807-n.jpg"
-                className="w-100"
-                alt=""
-              />
-               <Badge  bg="dark" className="fw-bold px-4 py-2" text="light">
-                ကြော်ငြာ
-              </Badge>
-            </div>
+           
             <h4 className="col-12 font-weight-bolder my-3 pb-0 fw-bolder text-center ">
               ဒီမှာဒေါင်းပါ
             </h4>

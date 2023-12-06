@@ -38,7 +38,7 @@ export default function AdultCardItem({ adult }) {
             <h6 className="gcard_title mb-0">{adult.name}</h6>
             <p className="mb-0 p-0 fs-13">  {adult.version}</p>
             <p className="mb-0 fs-13">
-              {adult.size} 
+            <span className="text-uppercase">{adult.size}</span>
             </p>
             <div className="g_card_badge text-right">
               {adult.new == 1 ? (

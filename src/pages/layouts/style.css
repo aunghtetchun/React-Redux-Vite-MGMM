@@ -41,6 +41,12 @@
  .lh{
    line-height: 1.6;
  }
+ .word-wrap{
+   word-wrap: anywhere !important;
+ }
+ .carousel .slide{
+   min-height: 209px !important;
+ }
 .card{
    overflow: hidden !important;
 }

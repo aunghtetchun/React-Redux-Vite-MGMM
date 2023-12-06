@@ -37,10 +37,7 @@ export default function BottomNav() {
           <FiGrid className={`${changeColorHome}`}/>
           <h6 className={`my-1 ${changeColorHome}`}>Game</h6>
         </Link>
-        {/* <Link to={'/game-list'} className={`${changeColorHome} col py-2 px-0 text-center `}>
-          <FiGrid className={`${changeColorHome}`}/>
-          <h6 className={`my-1 ${changeColorHome}`}>GameList</h6>
-        </Link> */}
+       
        
         <Link to={'/softwares'} className={`${changeColorSoftware} col py-2  px-0 text-center `}>
           <FiCpu className={`${changeColorSoftware}`}/>
