@@ -90,7 +90,7 @@ export default function GameList() {
             ))
             : ''}
             {search_status != 'not_found' &&  total_page != 1 ?
-              <Pagination className="d-flex flex-wrap mb-3">
+              <Pagination className="d-flex flex-wrap my-3">
                 <Pagination.First onClick={() => handlePageChange(1)} />
                 <Pagination.Prev onClick={() => handlePageChange(current_page - 1)} />
                 {/* Dynamically generate pagination buttons based on totalPages */}
