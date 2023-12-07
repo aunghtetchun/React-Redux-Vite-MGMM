@@ -33,7 +33,7 @@ export default function CardItem({ game,user_id }) {
   return (
     <>
    
-    <Card id={game.slug} className="m-1 box shadow py-1" >
+    <Card id={game.slug} className="m-1  shadow shadow-sm py-1" >
        {user_id &&<button onClick={deleteSave} className="btn p-0 pb-1 px-1 btn-danger save_delete "><FiX/></button>}
 
         <Card.Body className="d-flex px-1 py-1 flex-wrap justify-content-center align-items-center" onClick={() => seeGame(game.slug)}>

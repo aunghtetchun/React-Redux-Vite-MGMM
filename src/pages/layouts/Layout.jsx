@@ -3,7 +3,6 @@ import { Outlet } from "react-router-dom";
 // import { SwitchTransition, CSSTransition } from "react-transition-group";
 import "./style.css";
 import "./snowfall.css";
-import "./test.css";
 import BottomNav from "../../components/BottomNav";
 export default function Layout() {
   // const location = useLocation();
@@ -36,15 +35,7 @@ export default function Layout() {
           <snowflake><img src="./snow1.png"/>️</snowflake>
           <snowflake><img src="./snow1.png"/>️</snowflake>
           <snowflake><img src="./snow1.png"/>️</snowflake>
-          <snowflake><img src="./snow1.png"/>️</snowflake>
-          <snowflake><img src="./snow1.png"/>️</snowflake>
-          <snowflake><img src="./snow1.png"/>️</snowflake>
-          <snowflake><img src="./snow1.png"/>️</snowflake>
-          <snowflake><img src="./snow1.png"/>️</snowflake>
-          <snowflake><img src="./snow1.png"/>️</snowflake>
-          <snowflake><img src="./snow1.png"/>️</snowflake>
-          <snowflake><img src="./snow1.png"/>️</snowflake>
-          <snowflake><img src="./snow1.png"/>️</snowflake>
+          <snowflake><img src="./snow2.png"/>️</snowflake>
           <snowflake><img src="./snow2.png"/>️</snowflake>
           <snowflake><img src="./snow2.png"/>️</snowflake>
           <snowflake><img src="./snow2.png"/>️</snowflake>
@@ -64,13 +55,11 @@ export default function Layout() {
           <snowflake><img src="./snow6.png"/>️</snowflake>
           <snowflake><img src="./snow6.png"/>️</snowflake>
           <snowflake><img src="./snow9.png"/>️</snowflake>
-          <snowflake><img src="./snow6.png"/>️</snowflake>
-          <snowflake><img src="./snow6.png"/>️</snowflake>
-          <snowflake><img src="./snow6.png"/>️</snowflake>
+          <snowflake><img src="./snow9.png"/>️</snowflake>
           <snowflake><img src="./snow9.png"/>️</snowflake>
           <snowflake><img src="./snow6.png"/>️</snowflake>
           <snowflake><img src="./snow6.png"/>️</snowflake>
-          <snowflake><img src="./snow9.png"/>️</snowflake>
+          <snowflake><img src="./snow6.png"/>️</snowflake>
           <snowflake><img src="./snow6.png"/>️</snowflake>
           <snowflake><img src="./snow6.png"/>️</snowflake>
           <snowflake><img src="./snow6.png"/>️</snowflake>

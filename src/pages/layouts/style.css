@@ -130,7 +130,7 @@
  }
  
  .box {
-    border: 0.2rem solid;
+    border: 0.15rem solid;
     border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
     animation: borderRotate var(--d) linear infinite forwards;
  }
@@ -141,7 +141,7 @@
  }
 
  .box2 {
-   border: 0.2rem solid;
+   border: 0.15rem solid;
    border-image: conic-gradient(from var(--angle), var(--c4), var(--c3) 0.1turn, var(--c3) 0.15turn, var(--c4) 0.25turn) 30;
    animation: borderRotate var(--d) linear infinite forwards;
 }
@@ -152,7 +152,7 @@
 }
 
 .box3 {
-   border: 0.2rem solid;
+   border: 0.15rem solid;
    border-image: conic-gradient(from var(--angle), var(--c6), var(--c5) 0.1turn, var(--c5) 0.15turn, var(--c6) 0.25turn) 30;
    animation: borderRotate var(--d) linear infinite forwards;
 }
