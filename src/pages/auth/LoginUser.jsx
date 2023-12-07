@@ -40,7 +40,7 @@ const LoginUser = () => {
    onTouchStart={handleTouchStart}
     onTouchMove={handleTouchMove}
    className="col-12 px-0 min_height">
-     <div className="col-12 mt-5 card col-md-6 p-0">
+     <div className="col-12 mt-5 card box2 col-md-6 p-0">
       <div className="card-body">
       <h4 className="mb-3 mt-1 ">အကောင့်ဝင်မည်</h4>
         <hr />

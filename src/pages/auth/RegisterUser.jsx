@@ -51,7 +51,7 @@ const RegisterUser = () => {
     onTouchMove={handleTouchMove}
     className="col-12 px-0 min_height">
 
-    <div className="col-12 col-md-6 mt-3 p-0 card">
+    <div className="col-12 box2 col-md-6 mt-3 p-0 card">
       
       <div className="card-body">
         <h4 className="mb-3 mt-1 ">အကောင့်သစ်ဖွင့်မည်</h4>

@@ -75,7 +75,7 @@ export function Category() {
         <div
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
-        className="d-flex col-12 flex-wrap px-0 justify-content-center">
+        className="d-flex box col-12 flex-wrap px-0 justify-content-center">
         <div className="col-6 p-1">
           <button onClick={goAllGames}
             className="btn rounded-0 btn-danger  w-100 p-2"

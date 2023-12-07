@@ -27,8 +27,8 @@ export default function Posts() {
         <h5>Loading Data...</h5>
       ) : (
         <div className="d-flex justify-content-around flex-wrap col-12 p-0"> 
-          <div className="col-12 bg-white stickycard">
-              <div className="fw-bold card shadow callcard col-12 px-4 py-2 mb-2 text-center lh mt-3" text="light" >
+          <div className="col-12  bg-white stickycard">
+              <div className="fw-bold card box3 shadow callcard col-12 px-4 py-2 mb-2 text-center lh mt-3" text="light" >
               <Link to="tel:+959971404793" >
               ဂိမ်းနှင့်ပက်သက်သော ပစ္စည်းများ မိမိစိတ်ကြိုက်စျေးဖြင့် တင်ရောင်းလိုပါက...  <span className="fw-bolder text_main">09971404793</span>  ကိုဆက်သွယ်ပါ... </Link> 
               </div>  
@@ -38,7 +38,7 @@ export default function Posts() {
           {posts && search_status != 'not_found' ?            
             posts.map((post) => (
               <div
-              className="pcard shadow  card mt-3 "
+              className="pcard shadow  box3 card mt-3 "
               onClick={() => seePost(post.id)}
               key={post.id}
             >

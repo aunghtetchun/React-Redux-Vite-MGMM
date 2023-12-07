@@ -128,7 +128,7 @@ export default function Profile() {
               </Card.Body>
             </div>
           </div>
-          <div className="card col-12 mt-4">
+          <div className="card box2 col-12 mt-4">
             <div className="card-body">
                   <h6 style={{lineHeight:2}}>MGMM အသုံးပြုသူများအတွက် အပတ်စဥ် ဖုန်းဘေများ မဲဖောက်ပေးနေပါပြီ... သင့်အကောင့် Profile ဘေးက Message စာအိပ်လေးကိုနှိပ်ပီး ဒီအပတ်အတွက် <span className="text-danger">သင်ကံထူးသွားလား</span> ဆိုတာကို စစ်ဆေးလိုက်ပါ...</h6>
             </div>
