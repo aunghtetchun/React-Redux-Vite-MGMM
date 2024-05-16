@@ -49,9 +49,9 @@ const RegisterUser = () => {
     <div 
     onTouchStart={handleTouchStart}
     onTouchMove={handleTouchMove}
-    className="col-12 px-0 min_height">
+    className="col-12 px-0 min_height d-flex align-items-center">
 
-    <div className="col-12 box2 col-md-6 mt-3 p-0 card">
+    <div className="col-12 box2 col-md-6 col-lg-10 mx-auto mt-3 p-0 card">
       
       <div className="card-body">
         <h4 className="mb-3 mt-1 ">အကောင့်သစ်ဖွင့်မည်</h4>

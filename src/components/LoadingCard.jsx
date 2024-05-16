@@ -4,7 +4,7 @@ import { Card, Placeholder } from 'react-bootstrap';
 const LoadingCard = ({ count }) => {
   const generateLoadingCards = () => {
     return Array.from({ length: count }, (_, i) => (
-      <div key={i} className="col-12 col-md-6 col-lg-4">
+      <div key={i} className="col-12 col-md-6">
         <Card className="m-1 shadow">
           <Card.Body className="d-flex px-1 py-1 flex-wrap justify-content-center align-items-center">
             <div className="col-3 mb-0 pe-3">

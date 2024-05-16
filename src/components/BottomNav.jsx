@@ -32,7 +32,7 @@ export default function BottomNav() {
     <>
         {!isAdultPage ?
 
-      <div className="col-12 px-0 mx-0 shadow shadow-lg bg_main border border-red d-flex justify-content-center align-items-center mobile_nav">
+      <div className="col-12  px-0 mx-0 shadow shadow-lg bg_main border border-red d-flex justify-content-center align-items-center mobile_nav">
         <Link to={current_url} className={`${changeColorHome} col py-2 px-0 text-center `}>
           <FiGrid className={`${changeColorHome}`}/>
           <h6 className={`my-1 ${changeColorHome}`}>Game</h6>
@@ -47,10 +47,10 @@ export default function BottomNav() {
           <FiSend className={`${changeColor}`}/> 
           <h6 className={`my-1  ${changeColor}`}>Request</h6>
         </Link> */}
-        <Link to="/posts" className={`col py-2   px-0 text-center ${changeColor}`}>
+        {/* <Link to="/posts" className={`col py-2   px-0 text-center ${changeColor}`}>
           <FiShoppingBag className={`${changeColor}`}/> 
           <h6 className={`my-1  ${changeColor}`}> Shop</h6>
-        </Link>
+        </Link> */}
         <Link to="/profile" className={`col py-2   px-0 text-center ${changeColorLogin}`}>
           <FiUserCheck className={`${changeColorLogin}`}/>
           <h6 className={`my-1 ${changeColorLogin}`}>Account</h6>
@@ -62,10 +62,10 @@ export default function BottomNav() {
           <FiGrid className={`${changeColorAdult}`}/>
           <h6 className={`my-1 ${changeColorAdult}`}>Adults</h6>
         </Link>
-        <div className="col text-center">
+        {/* <div className="col text-center">
             <h6 className="my-2">ကြော်ငြာထည့်သွင်းလိုပါက</h6>
             <h6 className="mt-2"><a className="text-light" href="tel:+95971404793"><FiPhoneCall/> &nbsp;09 971404793 </a></h6>
-        </div>
+        </div> */}
         {/* <Link to="/request" className={`col py-2   px-0 text-center ${changeColor}`}>
           <FiSend className={`${changeColor}`}/> 
           <h6 className={`my-1  ${changeColor}`}>Request</h6>

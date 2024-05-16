@@ -117,7 +117,7 @@ export default function Softwares() {
         {softwares && search_status != 'not_found' ? 
             softwares.map((software) => (
               <div
-                className="col-12 col-md-6 col-lg-4"
+                className="col-12 col-md-6"
                 onClick={() => seeSoftware(software.slug)}
                 key={software.id}
               >

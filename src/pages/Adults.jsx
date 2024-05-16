@@ -122,7 +122,7 @@ export default function Adults() {
         {adults && search_status != 'not_found' ? 
             adults.map((adult) => (
               <div
-                className="col-12 col-md-6 col-lg-4"
+                className="col-12 col-md-6"
                 onClick={() => seeAdult(adult.slug)}
                 key={adult.id}
               >

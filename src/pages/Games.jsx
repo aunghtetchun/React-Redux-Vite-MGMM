@@ -131,7 +131,7 @@ export default function Games() {
           {all_games && search_status != 'not_found' ?
             all_games.map((game) => (
               <div
-                className="col-12 col-md-6 col-lg-4"
+                className="col-12 col-md-6"
                 key={game.id}
               >
                 <CardItem game={game} />

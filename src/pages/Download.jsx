@@ -150,7 +150,7 @@ export default function Download({ type }) {
 
   return (
     <>
-      <div
+      {/* <div
         className="col-12 col-md-7 mx-auto mt-3 px-2 "
         onClick={() =>
           goUrl("https://www.facebook.com/KVCMyanmar?mibextid=ZbWKwL")
@@ -164,13 +164,13 @@ export default function Download({ type }) {
           className="w-100"
           alt=""
         />
-      </div>
+      </div> */}
       <div className="card col-12 px-0 shadow mt-1">
         <div className="card-body d-flex flex-wrap justify-content-center align-items-center">
           <h4 className="col-12 mb-0 fw-bolder">{data.name}</h4>
           <hr className="col-12 px-0" />
           {data.link1 && (
-            <div className="col-12 col-md-6 col-lg-4 p-2">
+            <div className="col-12 col-md-6 p-2">
               <a
                 href={`https://modgamesmm.com/download/${data.slug}/link1/${type}`}
                 className="btn bg_main px-3 py-2  w-100"
@@ -181,7 +181,7 @@ export default function Download({ type }) {
           )}
 
           {data.link2 && (
-            <div className="col-12 col-md-6 col-lg-4 p-2">
+            <div className="col-12 col-md-6 p-2">
               <a
                 href={`https://modgamesmm.com/download/${data.slug}/link2/${type}`}
                 className="btn bg_main px-3 py-2  w-100"
@@ -191,7 +191,7 @@ export default function Download({ type }) {
             </div>
           )}
           {data.link3 && (
-            <div className="col-12 col-md-6 col-lg-4 p-2">
+            <div className="col-12 col-md-6 p-2">
               <a
                 href={`https://modgamesmm.com/download/${data.slug}/link3/${type}`}
                 className="btn bg_main px-3 py-2  w-100"
@@ -200,7 +200,7 @@ export default function Download({ type }) {
               </a>
             </div>
           )}
-          <div className="col-12 col-md-6 col-lg-4 p-2">
+          <div className="col-12 col-md-6 p-2">
             <Button
               className="btn bg-success px-3 py-2  w-100"
               onClick={() => setModalShow(true)}
@@ -219,7 +219,7 @@ export default function Download({ type }) {
           <h6 className="fw-bold">{data.count} ယောက် ဒေါင်းထားပါတယ်</h6>
         </div>
       </div>
-      <div
+      {/* <div
         className="col-12 col-md-7 mx-auto  py-2"
         onClick={() =>
           goUrl(
@@ -235,7 +235,7 @@ export default function Download({ type }) {
           className="w-100"
           alt=""
         />
-      </div>
+      </div> */}
       {type == "game" && <RelatedGames id={data.category_id} />}
     </>
   );

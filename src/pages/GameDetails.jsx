@@ -248,7 +248,7 @@ export default function GameDetails() {
                   </ListGroupItem>
                 ))}
             </ListGroup>
-            <div className="col-12 col-md-7 mx-auto text-start" onClick={()=>goUrl('https://www.facebook.com/KVCMyanmar?mibextid=ZbWKwL')}>
+            {/* <div className="col-12 col-md-7 mx-auto text-start" onClick={()=>goUrl('https://www.facebook.com/KVCMyanmar?mibextid=ZbWKwL')}>
               
               <img
                 src="https://i.ibb.co/PN9sKH7/367495909-1243618689655999-7963063728003866697-n.jpg"
@@ -258,7 +258,7 @@ export default function GameDetails() {
               <Badge bg="dark" className="fw-bold rounded px-4 py-2" text="light">
                 ကြော်ငြာ
               </Badge>
-            </div>
+            </div> */}
             {isLoggedIn && (
               <div className="col-12 mx-auto px-0 text-center">
                 <CommentBox post_id={game.id} setComments={setComments} />

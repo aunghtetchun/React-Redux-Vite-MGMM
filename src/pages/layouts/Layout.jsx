@@ -18,7 +18,7 @@ export default function Layout() {
             <div className="col-12 col-lg-10 mt-0 px-0">
               <div className="container">
                 <div className="row justify-content-center align-items-center mx-0 mx-md-0">
-                  <div className="col-12 col-lg-8 px-0 d-flex flex-wrap justify-content-center align-items center">
+                  <div className="col-12 col-lg-7 px-0 d-flex flex-wrap justify-content-center align-items center">
                     <Outlet />
                   </div>
                 </div>
