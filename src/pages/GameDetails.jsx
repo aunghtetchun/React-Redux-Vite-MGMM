@@ -201,17 +201,7 @@ export default function GameDetails() {
               Mod Features
             </h4>
             <p>{game.features}</p>
-            <div className="col-12 col-md-7 mx-auto text-start" onClick={()=>goUrl('https://www.facebook.com/profile.php?id=100089471109757&mibextid=ZbWKwL')}>
-             
-              <img
-                src="https://i.ibb.co/4fmcGCS/367501504-334105872378221-4151896815920128807-n.jpg"
-                className="w-100"
-                alt=""
-              />
-               <Badge  bg="dark" className="fw-bold px-4 py-2" text="light">
-                ကြော်ငြာ
-              </Badge>
-            </div>
+            
             <h4 className="col-12 font-weight-bolder my-3 pb-0 fw-bolder text-center ">
               ဒီမှာဒေါင်းပါ
             </h4>
@@ -258,17 +248,7 @@ export default function GameDetails() {
                   </ListGroupItem>
                 ))}
             </ListGroup>
-            <div className="col-12 col-md-7 mx-auto text-start" onClick={()=>goUrl('https://www.facebook.com/KVCMyanmar?mibextid=ZbWKwL')}>
-              
-              <img
-                src="https://i.ibb.co/PN9sKH7/367495909-1243618689655999-7963063728003866697-n.jpg"
-                className="w-100"
-                alt=""
-              />
-              <Badge bg="dark" className="fw-bold rounded px-4 py-2" text="light">
-                ကြော်ငြာ
-              </Badge>
-            </div>
+            
             {isLoggedIn && (
               <div className="col-12 mx-auto px-0 text-center">
                 <CommentBox post_id={game.id} setComments={setComments} />

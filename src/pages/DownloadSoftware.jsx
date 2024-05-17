@@ -30,7 +30,7 @@ export default function DownloadSoftware() {
           <h4 className="col-12 mb-0 fw-bolder">{software.name}</h4>
             <hr className="col-12 px-0" />
           {software.link1 && (
-            <div className="col-12 col-md-6 col-lg-4 p-2">
+            <div className="col-12 col-md-6  p-2">
               <a
                 href={`https://modgamesmm.com/download/${software.slug}/link1/software`}
                 className="btn bg_main px-3 py-2  w-100"
@@ -41,7 +41,7 @@ export default function DownloadSoftware() {
           )}
 
           {software.link2 && (
-            <div className="col-12 col-md-6 col-lg-4 p-2">
+            <div className="col-12 col-md-6  p-2">
               <a
                 href={`https://modgamesmm.com/download/${software.slug}/link2/software`}
                 className="btn bg_main px-3 py-2  w-100"
@@ -51,7 +51,7 @@ export default function DownloadSoftware() {
             </div>
           )}
           {software.link3 && (
-            <div className="col-12 col-md-6 col-lg-4 p-2">
+            <div className="col-12 col-md-6  p-2">
               <a
                 href={`https://modgamesmm.com/download/${software.slug}/link3/software`}
                 className="btn bg_main px-3 py-2  w-100"

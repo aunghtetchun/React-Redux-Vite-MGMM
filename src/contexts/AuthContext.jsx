@@ -42,6 +42,7 @@ const AuthProvider = ({ children }) => {
       setIsLoggedIn(true);
       localStorage.setItem("authToken", oldToken);
       fetchUserData(oldToken);
+      window.location.replace('/');
     }
   };
 
@@ -51,9 +52,9 @@ const AuthProvider = ({ children }) => {
          setErrors(response.response.data.error);
       }else{
         let oldToken = response.token; // Replace with the actual new token received after registration.
-        setIsLoggedIn(true);
-        localStorage.setItem("authToken", oldToken); 
-        fetchUserData(oldToken);  
+        fetchUserData(oldToken);
+        localStorage.setItem("authToken", oldToken);
+        window.location.replace('/');
       }
     
   };

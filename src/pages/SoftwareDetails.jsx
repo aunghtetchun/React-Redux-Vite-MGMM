@@ -50,7 +50,7 @@ export default function SoftwareDetails() {
               </h5>
             </div>
           </div>
-          <div className="col-12 col-md-7 mx-auto px-0 mt-2">
+          <div className="col-12 col-md-8 mx-auto px-0 mt-2">
                 <table className="table table-bordered mx-0 mb-0 px-0 w-100 table-striped">
                     <tbody>
                         <tr>
@@ -80,7 +80,7 @@ export default function SoftwareDetails() {
                     </tbody>
                 </table>
             </div>
-            <div className="col-12 mt-4 text-center ">
+            <div className="col-12 col-lg-5 mt-4 text-center ">
                 <ImageCarousel images={software.photos}/>
             </div>
             <div className="col-12 text-center details_title">

@@ -141,7 +141,7 @@ export default function Profile() {
             <div className="card-body d-flex flex-wrap px-2 pt-0 save_games">
             {games && games.length>0 ? games.map((game) => (
               <div
-                className="col-12 col-md-6 col-lg-4 my-2"
+                className="col-12 col-md-6  my-2"
                 key={game.id}
               >
                 <CardItem user_id={user.id} game={game} />
